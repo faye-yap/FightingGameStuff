@@ -6,6 +6,15 @@
             "id": "83bbbe93-5ec5-4c3b-9e1e-c60be926afed",
             "actions": [
                 {
+                    "name": "AirJump",
+                    "type": "Button",
+                    "id": "29f56ba4-291b-49e0-9f65-629e5ba56e4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "bcc59581-b7ef-4135-af57-920b00e205cf",
@@ -15,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Punch",
+                    "name": "ANormal",
                     "type": "Button",
                     "id": "b01bcd49-1edb-4572-a33a-b46458332b6a",
                     "expectedControlType": "Button",
@@ -24,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Kick",
+                    "name": "BNormal",
                     "type": "Button",
                     "id": "d6222fec-3d30-4026-bae7-12f978fd4a54",
                     "expectedControlType": "Button",
@@ -33,27 +42,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Slash",
+                    "name": "Special",
                     "type": "Button",
                     "id": "ac47019d-4111-448a-ac14-4a89e85c4766",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "HSlash",
-                    "type": "Button",
-                    "id": "3eaec681-3891-420d-b41b-236bb4c09d77",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Dust",
-                    "type": "Button",
-                    "id": "7263c5bc-2587-42b7-af40-f706f92f33c7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -251,18 +242,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Punch",
+                    "action": "ANormal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "7b6ff65b-6991-4b2e-9137-f6b36c789031",
-                    "path": "<Keyboard>/u",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Punch",
+                    "action": "ANormal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -273,18 +264,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Kick",
+                    "action": "BNormal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "6e7c0228-a3ae-42db-a3a2-4374c34128a2",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Kick",
+                    "action": "BNormal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -295,62 +286,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Slash",
+                    "action": "Special",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "7ad7c07d-ed25-46e7-98b4-4c00205ff0f1",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Slash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "230c8981-0342-4b91-a889-a6dd482a0289",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "HSlash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "906e11f0-2f61-4cb3-8cc6-1b38c529a9ae",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "HSlash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "332b779f-5801-4c08-89c0-7bf0aabdf508",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Dust",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9831ff00-2b34-45ae-b2b2-2329ecc95136",
-                    "path": "<Keyboard>/o",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Dust",
+                    "action": "Special",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -384,6 +331,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "RC",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7faffa68-12e5-427d-8bb5-cc29728bff7d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AirJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

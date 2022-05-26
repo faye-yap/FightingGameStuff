@@ -655,3 +655,5 @@ MonoBehaviour:
   backdashSpeed: 10
   airDashDuration: 5
   inputFrameWindow: 5
+  canAirJump: 0
+  framesUntilAirJump: 20

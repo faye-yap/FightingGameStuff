@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
+    private const int MaxInt = 2147483647;
     private int frameNumber;
     public int speed;
     public int dashSpeed;
@@ -24,16 +25,15 @@ public class PlayerController : MonoBehaviour
     private int gravityOn = 0;
     private float gravityScale;
     public int airDashDuration;
-    
     private Vector3 xMidpoint;
-
-    
-
-
     private List<int> frameNumberBuffer = new List<int> {};
     private List<int> inputBuffer = new List<int> {};
     public int inputFrameWindow = 5;
     private int airActions = 1;
+    public bool canAirJump;
+    public int framesUntilAirJump;
+    private int setAirJump = 0;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         
         xMidpoint = new Vector3((p1Body.transform.position.x + p2Body.transform.position.x)/2,0,0);
         if (xMidpoint.x < p1Body.transform.position.x && !p1Sprite.flipX){
@@ -68,15 +70,30 @@ public class PlayerController : MonoBehaviour
             p1Body.gravityScale = gravityScale;
         }
 
+        if (frameNumber >= setAirJump){
+            //Debug.Log(setAirJump);
+            canAirJump = true;
+            setAirJump = MaxInt;
+        }
+
     
 
         switch (movement.y){
-            case (1):                 
-                switch (movement.x){
-                    case (1) : RightJump(); break;                    
-                    case (0) : NeutralJump(); break;
-                    case (-1): LeftJump(); break;                    
+            case (1):   
+                if (canAirJump && !onGroundState) {
+                    AirJump();
+                } else if (onGroundState){
+                    setAirJump = frameNumber + framesUntilAirJump;
+                    Debug.Log(setAirJump);
+                    switch (movement.x){
+                        case (1) : RightJump(); break;                    
+                        case (0) : NeutralJump(); break;
+                        case (-1): LeftJump(); break;                    
+                    }
+                    
+                    
                 }
+                
             break;
 
             case (0): 
@@ -190,7 +207,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Ground")) {
             onGroundState = true;
-        
+            canAirJump = false;
 
             p1Body.velocity = Vector2.zero;
             airActions = 1;
@@ -201,7 +218,11 @@ public class PlayerController : MonoBehaviour
             p1Body.velocity = Vector2.zero;
             p1Body.AddForce(new Vector2(movement.x * speed * 2/3, jumpSpeed),ForceMode2D.Impulse);
             airActions -= 1;
+            canAirJump = false;
+            Debug.Log("dj");
+            onGroundState = false;
         }
+
     }
     
     private void LeftJump(){
