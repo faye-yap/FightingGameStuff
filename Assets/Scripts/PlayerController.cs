@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+
 public class PlayerController : MonoBehaviour
 {
     private const int MaxInt = 2147483647;
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D p1Body;
     private SpriteRenderer p1Sprite;
     private BoxCollider2D p1Collider; 
+    private Animator playerAnimator;
     private Vector2 movement;
     private bool onGroundState = true;
     private bool airDashBool;
@@ -33,18 +36,29 @@ public class PlayerController : MonoBehaviour
     public bool canAirJump;
     public int framesUntilAirJump;
     private int setAirJump = 0;
+    private bool canMove = true;
+    private bool canDashJumpCancel = true;
+
+    //temporary
+    private int neutralAStartup = 60;
+    private int neutralAActive = 60;
+    private int neutralArecovery = 60;
+    private int activateMove;
     
 
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
+
         p1Body = GetComponent<Rigidbody2D>();
         p1Sprite = GetComponent<SpriteRenderer>();
         p2Body = GameObject.FindGameObjectWithTag("Player2").GetComponent<Rigidbody2D>();
         p1Collider = GetComponent<BoxCollider2D>();
         frameNumber = 0;
         gravityScale = p1Body.gravityScale;
+        playerAnimator = GetComponent<Animator>();
+        
         
         
     }
@@ -76,8 +90,204 @@ public class PlayerController : MonoBehaviour
             setAirJump = MaxInt;
         }
 
+        if (frameNumber >= activateMove){
+            canMove = true;
+            canDashJumpCancel = true;
+            playerAnimator.SetTrigger("Idle");
+        }
+
+        if (canMove){
+            Move();
+        }
+
     
 
+        
+
+
+        
+
+
+
+
+
+        frameNumber+=1;
+
+    }
+
+
+    void OnMove(InputValue value) {
+        movement = value.Get<Vector2>();
+    }
+
+    void OnDash(){
+        if(canDashJumpCancel){
+            if (!onGroundState && airActions >= 1){
+                airDashBool = true;
+            } else {
+                if (movement.x == -1 && !p1Sprite.flipX || movement.x == 1 && p1Sprite.flipX){
+                    //Debug.Log("dash");
+                    groundBackdashBool = true;
+                } else {
+                    groundDashBool = true;
+                }
+            }
+        }
+        
+    }   
+
+    void OnANormal(){
+
+        if(onGroundState){
+            canDashJumpCancel = false;
+            canMove = false;
+            activateMove = neutralAActive + neutralArecovery + neutralAStartup + frameNumber;
+            playerAnimator.SetTrigger("NeutralA");
+        }
+
+
+    }
+
+    void Airdash (float direction){
+        airActions -= 1;
+        p1Body.AddForce(new Vector2(direction *airDashSpeed,0) ,ForceMode2D.Impulse);
+        p1Body.gravityScale = 0;
+        gravityOn = frameNumber + airDashDuration;            
+        airDashBool = false;
+    }
+
+    void AirBackdash(float direction){
+        airActions -= 1;
+        p1Body.AddForce(new Vector2(direction * airDashSpeed,0) ,ForceMode2D.Impulse);
+        p1Body.gravityScale = 0;
+        gravityOn = frameNumber + Mathf.FloorToInt(airDashDuration/2);            
+        airDashBool = false;
+    }
+
+    void GroundBackdash(){
+        Debug.Log("backdash");
+        onGroundState = false;
+        airActions -= 1;
+        p1Body.transform.Translate(new Vector3(0.05f * movement.x,0.05f,0));
+        p1Body.gravityScale = 0;
+        gravityOn = frameNumber + backdashDuration;        
+           
+        p1Body.AddForce(Vector2.right * backdashSpeed * movement.x,ForceMode2D.Impulse);
+        groundBackdashBool = false;
+
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Ground")) {
+            onGroundState = true;
+            canAirJump = false;
+
+            p1Body.velocity = Vector2.zero;
+            airActions = 1;
+
+            canMove = true;
+            canDashJumpCancel = true;
+        }
+    }
+    private void AirJump(){
+        if (airActions >= 1){
+            p1Body.velocity = Vector2.zero;
+            p1Body.AddForce(new Vector2(movement.x * speed * 2/3, jumpSpeed),ForceMode2D.Impulse);
+            airActions -= 1;
+            canAirJump = false;
+            //Debug.Log("dj");
+            onGroundState = false;
+        }
+
+    }
+    
+    private void LeftJump(){
+        if (onGroundState && canDashJumpCancel){
+            
+            p1Body.AddForce(new Vector2(-speed * 2/3, jumpSpeed),ForceMode2D.Impulse);
+            onGroundState = false;
+            
+        }
+    }
+
+    private void NeutralJump(){
+        if (onGroundState && canDashJumpCancel){
+            p1Body.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);            
+            onGroundState = false;
+            
+        }
+    }
+
+    private void RightJump(){
+        if (onGroundState && canDashJumpCancel){
+            p1Body.AddForce(new Vector2(speed * 2/3, jumpSpeed), ForceMode2D.Impulse);            
+            onGroundState = false;            
+        }
+
+    }
+
+    private void LeftWalk(){
+        if (onGroundState){
+            if(groundDashBool){
+                p1Body.AddForce(Vector2.left * dashSpeed);
+                if (p1Body.velocity.x > -dashSpeed){
+                    p1Body.velocity = Vector2.left * dashSpeed;
+                }   
+            } else {
+                p1Body.AddForce(Vector2.left * speed);
+                if (p1Body.velocity.x > -speed){
+                    p1Body.velocity = Vector2.left * speed;
+                }
+            }
+        }
+        
+    }
+
+    private void Stop(){
+        
+        
+        if(onGroundState){
+            p1Body.velocity = Vector2.zero;
+        }
+        
+        groundDashBool = false;
+
+    }
+
+    private void RightWalk(){
+        if (onGroundState){
+            if(groundDashBool){
+                p1Body.AddForce(Vector2.right * dashSpeed);
+                if (p1Body.velocity.x < dashSpeed){
+                    p1Body.velocity = Vector2.right * dashSpeed;
+                }
+            } else {
+                p1Body.AddForce(Vector2.right * speed);
+                if (p1Body.velocity.x < speed){
+                    p1Body.velocity = Vector2.right * speed;
+                }
+            }
+        }
+        
+    }
+
+        
+    
+
+    private void LeftCrouch(){
+
+    }
+
+    private void NeutralCrouch(){
+
+    }
+
+    private void RightCrouch(){
+
+    }
+
+    private void Move(){
         switch (movement.y){
             case (1):   
                 if (canAirJump && !onGroundState) {
@@ -143,167 +353,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("backdash");
             GroundBackdash();
         }
-
-
-        
-
-
-
-
-
-        frameNumber+=1;
-
-    }
-
-
-    void OnMove(InputValue value) {
-        movement = value.Get<Vector2>();
-    }
-
-    void OnDash(){
-        if (!onGroundState && airActions >= 1){
-            airDashBool = true;
-        } else {
-            if (movement.x == -1 && !p1Sprite.flipX || movement.x == 1 && p1Sprite.flipX){
-                Debug.Log("dash");
-                groundBackdashBool = true;
-            } else {
-                groundDashBool = true;
-            }
-        }
-        //
-    }   
-
-    void Airdash (float direction){
-        airActions -= 1;
-        p1Body.AddForce(new Vector2(direction *airDashSpeed,0) ,ForceMode2D.Impulse);
-        p1Body.gravityScale = 0;
-        gravityOn = frameNumber + airDashDuration;            
-        airDashBool = false;
-    }
-
-    void AirBackdash(float direction){
-        airActions -= 1;
-        p1Body.AddForce(new Vector2(direction * airDashSpeed,0) ,ForceMode2D.Impulse);
-        p1Body.gravityScale = 0;
-        gravityOn = frameNumber + Mathf.FloorToInt(airDashDuration/2);            
-        airDashBool = false;
-    }
-
-    void GroundBackdash(){
-        Debug.Log("backdash");
-        onGroundState = false;
-        airActions -= 1;
-        p1Body.transform.Translate(new Vector3(0.05f * movement.x,0.05f,0));
-        p1Body.gravityScale = 0;
-        gravityOn = frameNumber + backdashDuration;        
-           
-        p1Body.AddForce(Vector2.right * backdashSpeed * movement.x,ForceMode2D.Impulse);
-        groundBackdashBool = false;
-
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Ground")) {
-            onGroundState = true;
-            canAirJump = false;
-
-            p1Body.velocity = Vector2.zero;
-            airActions = 1;
-        }
-    }
-    private void AirJump(){
-        if (airActions >= 1){
-            p1Body.velocity = Vector2.zero;
-            p1Body.AddForce(new Vector2(movement.x * speed * 2/3, jumpSpeed),ForceMode2D.Impulse);
-            airActions -= 1;
-            canAirJump = false;
-            Debug.Log("dj");
-            onGroundState = false;
-        }
-
-    }
-    
-    private void LeftJump(){
-        if (onGroundState){
-            p1Body.AddForce(new Vector2(-speed * 2/3, jumpSpeed),ForceMode2D.Impulse);
-            onGroundState = false;
-            
-        }
-    }
-
-    private void NeutralJump(){
-        if (onGroundState){
-            p1Body.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);            
-            onGroundState = false;
-            
-        }
-    }
-
-    private void RightJump(){
-        if (onGroundState){
-            p1Body.AddForce(new Vector2(speed * 2/3, jumpSpeed), ForceMode2D.Impulse);            
-            onGroundState = false;            
-        }
-
-    }
-
-    private void LeftWalk(){
-        if (onGroundState){
-            if(groundDashBool){
-                p1Body.AddForce(Vector2.left * dashSpeed);
-                if (p1Body.velocity.x > -dashSpeed){
-                    p1Body.velocity = Vector2.left * dashSpeed;
-                }   
-            } else {
-                p1Body.AddForce(Vector2.left * speed);
-                if (p1Body.velocity.x > -speed){
-                    p1Body.velocity = Vector2.left * speed;
-                }
-            }
-        }
-        
-    }
-
-    private void Stop(){
-        if(onGroundState){
-            p1Body.velocity = Vector2.zero;
-        }
-        groundDashBool = false;
-
-    }
-
-    private void RightWalk(){
-        if (onGroundState){
-            if(groundDashBool){
-                p1Body.AddForce(Vector2.right * dashSpeed);
-                if (p1Body.velocity.x < dashSpeed){
-                    p1Body.velocity = Vector2.right * dashSpeed;
-                }
-            } else {
-                p1Body.AddForce(Vector2.right * speed);
-                if (p1Body.velocity.x < speed){
-                    p1Body.velocity = Vector2.right * speed;
-                }
-            }
-        }
-        
-    }
-
-        
-    
-
-    private void LeftCrouch(){
-
-    }
-
-    private void NeutralCrouch(){
-
-    }
-
-    private void RightCrouch(){
-
     }
 
 
