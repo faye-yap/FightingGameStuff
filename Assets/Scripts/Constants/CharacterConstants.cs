@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterConstants : MonoBehaviour {
+public abstract class CharacterConstants : MonoBehaviour{
     //A normals
     public int neutralAStartup = 10;
     public int neutralAActive = 10;
