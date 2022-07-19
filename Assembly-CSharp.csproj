@@ -36,8 +36,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Constants\KnightConstants.cs" />
+     <Compile Include="Assets\Scripts\Constants\CharacterConstants.cs" />
+     <Compile Include="Assets\Scripts\Constants\PawnConstants.cs" />
+     <Compile Include="Assets\Scripts\PlayerControllers\Player1Controller.cs" />
+     <Compile Include="Assets\Scripts\Constants\BishopConstants.cs" />
+     <Compile Include="Assets\Scripts\Constants\RookConstants.cs" />
+     <None Include="Assets\Sprites\Knight\KnightMoveHelp.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.2f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
