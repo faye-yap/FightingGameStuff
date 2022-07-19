@@ -361,6 +361,80 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!1 &466961976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466961977}
+  - component: {fileID: 466961978}
+  m_Layer: 0
+  m_Name: PawnConstants
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &466961977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466961976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2066787390}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &466961978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466961976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fa01ea72874904faaef4828b4abc5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralAStartup: 10
+  neutralAActive: 10
+  neutralArecovery: 10
+  crouchingAStartup: 10
+  crouchingAActive: 10
+  crouchingArecovery: 10
+  jumpingAStartup: 10
+  jumpingAActive: 10
+  jumpingArecovery: 10
+  neutralBStartup: 10
+  neutralBActive: 10
+  neutralBrecovery: 10
+  crouchingBStartup: 10
+  crouchingBActive: 10
+  crouchingBrecovery: 10
+  jumpingBStartup: 10
+  jumpingBActive: 10
+  jumpingBrecovery: 10
+  downForwardBStartup: 10
+  downForwardBActive: 10
+  downForwardBRecovery: 10
+  neutralSStartup: 10
+  neutralSActive: 10
+  neutralSrecovery: 10
+  crouchingSStartup: 10
+  crouchingSActive: 10
+  crouchingSrecovery: 10
+  forwardSStartup: 10
+  forwardSActive: 10
+  forwardSrecovery: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +654,80 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
+--- !u!1 &1264735273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264735274}
+  - component: {fileID: 1264735275}
+  m_Layer: 0
+  m_Name: RookConstants
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1264735274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264735273}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2066787390}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1264735275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264735273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b50740ca295340409e54cc02e7fd807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralAStartup: 10
+  neutralAActive: 10
+  neutralArecovery: 10
+  crouchingAStartup: 10
+  crouchingAActive: 10
+  crouchingArecovery: 10
+  jumpingAStartup: 10
+  jumpingAActive: 10
+  jumpingArecovery: 10
+  neutralBStartup: 10
+  neutralBActive: 10
+  neutralBrecovery: 10
+  crouchingBStartup: 10
+  crouchingBActive: 10
+  crouchingBrecovery: 10
+  jumpingBStartup: 10
+  jumpingBActive: 10
+  jumpingBrecovery: 10
+  downForwardBStartup: 10
+  downForwardBActive: 10
+  downForwardBRecovery: 10
+  neutralSStartup: 10
+  neutralSActive: 10
+  neutralSrecovery: 10
+  crouchingSStartup: 10
+  crouchingSActive: 10
+  crouchingSrecovery: 10
+  forwardSStartup: 10
+  forwardSActive: 10
+  forwardSrecovery: 10
 --- !u!1 &1419140565
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +915,189 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!1 &1810786609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1810786610}
+  - component: {fileID: 1810786611}
+  m_Layer: 0
+  m_Name: BishopConstants
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1810786610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810786609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2066787390}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1810786611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810786609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147b3a33bac52f547912051294fffddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralAStartup: 10
+  neutralAActive: 10
+  neutralArecovery: 10
+  crouchingAStartup: 10
+  crouchingAActive: 10
+  crouchingArecovery: 10
+  jumpingAStartup: 10
+  jumpingAActive: 10
+  jumpingArecovery: 10
+  neutralBStartup: 10
+  neutralBActive: 10
+  neutralBrecovery: 10
+  crouchingBStartup: 10
+  crouchingBActive: 10
+  crouchingBrecovery: 10
+  jumpingBStartup: 10
+  jumpingBActive: 10
+  jumpingBrecovery: 10
+  downForwardBStartup: 10
+  downForwardBActive: 10
+  downForwardBRecovery: 10
+  neutralSStartup: 10
+  neutralSActive: 10
+  neutralSrecovery: 10
+  crouchingSStartup: 10
+  crouchingSActive: 10
+  crouchingSrecovery: 10
+  forwardSStartup: 10
+  forwardSActive: 10
+  forwardSrecovery: 10
+--- !u!1 &1948409348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948409349}
+  - component: {fileID: 1948409350}
+  m_Layer: 0
+  m_Name: KnightConstants
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1948409349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948409348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2066787390}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1948409350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948409348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183992bbf5cf01544a5491e8c2960c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralAStartup: 10
+  neutralAActive: 10
+  neutralArecovery: 10
+  crouchingAStartup: 10
+  crouchingAActive: 10
+  crouchingArecovery: 10
+  jumpingAStartup: 10
+  jumpingAActive: 10
+  jumpingArecovery: 10
+  neutralBStartup: 10
+  neutralBActive: 10
+  neutralBrecovery: 10
+  crouchingBStartup: 10
+  crouchingBActive: 10
+  crouchingBrecovery: 10
+  jumpingBStartup: 10
+  jumpingBActive: 10
+  jumpingBrecovery: 10
+  downForwardBStartup: 10
+  downForwardBActive: 10
+  downForwardBRecovery: 10
+  neutralSStartup: 10
+  neutralSActive: 10
+  neutralSrecovery: 10
+  crouchingSStartup: 10
+  crouchingSActive: 10
+  crouchingSrecovery: 10
+  forwardSStartup: 10
+  forwardSActive: 10
+  forwardSrecovery: 10
+--- !u!1 &2066787389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2066787390}
+  m_Layer: 0
+  m_Name: Constants
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2066787390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066787389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9770799, y: -2.9975903, z: 0.037998643}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1948409349}
+  - {fileID: 466961977}
+  - {fileID: 1810786610}
+  - {fileID: 1264735274}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075995796
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,8 +1145,8 @@ GameObject:
   - component: {fileID: 2123830961}
   - component: {fileID: 2123830960}
   - component: {fileID: 2123830964}
-  - component: {fileID: 2123830965}
   - component: {fileID: 2123830966}
+  - component: {fileID: 2123830967}
   m_Layer: 0
   m_Name: P1
   m_TagString: Player1
@@ -968,28 +1299,6 @@ MonoBehaviour:
   m_DefaultActionMap: Fight
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2123830965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123830959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76aab5d23964114dbfff8c0df4a160d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  dashSpeed: 10
-  airDashSpeed: 10
-  jumpSpeed: 15
-  backdashDuration: 15
-  backdashSpeed: 10
-  airDashDuration: 5
-  inputFrameWindow: 5
-  canAirJump: 0
-  framesUntilAirJump: 20
 --- !u!95 &2123830966
 Animator:
   serializedVersion: 4
@@ -1010,3 +1319,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2123830967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123830959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a35d8379c64c64d98e97ce1fa43002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  dashSpeed: 0
+  airDashSpeed: 0
+  jumpSpeed: 0
+  backdashDuration: 0
+  backdashSpeed: 0
+  airDashDuration: 0
+  inputFrameWindow: 5
+  framesUntilAirJump: 0
+  characterConstants: {fileID: 1948409350}
