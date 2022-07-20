@@ -7,11 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private const int MaxInt = 2147483647;
-    private int frameNumber;
-    public int speed;
-    public int dashSpeed;
-    public int airDashSpeed;
-    public int jumpSpeed;
+    
 
     private Rigidbody2D opponentBody;
     private Rigidbody2D thisPlayerBody;
@@ -25,15 +21,13 @@ public class PlayerController : MonoBehaviour
     private bool airDashBool;
     private bool groundDashBool;
     private bool groundBackdashBool;
-    public int backdashDuration;
-    public int backdashSpeed;
+    
+    
     private int gravityOn = 0;
-    private float gravityScale;
-    public int airDashDuration;
+    private float gravityScale;    
     private Vector3 xMidpoint;    
     private int airActions = 1;
     private bool canAirJump;
-    public int framesUntilAirJump;
     private int setAirJump = 0;
     private bool isIdle = true;
     private bool canDashJumpCancel = true;
@@ -45,24 +39,69 @@ public class PlayerController : MonoBehaviour
     private bool canAirNormal = false;
     
     public CharacterConstants characterConstants;
+    public GameManager gameManager;
+    public GameObject pawnCharacter;
+    public GameObject bishopCharacter;
+    public GameObject knightCharacter;
+    public GameObject rookCharacter;
+    private GameObject selectedChar;
     
+
+    //spawn character
+    void SelectCharacter(string playerNumber){
+        
+        Debug.Log(thisPlayerTag + playerNumber);
+        switch(playerNumber){
+                case "Pawn":
+                    selectedChar = Instantiate(pawnCharacter, this.transform.position,Quaternion.identity);
+                    selectedChar.transform.parent = gameObject.transform;
+                    characterConstants = GameObject.Find("PawnConstants").GetComponent<CharacterConstants>();
+                    break;
+                
+                case "Bishop":
+                    selectedChar = Instantiate(bishopCharacter, this.transform.position,Quaternion.identity);
+                    selectedChar.transform.parent = gameObject.transform;
+                    characterConstants = GameObject.Find("BishopConstants").GetComponent<CharacterConstants>();
+                    break;
+
+                case "Rook":
+                    selectedChar = Instantiate(rookCharacter, this.transform.position,Quaternion.identity);
+                    selectedChar.transform.parent = gameObject.transform;
+                    characterConstants = GameObject.Find("RookConstants").GetComponent<CharacterConstants>();
+                    break;
+
+                case "Knight":
+                    selectedChar = Instantiate(knightCharacter, this.transform.position,Quaternion.identity);
+                    selectedChar.transform.parent = gameObject.transform;
+                    characterConstants = GameObject.Find("KnightConstants").GetComponent<CharacterConstants>();
+                    break;
+            }
+        selectedChar.transform.localScale = new Vector3(1,1,1);
+    }
     
 
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
+        
         thisPlayerTag = this.gameObject.tag;
         thisPlayerBody = GetComponent<Rigidbody2D>();
-        thisPlayerSprite = GetComponentInChildren<SpriteRenderer>();
+        
         if (thisPlayerTag == "Player1") {
             opponentBody = GameObject.FindGameObjectWithTag("Player2").GetComponent<Rigidbody2D>();
+            SelectCharacter(gameManager.p1Character);
+            gameManager.p1HP = characterConstants.maxHP;
+
         } else {
             opponentBody = GameObject.FindGameObjectWithTag("Player1").GetComponent<Rigidbody2D>();
+            SelectCharacter(gameManager.p2Character);
+            gameManager.p2HP = characterConstants.maxHP;
         }
 
+        thisPlayerBody = GetComponent<Rigidbody2D>();
+        thisPlayerSprite = GetComponentInChildren<SpriteRenderer>();
         thisPlayerCollider = GetComponent<BoxCollider2D>();
-        frameNumber = 0;
+        
         gravityScale = thisPlayerBody.gravityScale;
         playerAnimator = GetComponentInChildren<Animator>();
         
@@ -90,13 +129,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //airdashing only
-        if (frameNumber >= gravityOn){
+        if (gameManager.frameNumber >= gravityOn){
             thisPlayerBody.gravityScale = gravityScale;
             gravityOn = MaxInt;
         }
 
         //frames after jumping to be able to jump or jA/jB
-        if (frameNumber >= setAirJump){
+        if (gameManager.frameNumber >= setAirJump){
             //Debug.Log(setAirJump);
             canAirJump = true;
             canAirNormal = true;
@@ -104,7 +143,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //when a move has fully completed
-        if (frameNumber >= setIdle){
+        if (gameManager.frameNumber >= setIdle){
             isIdle = true;
             canDashJumpCancel = true;
             setIdle = MaxInt;
@@ -115,18 +154,7 @@ public class PlayerController : MonoBehaviour
             Move();
         }
 
-    
-
         
-
-
-        
-
-
-
-
-
-        frameNumber+=1;
 
     }
 
@@ -155,17 +183,17 @@ public class PlayerController : MonoBehaviour
 
     void Airdash (float direction){
         airActions -= 1;
-        thisPlayerBody.AddForce(new Vector2(direction *airDashSpeed,0) ,ForceMode2D.Impulse);
+        thisPlayerBody.AddForce(new Vector2(direction *characterConstants.airdashSpeed,0) ,ForceMode2D.Impulse);
         thisPlayerBody.gravityScale = 0;
-        gravityOn = frameNumber + airDashDuration;            
+        gravityOn = gameManager.frameNumber + characterConstants.airDashDuration;            
         airDashBool = false;
     }
 
     void AirBackdash(float direction){
         airActions -= 1;
-        thisPlayerBody.AddForce(new Vector2(direction * airDashSpeed,0) ,ForceMode2D.Impulse);
+        thisPlayerBody.AddForce(new Vector2(direction * characterConstants.airdashSpeed,0) ,ForceMode2D.Impulse);
         thisPlayerBody.gravityScale = 0;
-        gravityOn = frameNumber + Mathf.FloorToInt(airDashDuration/2);            
+        gravityOn = gameManager.frameNumber + Mathf.FloorToInt(characterConstants.airDashDuration/2);            
         airDashBool = false;
     }
 
@@ -175,9 +203,9 @@ public class PlayerController : MonoBehaviour
         airActions -= 1;
         thisPlayerBody.transform.Translate(new Vector3(0.05f * movement.x,0.05f,0));
         thisPlayerBody.gravityScale = 0;
-        gravityOn = frameNumber + backdashDuration;        
+        gravityOn = gameManager.frameNumber + characterConstants.backdashDuration;        
            
-        thisPlayerBody.AddForce(Vector2.right * backdashSpeed * movement.x,ForceMode2D.Impulse);
+        thisPlayerBody.AddForce(Vector2.right * characterConstants.backdashSpeed * movement.x,ForceMode2D.Impulse);
         groundBackdashBool = false;
 
 
@@ -198,7 +226,7 @@ public class PlayerController : MonoBehaviour
     private void AirJump(){
         if (airActions >= 1){
             thisPlayerBody.velocity = Vector2.zero;
-            thisPlayerBody.AddForce(new Vector2(movement.x * speed * 2/3, jumpSpeed),ForceMode2D.Impulse);
+            thisPlayerBody.AddForce(new Vector2(movement.x * characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed),ForceMode2D.Impulse);
             airActions -= 1;
             canAirJump = false;
             //Debug.Log("dj");
@@ -210,7 +238,7 @@ public class PlayerController : MonoBehaviour
     private void LeftJump(){
         if (onGroundState && canDashJumpCancel){
             
-            thisPlayerBody.AddForce(new Vector2(-speed * 2/3, jumpSpeed),ForceMode2D.Impulse);
+            thisPlayerBody.AddForce(new Vector2(-characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed),ForceMode2D.Impulse);
             onGroundState = false;
             
         }
@@ -218,7 +246,7 @@ public class PlayerController : MonoBehaviour
 
     private void NeutralJump(){
         if (onGroundState && canDashJumpCancel){
-            thisPlayerBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);            
+            thisPlayerBody.AddForce(new Vector2(0, characterConstants.jumpSpeed), ForceMode2D.Impulse);            
             onGroundState = false;
             
         }
@@ -226,7 +254,7 @@ public class PlayerController : MonoBehaviour
 
     private void RightJump(){
         if (onGroundState && canDashJumpCancel){
-            thisPlayerBody.AddForce(new Vector2(speed * 2/3, jumpSpeed), ForceMode2D.Impulse);            
+            thisPlayerBody.AddForce(new Vector2(characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed), ForceMode2D.Impulse);            
             onGroundState = false;            
         }
 
@@ -235,14 +263,14 @@ public class PlayerController : MonoBehaviour
     private void LeftWalk(){
         if (onGroundState){
             if(groundDashBool){
-                thisPlayerBody.AddForce(Vector2.left * dashSpeed);
-                if (thisPlayerBody.velocity.x > -dashSpeed){
-                    thisPlayerBody.velocity = Vector2.left * dashSpeed;
+                thisPlayerBody.AddForce(Vector2.left * characterConstants.dashSpeed);
+                if (thisPlayerBody.velocity.x > -characterConstants.dashSpeed){
+                    thisPlayerBody.velocity = Vector2.left * characterConstants.dashSpeed;
                 }   
             } else {
-                thisPlayerBody.AddForce(Vector2.left * speed);
-                if (thisPlayerBody.velocity.x > -speed){
-                    thisPlayerBody.velocity = Vector2.left * speed;
+                thisPlayerBody.AddForce(Vector2.left * characterConstants.moveSpeed);
+                if (thisPlayerBody.velocity.x > -characterConstants.moveSpeed){
+                    thisPlayerBody.velocity = Vector2.left * characterConstants.moveSpeed;
                 }
             }
         }
@@ -263,14 +291,14 @@ public class PlayerController : MonoBehaviour
     private void RightWalk(){
         if (onGroundState){
             if(groundDashBool){
-                thisPlayerBody.AddForce(Vector2.right * dashSpeed);
-                if (thisPlayerBody.velocity.x < dashSpeed){
-                    thisPlayerBody.velocity = Vector2.right * dashSpeed;
+                thisPlayerBody.AddForce(Vector2.right * characterConstants.dashSpeed);
+                if (thisPlayerBody.velocity.x < characterConstants.dashSpeed){
+                    thisPlayerBody.velocity = Vector2.right * characterConstants.dashSpeed;
                 }
             } else {
-                thisPlayerBody.AddForce(Vector2.right * speed);
-                if (thisPlayerBody.velocity.x < speed){
-                    thisPlayerBody.velocity = Vector2.right * speed;
+                thisPlayerBody.AddForce(Vector2.right * characterConstants.moveSpeed);
+                if (thisPlayerBody.velocity.x < characterConstants.moveSpeed){
+                    thisPlayerBody.velocity = Vector2.right * characterConstants.moveSpeed;
                 }
             }
         }
@@ -298,7 +326,7 @@ public class PlayerController : MonoBehaviour
                 if (canAirJump && !onGroundState) {
                     AirJump();
                 } else if (onGroundState){
-                    setAirJump = frameNumber + framesUntilAirJump;
+                    setAirJump = gameManager.frameNumber + characterConstants.framesUntilAirJump;
                     Debug.Log(setAirJump);
                     switch (movement.x){
                         case (1) : RightJump(); break;                    
@@ -366,17 +394,17 @@ public class PlayerController : MonoBehaviour
             canDashJumpCancel = false;
             isIdle = false;
             if(movement.y == 0){
-                setIdle = characterConstants.neutralAActive + characterConstants.neutralArecovery + characterConstants.neutralAStartup + frameNumber;
+                setIdle = characterConstants.neutralAActive + characterConstants.neutralARecovery + characterConstants.neutralAStartup + gameManager.frameNumber;
                 playerAnimator.SetTrigger("NeutralA");
             } else if (movement.y == -1){
-                setIdle = characterConstants.crouchingAActive + characterConstants.crouchingArecovery + characterConstants.crouchingAStartup + frameNumber;
+                setIdle = characterConstants.crouchingAActive + characterConstants.crouchingARecovery + characterConstants.crouchingAStartup + gameManager.frameNumber;
                 playerAnimator.SetTrigger("CrouchingA");
             }
 
         } else if (!onGroundState && canAirNormal){
             isIdle = false;
             canDashJumpCancel = false;
-            setIdle = characterConstants.jumpingAActive + characterConstants.jumpingArecovery + characterConstants.jumpingAStartup + frameNumber;
+            setIdle = characterConstants.jumpingAActive + characterConstants.jumpingARecovery + characterConstants.jumpingAStartup + gameManager.frameNumber;
             playerAnimator.SetTrigger("JumpingA");
 
         }
@@ -389,17 +417,17 @@ public class PlayerController : MonoBehaviour
             canDashJumpCancel = false;
             isIdle = false;
             if(movement.y == 0){
-                setIdle = characterConstants.neutralBActive + characterConstants.neutralBrecovery + characterConstants.neutralBStartup + frameNumber;
+                setIdle = characterConstants.neutralBActive + characterConstants.neutralBRecovery + characterConstants.neutralBStartup + gameManager.frameNumber;
                 playerAnimator.SetTrigger("NeutralB");
             } else if (movement.y == -1){
-                setIdle = characterConstants.crouchingBActive + characterConstants.crouchingBrecovery + characterConstants.crouchingBStartup + frameNumber;
+                setIdle = characterConstants.crouchingBActive + characterConstants.crouchingBRecovery + characterConstants.crouchingBStartup + gameManager.frameNumber;
                 playerAnimator.SetTrigger("CrouchingB");
             }
 
         } else if (!onGroundState && canAirNormal){
             isIdle = false;
             canDashJumpCancel = false;
-            setIdle = characterConstants.jumpingBActive + characterConstants.jumpingBrecovery + characterConstants.jumpingBStartup + frameNumber;
+            setIdle = characterConstants.jumpingBActive + characterConstants.jumpingBRecovery + characterConstants.jumpingBStartup + gameManager.frameNumber;
             playerAnimator.SetTrigger("JumpingB");
 
         }
@@ -412,13 +440,13 @@ public class PlayerController : MonoBehaviour
             canDashJumpCancel = false;
             isIdle = false;
             if(movement == Vector2.zero){
-                setIdle = characterConstants.neutralSActive + characterConstants.neutralSrecovery + characterConstants.neutralSStartup + frameNumber;
+                setIdle = characterConstants.neutralSActive + characterConstants.neutralSRecovery + characterConstants.neutralSStartup + gameManager.frameNumber;
                 playerAnimator.SetTrigger("NeutralS");
             } else if ((movement == Vector2.right && !thisPlayerSprite.flipX) || (movement == Vector2.left && thisPlayerSprite.flipX)){
-                setIdle = characterConstants.forwardSActive + characterConstants.forwardSrecovery + characterConstants.forwardSStartup + frameNumber;
+                setIdle = characterConstants.forwardSActive + characterConstants.forwardSRecovery + characterConstants.forwardSStartup + gameManager.frameNumber;
                 playerAnimator.SetTrigger("ForwardS");
             } else if (movement.y == -1){
-                setIdle = characterConstants.crouchingSActive + characterConstants.crouchingSrecovery + characterConstants.crouchingSStartup + frameNumber;
+                setIdle = characterConstants.crouchingSActive + characterConstants.crouchingSRecovery + characterConstants.crouchingSStartup + gameManager.frameNumber;
                 playerAnimator.SetTrigger("CrouchingS");    
             }
 
