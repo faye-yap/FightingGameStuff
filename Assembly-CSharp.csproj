@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Constants\BishopConstants.cs" />
-     <Compile Include="Assets\Scripts\PlayerControllers\Player1Controller.cs" />
+     <Compile Include="Assets\Scripts\PlayerControllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Constants\CharacterConstants.cs" />
      <Compile Include="Assets\Scripts\Constants\KnightConstants.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
