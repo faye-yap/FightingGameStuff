@@ -36,4 +36,19 @@ public class PawnConstants : CharacterConstants
         forwardSActive = 10;
         forwardSRecovery = 10;
     }
+
+    public override void NeutralA()
+    {
+        
+    }
+
+    public override void CrouchingA()
+    {
+        
+    }
+
+    public override void JumpingA()
+    {
+        
+    }
 }

@@ -30,6 +30,9 @@ public abstract class CharacterConstants : MonoBehaviour{
     public int jumpingAActive = 10;
     public int jumpingARecovery = 10;
     public int jumpingADamage = 1000000;
+    public abstract void NeutralA();
+    public abstract void CrouchingA();
+    public abstract void JumpingA();
 
     //B Normals
     public int neutralBStartup = 10;
@@ -48,6 +51,11 @@ public abstract class CharacterConstants : MonoBehaviour{
     public int downForwardBActive = 10;
     public int downForwardBRecovery = 10;
     public int downForwardBDamage = 1000000;
+    //public abstract void NeutralB();
+    //public abstract void CrouchingB();
+    //public abstract void JumpingB();
+    //public abstract void DownForwardB();
+    
 
     //Specials
     public int neutralSStartup = 10;
@@ -62,4 +70,7 @@ public abstract class CharacterConstants : MonoBehaviour{
     public int forwardSActive = 10;
     public int forwardSRecovery = 10;
     public int forwardSDamage = 1000000;
+    //public abstract void NeutralS();
+    //public abstract void CrouchingS();
+    //public abstract void ForwardS();
 }
