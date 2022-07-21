@@ -10,12 +10,16 @@ public class PlayerController : MonoBehaviour
     
 
     private Rigidbody2D opponentBody;
+    [HideInInspector]
+    public string opponentTag;
+    private Dictionary<string,int> opponentDamageValues;
     private Rigidbody2D thisPlayerBody;
     private string thisPlayerTag;
     
     private SpriteRenderer thisPlayerSprite;
     private BoxCollider2D thisPlayerCollider; 
-    private Animator playerAnimator;
+    [HideInInspector]
+    public Animator playerAnimator;
     private Vector2 movement;
     private bool onGroundState = true;
     private bool airDashBool;
@@ -29,10 +33,12 @@ public class PlayerController : MonoBehaviour
     private int airActions = 1;
     private bool canAirJump;
     private int setAirJump = 0;
-    private bool isIdle = true;
-    private bool canDashJumpCancel = true;
+    [HideInInspector]
+    public bool isIdle = true;
+    [HideInInspector]
+    public bool canDashJumpCancel = true;
 
-    private int setIdle = 0;
+
     private bool canACancel = false;
     private bool canBCancel = false;
     private bool canSCancel = false;
@@ -45,6 +51,12 @@ public class PlayerController : MonoBehaviour
     public GameObject knightCharacter;
     public GameObject rookCharacter;
     private GameObject selectedChar;
+    [HideInInspector]
+    public bool hasBeenHit = false;
+    
+    
+
+    
     
 
     //spawn character
@@ -90,20 +102,33 @@ public class PlayerController : MonoBehaviour
         if (thisPlayerTag == "Player1") {
             opponentBody = GameObject.FindGameObjectWithTag("Player2").GetComponent<Rigidbody2D>();
             SelectCharacter(gameManager.p1Character);
-            gameManager.p1HP = characterConstants.maxHP;
+            gameManager.p1MaxHP = characterConstants.maxHP;
+            gameManager.p1CurrentHP = characterConstants.maxHP;
+            opponentDamageValues = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().characterConstants.damageValues; 
 
         } else {
             opponentBody = GameObject.FindGameObjectWithTag("Player1").GetComponent<Rigidbody2D>();
             SelectCharacter(gameManager.p2Character);
-            gameManager.p2HP = characterConstants.maxHP;
+            gameManager.p2MaxHP = characterConstants.maxHP;
+            gameManager.p2CurrentHP = characterConstants.maxHP;
+            opponentDamageValues = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().characterConstants.damageValues; 
         }
+
+        opponentTag = opponentBody.tag;
+        
+        
 
         thisPlayerBody = GetComponent<Rigidbody2D>();
         thisPlayerSprite = GetComponentInChildren<SpriteRenderer>();
         thisPlayerCollider = GetComponent<BoxCollider2D>();
+        this.transform.GetChild(1).tag = thisPlayerTag; //assign character to player
+        this.transform.GetChild(1).transform.GetChild(0).tag = thisPlayerTag; //assign character hurtbox to player
         
         gravityScale = thisPlayerBody.gravityScale;
         playerAnimator = GetComponentInChildren<Animator>();
+        Debug.Log(opponentDamageValues);
+
+        
         
 
         
@@ -120,11 +145,11 @@ public class PlayerController : MonoBehaviour
         
         //sets sprites facing each other
         xMidpoint = new Vector3((thisPlayerBody.transform.position.x + opponentBody.transform.position.x)/2,0,0);
-        if (xMidpoint.x < thisPlayerBody.transform.position.x && !thisPlayerSprite.flipX){
-            thisPlayerSprite.flipX = true;
+        if (xMidpoint.x < thisPlayerBody.transform.position.x && gameObject.transform.localScale.x > 0){
+            gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x,gameObject.transform.localScale.y,gameObject.transform.localScale.z);
             //Debug.Log("facing left");
-        } else if (xMidpoint.x > thisPlayerBody.transform.position.x && thisPlayerSprite.flipX){
-            thisPlayerSprite.flipX = false;
+        } else if (xMidpoint.x > thisPlayerBody.transform.position.x && gameObject.transform.localScale.x < 0){
+            gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x,gameObject.transform.localScale.y,gameObject.transform.localScale.z);
             //Debug.Log("facing right");
         }
 
@@ -142,20 +167,44 @@ public class PlayerController : MonoBehaviour
             setAirJump = MaxInt;
         }
 
-        //when a move has fully completed
-        if (gameManager.frameNumber >= setIdle){
-            isIdle = true;
-            canDashJumpCancel = true;
-            setIdle = MaxInt;
-            playerAnimator.SetTrigger("Idle");
-        }
-
         if (isIdle){
             Move();
         }
 
         
 
+    }
+
+    
+
+    private void OnTriggerEnter2D(Collider2D c) {
+        if (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Hitbox"){
+            //Debug.Log(c.ToString());
+            //Debug.Log(opponentTag);
+            string moveName = c.transform.parent.name.Substring(0,c.transform.parent.name.Length - 7);
+            switch(moveName.Substring(moveName.Length - 1, 1)){
+                case "A":
+                    canACancel = true;
+                    canBCancel = true;
+                    canSCancel = true;
+                    Debug.Log("A");
+                    break;
+
+                case "B":                    
+                    canSCancel = true;
+                    Debug.Log("B");
+                    break;
+                
+              
+            }
+            
+
+
+            if (!hasBeenHit) {
+                gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[c.transform.parent.name.Substring(0,c.transform.parent.name.Length - 7)]);
+                hasBeenHit = true;
+            }
+        }
     }
 
 
@@ -168,7 +217,7 @@ public class PlayerController : MonoBehaviour
             if (!onGroundState && airActions >= 1){
                 airDashBool = true;
             } else {
-                if (movement.x == -1 && !thisPlayerSprite.flipX || movement.x == 1 && thisPlayerSprite.flipX){
+                if (movement.x == -1 && gameObject.transform.localScale.x > 0  || movement.x == 1 && gameObject.transform.localScale.x < 0){
                     //Debug.Log("dash");
                     groundBackdashBool = true;
                 } else {
@@ -361,7 +410,7 @@ public class PlayerController : MonoBehaviour
 
         if (airDashBool){
             thisPlayerBody.velocity = Vector2.zero;
-            if (thisPlayerSprite.flipX){
+            if (gameObject.transform.localScale.x < 0){
                 //facing left
                 if (movement.x == 1){
                     //backdash
@@ -389,22 +438,25 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnANormal(){
-        Debug.Log(characterConstants.neutralAActive);
         if(onGroundState && (canACancel || isIdle)){
             canDashJumpCancel = false;
             isIdle = false;
-            if(movement.y == 0){
-                setIdle = characterConstants.neutralAActive + characterConstants.neutralARecovery + characterConstants.neutralAStartup + gameManager.frameNumber;
+            canACancel = false;
+            canBCancel = false;
+            canSCancel = false;
+            if(movement.y == 0){    
+                GameObject neutralA = Instantiate(characterConstants.neutralAPrefab,this.transform.position,Quaternion.identity);
+                neutralA.transform.parent = this.transform;
+                neutralA.transform.localScale = new Vector3(1,1,1);
                 playerAnimator.SetTrigger("NeutralA");
             } else if (movement.y == -1){
-                setIdle = characterConstants.crouchingAActive + characterConstants.crouchingARecovery + characterConstants.crouchingAStartup + gameManager.frameNumber;
+                
                 playerAnimator.SetTrigger("CrouchingA");
             }
 
         } else if (!onGroundState && canAirNormal){
             isIdle = false;
             canDashJumpCancel = false;
-            setIdle = characterConstants.jumpingAActive + characterConstants.jumpingARecovery + characterConstants.jumpingAStartup + gameManager.frameNumber;
             playerAnimator.SetTrigger("JumpingA");
 
         }
@@ -414,20 +466,23 @@ public class PlayerController : MonoBehaviour
     void OnBNormal(){
 
         if(onGroundState && (canBCancel || isIdle)){
+            canACancel = false;
+            canBCancel = false;
+            canSCancel = false;
             canDashJumpCancel = false;
             isIdle = false;
             if(movement.y == 0){
-                setIdle = characterConstants.neutralBActive + characterConstants.neutralBRecovery + characterConstants.neutralBStartup + gameManager.frameNumber;
+                
                 playerAnimator.SetTrigger("NeutralB");
             } else if (movement.y == -1){
-                setIdle = characterConstants.crouchingBActive + characterConstants.crouchingBRecovery + characterConstants.crouchingBStartup + gameManager.frameNumber;
+                
                 playerAnimator.SetTrigger("CrouchingB");
             }
 
         } else if (!onGroundState && canAirNormal){
             isIdle = false;
             canDashJumpCancel = false;
-            setIdle = characterConstants.jumpingBActive + characterConstants.jumpingBRecovery + characterConstants.jumpingBStartup + gameManager.frameNumber;
+            
             playerAnimator.SetTrigger("JumpingB");
 
         }
@@ -437,16 +492,17 @@ public class PlayerController : MonoBehaviour
     void OnSpecial(){
 
         if(onGroundState && (canSCancel || isIdle)){
+            canACancel = false;
+            canBCancel = false;
+            canSCancel = false;
             canDashJumpCancel = false;
             isIdle = false;
-            if(movement == Vector2.zero){
-                setIdle = characterConstants.neutralSActive + characterConstants.neutralSRecovery + characterConstants.neutralSStartup + gameManager.frameNumber;
+            if(movement == Vector2.zero){                
                 playerAnimator.SetTrigger("NeutralS");
-            } else if ((movement == Vector2.right && !thisPlayerSprite.flipX) || (movement == Vector2.left && thisPlayerSprite.flipX)){
-                setIdle = characterConstants.forwardSActive + characterConstants.forwardSRecovery + characterConstants.forwardSStartup + gameManager.frameNumber;
+            } else if ((movement == Vector2.right && gameObject.transform.localScale.x > 0) || gameObject.transform.localScale.x < 0){
+                
                 playerAnimator.SetTrigger("ForwardS");
-            } else if (movement.y == -1){
-                setIdle = characterConstants.crouchingSActive + characterConstants.crouchingSRecovery + characterConstants.crouchingSStartup + gameManager.frameNumber;
+            } else if (movement.y == -1){                
                 playerAnimator.SetTrigger("CrouchingS");    
             }
 

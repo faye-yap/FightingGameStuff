@@ -378,7 +378,7 @@ RectTransform:
   - {fileID: 1104745985}
   - {fileID: 1112367428}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 415806212}
   - component: {fileID: 415806219}
   m_Layer: 0
-  m_Name: P2
+  m_Name: Player2
   m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,14 +525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a35d8379c64c64d98e97ce1fa43002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  dashSpeed: 7
-  airDashSpeed: 10
-  jumpSpeed: 20
-  backdashDuration: 15
-  backdashSpeed: 7
-  airDashDuration: 15
-  framesUntilAirJump: 5
+  playerAnimator: {fileID: 0}
+  isIdle: 1
+  canDashJumpCancel: 1
   characterConstants: {fileID: 0}
   gameManager: {fileID: 495361151}
   pawnCharacter: {fileID: 6422374833926789126, guid: 435353eec8c4b314cae0921ffa9350b6, type: 3}
@@ -722,46 +717,8 @@ MonoBehaviour:
   backdashSpeed: 0
   airDashDuration: 0
   framesUntilAirJump: 5
-  neutralAStartup: 10
-  neutralAActive: 10
-  neutralARecovery: 10
-  neutralADamage: 1000000
-  crouchingAStartup: 10
-  crouchingAActive: 10
-  crouchingARecovery: 10
-  crouchingADamage: 1000000
-  jumpingAStartup: 10
-  jumpingAActive: 10
-  jumpingARecovery: 10
-  jumpingADamage: 1000000
-  neutralBStartup: 10
-  neutralBActive: 10
-  neutralBRecovery: 10
-  neutralBDamage: 1000000
-  crouchingBStartup: 10
-  crouchingBActive: 10
-  crouchingBRecovery: 10
-  crouchingBDamage: 1000000
-  jumpingBStartup: 10
-  jumpingBActive: 10
-  jumpingBRecovery: 10
-  jumpingBDamage: 1000000
-  downForwardBStartup: 10
-  downForwardBActive: 10
-  downForwardBRecovery: 10
+  neutralAPrefab: {fileID: 0}
   downForwardBDamage: 1000000
-  neutralSStartup: 10
-  neutralSActive: 10
-  neutralSRecovery: 10
-  neutralSDamage: 1000000
-  crouchingSStartup: 10
-  crouchingSActive: 10
-  crouchingSRecovery: 10
-  crouchingSDamage: 1000000
-  forwardSStartup: 10
-  forwardSActive: 10
-  forwardSRecovery: 10
-  forwardSDamage: 1000000
 --- !u!1 &495361149
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,13 +743,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495361149}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.9770799, y: -2.9975903, z: 0.037998643}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1865464579}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &495361151
 MonoBehaviour:
@@ -808,8 +765,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1Character: Knight
   p2Character: Knight
-  p1HP: 0
-  p2HP: 0
+  p1MaxHP: 0
+  p1CurrentHP: 0
+  p1HPUI: {fileID: 1471920192}
+  p2MaxHP: 0
+  p2CurrentHP: 0
+  p2HPUI: {fileID: 48629257}
   frameNumber: 0
   timer: {fileID: 1581428624}
 --- !u!1 &519420028
@@ -1002,7 +963,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &877342791
 MonoBehaviour:
@@ -1317,99 +1278,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112367427}
   m_CullTransparentMesh: 1
---- !u!1 &1264735273
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1264735274}
-  - component: {fileID: 1264735275}
-  m_Layer: 0
-  m_Name: RookConstants
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1264735274
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264735273}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2066787390}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1264735275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264735273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b50740ca295340409e54cc02e7fd807, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 1000
-  moveSpeed: 0
-  dashSpeed: 0
-  airdashSpeed: 0
-  jumpSpeed: 0
-  backdashDuration: 0
-  backdashSpeed: 0
-  airDashDuration: 0
-  framesUntilAirJump: 5
-  neutralAStartup: 10
-  neutralAActive: 10
-  neutralARecovery: 10
-  neutralADamage: 1000000
-  crouchingAStartup: 10
-  crouchingAActive: 10
-  crouchingARecovery: 10
-  crouchingADamage: 1000000
-  jumpingAStartup: 10
-  jumpingAActive: 10
-  jumpingARecovery: 10
-  jumpingADamage: 1000000
-  neutralBStartup: 10
-  neutralBActive: 10
-  neutralBRecovery: 10
-  neutralBDamage: 1000000
-  crouchingBStartup: 10
-  crouchingBActive: 10
-  crouchingBRecovery: 10
-  crouchingBDamage: 1000000
-  jumpingBStartup: 10
-  jumpingBActive: 10
-  jumpingBRecovery: 10
-  jumpingBDamage: 1000000
-  downForwardBStartup: 10
-  downForwardBActive: 10
-  downForwardBRecovery: 10
-  downForwardBDamage: 1000000
-  neutralSStartup: 10
-  neutralSActive: 10
-  neutralSRecovery: 10
-  neutralSDamage: 1000000
-  crouchingSStartup: 10
-  crouchingSActive: 10
-  crouchingSRecovery: 10
-  crouchingSDamage: 1000000
-  forwardSStartup: 10
-  forwardSActive: 10
-  forwardSRecovery: 10
-  forwardSDamage: 1000000
 --- !u!1 &1419140565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,99 +1830,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700737670}
   m_CullTransparentMesh: 1
---- !u!1 &1810786609
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1810786610}
-  - component: {fileID: 1810786611}
-  m_Layer: 0
-  m_Name: BishopConstants
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1810786610
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810786609}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2066787390}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1810786611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810786609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147b3a33bac52f547912051294fffddd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 1000
-  moveSpeed: 0
-  dashSpeed: 0
-  airdashSpeed: 0
-  jumpSpeed: 0
-  backdashDuration: 0
-  backdashSpeed: 0
-  airDashDuration: 0
-  framesUntilAirJump: 5
-  neutralAStartup: 10
-  neutralAActive: 10
-  neutralARecovery: 10
-  neutralADamage: 1000000
-  crouchingAStartup: 10
-  crouchingAActive: 10
-  crouchingARecovery: 10
-  crouchingADamage: 1000000
-  jumpingAStartup: 10
-  jumpingAActive: 10
-  jumpingARecovery: 10
-  jumpingADamage: 1000000
-  neutralBStartup: 10
-  neutralBActive: 10
-  neutralBRecovery: 10
-  neutralBDamage: 1000000
-  crouchingBStartup: 10
-  crouchingBActive: 10
-  crouchingBRecovery: 10
-  crouchingBDamage: 1000000
-  jumpingBStartup: 10
-  jumpingBActive: 10
-  jumpingBRecovery: 10
-  jumpingBDamage: 1000000
-  downForwardBStartup: 10
-  downForwardBActive: 10
-  downForwardBRecovery: 10
-  downForwardBDamage: 1000000
-  neutralSStartup: 10
-  neutralSActive: 10
-  neutralSRecovery: 10
-  neutralSDamage: 1000000
-  crouchingSStartup: 10
-  crouchingSActive: 10
-  crouchingSRecovery: 10
-  crouchingSDamage: 1000000
-  forwardSStartup: 10
-  forwardSActive: 10
-  forwardSRecovery: 10
-  forwardSDamage: 1000000
 --- !u!1 &1865464578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,9 +1859,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2066787390}
-  - {fileID: 495361150}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1948409348
 GameObject:
@@ -2134,53 +1908,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1000
   moveSpeed: 5
-  dashSpeed: 7
+  dashSpeed: 15
   airdashSpeed: 8
   jumpSpeed: 15
   backdashDuration: 15
   backdashSpeed: 8
   airDashDuration: 20
   framesUntilAirJump: 5
-  neutralAStartup: 10
-  neutralAActive: 10
-  neutralARecovery: 10
-  neutralADamage: 1000000
-  crouchingAStartup: 10
-  crouchingAActive: 10
-  crouchingARecovery: 10
-  crouchingADamage: 1000000
-  jumpingAStartup: 10
-  jumpingAActive: 10
-  jumpingARecovery: 10
-  jumpingADamage: 1000000
-  neutralBStartup: 10
-  neutralBActive: 10
-  neutralBRecovery: 10
-  neutralBDamage: 1000000
-  crouchingBStartup: 10
-  crouchingBActive: 10
-  crouchingBRecovery: 10
-  crouchingBDamage: 1000000
-  jumpingBStartup: 10
-  jumpingBActive: 10
-  jumpingBRecovery: 10
-  jumpingBDamage: 1000000
-  downForwardBStartup: 10
-  downForwardBActive: 10
-  downForwardBRecovery: 10
+  neutralAPrefab: {fileID: 2714901490874840970, guid: 3adc600f36609d14b900647eb993e6e7, type: 3}
   downForwardBDamage: 1000000
-  neutralSStartup: 10
-  neutralSActive: 10
-  neutralSRecovery: 10
-  neutralSDamage: 1000000
-  crouchingSStartup: 10
-  crouchingSActive: 10
-  crouchingSRecovery: 10
-  crouchingSDamage: 1000000
-  forwardSStartup: 10
-  forwardSActive: 10
-  forwardSRecovery: 10
-  forwardSDamage: 1000000
 --- !u!1 &2066787389
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,8 +1947,6 @@ Transform:
   m_Children:
   - {fileID: 1948409349}
   - {fileID: 466961977}
-  - {fileID: 1810786610}
-  - {fileID: 1264735274}
   m_Father: {fileID: 1865464579}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2264,7 +1998,7 @@ GameObject:
   - component: {fileID: 2123830964}
   - component: {fileID: 2123830967}
   m_Layer: 0
-  m_Name: P1
+  m_Name: Player1
   m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2375,14 +2109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a35d8379c64c64d98e97ce1fa43002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  dashSpeed: 5
-  airDashSpeed: 6
-  jumpSpeed: 15
-  backdashDuration: 10
-  backdashSpeed: 9
-  airDashDuration: 15
-  framesUntilAirJump: 5
+  playerAnimator: {fileID: 0}
+  isIdle: 1
+  canDashJumpCancel: 1
   characterConstants: {fileID: 0}
   gameManager: {fileID: 495361151}
   pawnCharacter: {fileID: 6422374833926789126, guid: 435353eec8c4b314cae0921ffa9350b6, type: 3}
