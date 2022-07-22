@@ -525,6 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a35d8379c64c64d98e97ce1fa43002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opponentTag: 
   playerAnimator: {fileID: 0}
   isIdle: 1
   canDashJumpCancel: 1
@@ -534,6 +535,7 @@ MonoBehaviour:
   bishopCharacter: {fileID: 0}
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
   rookCharacter: {fileID: 0}
+  hasBeenHit: 0
 --- !u!114 &415806214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,12 +769,16 @@ MonoBehaviour:
   p2Character: Knight
   p1MaxHP: 0
   p1CurrentHP: 0
+  p1: {fileID: 2123830963}
   p1HPUI: {fileID: 1471920192}
   p2MaxHP: 0
   p2CurrentHP: 0
+  p2: {fileID: 415806218}
   p2HPUI: {fileID: 48629257}
   frameNumber: 0
   timer: {fileID: 1581428624}
+  p1Wins: 0
+  p2Wins: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a35d8379c64c64d98e97ce1fa43002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opponentTag: 
   playerAnimator: {fileID: 0}
   isIdle: 1
   canDashJumpCancel: 1
@@ -2118,3 +2125,4 @@ MonoBehaviour:
   bishopCharacter: {fileID: 0}
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
   rookCharacter: {fileID: 0}
+  hasBeenHit: 0
