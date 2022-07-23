@@ -8,3 +8,6 @@ ProjectSettings/
 Temp/
 UserSettings/
 
+*.meta
+Assembly-CSharp.csproj
+Assembly-CSharp.csproj
