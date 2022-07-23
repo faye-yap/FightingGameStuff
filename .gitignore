@@ -8,3 +8,5 @@ ProjectSettings/
 Temp/
 UserSettings/
 
+cspell.json
+*.meta
