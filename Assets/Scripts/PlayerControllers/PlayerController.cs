@@ -198,7 +198,8 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log("A");
                     break;
 
-                case "B":                    
+                case "B":   
+                    //if not 3b                 
                     opponentController.canSCancel = true;
                     //Debug.Log("B");
                     break;

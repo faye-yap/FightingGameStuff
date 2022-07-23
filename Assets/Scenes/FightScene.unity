@@ -432,7 +432,7 @@ RectTransform:
   - {fileID: 1112367428}
   - {fileID: 1425390065}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -580,7 +580,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opponentTag: 
-  opponentController: {fileID: 0}
   playerAnimator: {fileID: 0}
   isIdle: 1
   canDashJumpCancel: 1
@@ -594,6 +593,7 @@ MonoBehaviour:
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
   rookCharacter: {fileID: 0}
   hasBeenHit: 0
+  isTouchingWall: 0
 --- !u!114 &415806214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,8 +808,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1865464579}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &495361151
 MonoBehaviour:
@@ -836,9 +836,9 @@ MonoBehaviour:
   frameNumber: 0
   timer: {fileID: 1581428624}
   firstTo: 2
-  p1Wins: {fileID: 0}
-  p2Wins: {fileID: 0}
-  gameFinishedPrefab: {fileID: 2598130731839431325, guid: d643a308fc3d86249ae0ed45e11a9714, type: 3}
+  p1Wins: {fileID: 2114026233}
+  p2Wins: {fileID: 45250728}
+  gameFinishedPrefab: {fileID: 8849713096746866709, guid: 4a2fa319ed2fa4c4c8af2fd48ff4c81d, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1029,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &877342791
 MonoBehaviour:
@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 933026508}
   m_Layer: 0
   m_Name: LeftEdge
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1815,7 +1815,7 @@ GameObject:
   - component: {fileID: 1592022655}
   m_Layer: 0
   m_Name: RightEdge
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1962,10 +1962,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 495361150}
   - {fileID: 2066787390}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1948409348
 GameObject:
@@ -2053,7 +2052,7 @@ Transform:
   - {fileID: 1948409349}
   - {fileID: 466961977}
   m_Father: {fileID: 1865464579}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075995796
 GameObject:
@@ -2139,9 +2138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numWins: 0
-  replaceImage: {fileID: 0}
-  gameManager: {fileID: 0}
-  scorePrefab: {fileID: 0}
+  replaceImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  gameManager: {fileID: 495361151}
+  scorePrefab: {fileID: 5125590309415623517, guid: 6837a0af8fe3a1442b3f458c7dca9576, type: 3}
 --- !u!1 &2123830959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,7 +2267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opponentTag: 
-  opponentController: {fileID: 0}
   playerAnimator: {fileID: 0}
   isIdle: 1
   canDashJumpCancel: 1
@@ -2282,3 +2280,4 @@ MonoBehaviour:
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
   rookCharacter: {fileID: 0}
   hasBeenHit: 0
+  isTouchingWall: 0
