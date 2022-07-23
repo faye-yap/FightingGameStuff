@@ -9,14 +9,6 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private static GameManager _instance;
-    public static GameManager Instance {
-        get {return _instance;}
-    }
-
-   
-
-
     public string p1Character;
     public string p2Character;
     public int p1MaxHP; 
@@ -34,9 +26,14 @@ public class GameManager : MonoBehaviour
     private int timeRemaining = 99;
     public GameObject timer;
     private TextMeshProUGUI timerText;
+    
+    public int firstTo = 2;
+    private int p1NumWins;
+    private int p2NumWins;
+    public WinManager p1Wins;
+    public WinManager p2Wins;
+    public GameObject gameFinishedPrefab;
 
-    public int p1Wins = 0;
-    public int p2Wins = 0;
     
     
     void Start()
@@ -52,11 +49,14 @@ public class GameManager : MonoBehaviour
     void Update(){
         frameNumber += 1;
         if (frameNumber % 60 == 0){
+            if(timeRemaining == 0){
+                EndRound();
+            }
             timeRemaining -= 1;
             //Debug.Log(timerText);
             timerText.text = timeRemaining.ToString();
 
-            //todo: if timer == 0, end the round
+            
         }
     }
 
@@ -85,8 +85,22 @@ public class GameManager : MonoBehaviour
 
 
 
-        if(p1CurrentHP <= 0) p2Wins += 1;
-        else if (p2CurrentHP <= 0) p1Wins += 1;
+        if(p1CurrentHP <= 0) {
+            p2Wins.UpdateScore(p2NumWins);
+            p2NumWins += 1;
+            
+        }else if (p2CurrentHP <= 0) {
+            p1Wins.UpdateScore(p1NumWins);
+            p1NumWins += 1;
+        }
+
+        if(p1NumWins == firstTo || p2NumWins == firstTo){
+            
+            GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
+            gameFinishedUI.transform.SetParent(timer.transform,false);
+            
+                
+        }
 
 
         //reset everything

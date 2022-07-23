@@ -38,10 +38,12 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canDashJumpCancel = true;
 
-
-    private bool canACancel = false;
-    private bool canBCancel = false;
-    private bool canSCancel = false;
+    [HideInInspector]
+    public bool canACancel = false;
+    [HideInInspector]
+    public bool canBCancel = false;
+    [HideInInspector]
+    public bool canSCancel = false;
     private bool canAirNormal = false;
     
     public CharacterConstants characterConstants;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private GameObject selectedChar;
     [HideInInspector]
     public bool hasBeenHit = false;
+    public bool isTouchingWall = false;
     
     
 
@@ -182,17 +185,22 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(c.ToString());
             //Debug.Log(opponentTag);
             string moveName = c.transform.parent.name.Substring(0,c.transform.parent.name.Length - 7);
+            PlayerController opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
             switch(moveName.Substring(moveName.Length - 1, 1)){
-                case "A":
-                    canACancel = true;
-                    canBCancel = true;
-                    canSCancel = true;
-                    Debug.Log("A");
+                case "A":                    
+                    opponentController.canACancel = true;
+                    opponentController.canBCancel = true;
+                    opponentController.canSCancel = true;
+                    if(onGroundState) thisPlayerBody.AddForce(new Vector2(gameObject.transform.localScale.x * 1.25f * -3.0f,0),ForceMode2D.Impulse);
+                    if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.AddForce(new Vector2(gameObject.transform.localScale.x * 1.25f * 3.0f,0),ForceMode2D.Impulse);
+                    
+                    
+                    //Debug.Log("A");
                     break;
 
                 case "B":                    
-                    canSCancel = true;
-                    Debug.Log("B");
+                    opponentController.canSCancel = true;
+                    //Debug.Log("B");
                     break;
                 
               
@@ -270,6 +278,14 @@ public class PlayerController : MonoBehaviour
 
             isIdle = true;
             canDashJumpCancel = true;
+        } else if (other.gameObject.CompareTag("Wall")){
+            isTouchingWall = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Wall")){
+            isTouchingWall = false;
         }
     }
     private void AirJump(){
@@ -329,9 +345,7 @@ public class PlayerController : MonoBehaviour
     private void Stop(){
         
         
-        if(onGroundState){
-            thisPlayerBody.velocity = Vector2.zero;
-        }
+        //if(onGroundState){ thisPlayerBody.velocity = new Vector2(0,thisPlayerBody); }
         
         groundDashBool = false;
 
