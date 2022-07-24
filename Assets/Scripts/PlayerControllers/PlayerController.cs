@@ -529,17 +529,17 @@ public class PlayerController : MonoBehaviour
                 GameObject neutralA = Instantiate(characterConstants.neutralAPrefab,this.transform.position,Quaternion.identity);
                 neutralA.transform.parent = this.transform;
                 neutralA.transform.localScale = new Vector3(1,1,1);
-                playerAnimator.SetTrigger("NeutralA");
+                playerAnimator.Play("NeutralA");
             } else if (movement.y == -1){
                 
-                playerAnimator.SetTrigger("CrouchingA");
+                playerAnimator.Play("CrouchingA");
             }
 
         } else if (!onGroundState && canAirNormal){
 
             isIdle = false;
             canDashJumpCancel = false;
-            playerAnimator.SetTrigger("JumpingA");
+            playerAnimator.Play("JumpingA");
 
         }
 
@@ -562,17 +562,17 @@ public class PlayerController : MonoBehaviour
             isIdle = false;
             if(movement.y == 0){
                 
-                playerAnimator.SetTrigger("NeutralB");
+                playerAnimator.Play("NeutralB");
             } else if (movement.y == -1){
                 
-                playerAnimator.SetTrigger("CrouchingB");
+                playerAnimator.Play("CrouchingB");
             }
 
         } else if (!onGroundState && canAirNormal){
             isIdle = false;
             canDashJumpCancel = false;
             
-            playerAnimator.SetTrigger("JumpingB");
+            playerAnimator.Play("JumpingB");
 
         }
 
@@ -594,12 +594,12 @@ public class PlayerController : MonoBehaviour
             canDashJumpCancel = false;
             isIdle = false;
             if(movement == Vector2.zero){                
-                playerAnimator.SetTrigger("NeutralS");
+                playerAnimator.Play("NeutralS");
             } else if ((movement == Vector2.right && gameObject.transform.localScale.x > 0) || gameObject.transform.localScale.x < 0){
                 
-                playerAnimator.SetTrigger("ForwardS");
+                playerAnimator.Play("ForwardS");
             } else if (movement.y == -1){                
-                playerAnimator.SetTrigger("CrouchingS");    
+                playerAnimator.Play("CrouchingS");    
             }
 
         } 
