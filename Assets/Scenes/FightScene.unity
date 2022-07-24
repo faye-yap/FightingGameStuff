@@ -1092,8 +1092,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a9f4b6bea147049af7142896ce4fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1Character: Knight
-  p2Character: Knight
+  PlayerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
+  p1Character: 3
+  p2Character: 3
   p1MaxHP: 0
   p1CurrentHP: 0
   p1: {fileID: 2123830963}
@@ -1315,11 +1316,11 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca768aa44223c0240b9644de1cd20ae9, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 5fdb9585ef0af684bb3b5544e9902ec8, type: 3}
   m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: -5894606143249873461, guid: ca768aa44223c0240b9644de1cd20ae9, type: 3}
-  m_SubmitAction: {fileID: 2277533164720816265, guid: ca768aa44223c0240b9644de1cd20ae9, type: 3}
-  m_CancelAction: {fileID: -7768338312271141657, guid: ca768aa44223c0240b9644de1cd20ae9, type: 3}
+  m_MoveAction: {fileID: -5894606143249873461, guid: 5fdb9585ef0af684bb3b5544e9902ec8, type: 3}
+  m_SubmitAction: {fileID: 2277533164720816265, guid: 5fdb9585ef0af684bb3b5544e9902ec8, type: 3}
+  m_CancelAction: {fileID: -7768338312271141657, guid: 5fdb9585ef0af684bb3b5544e9902ec8, type: 3}
   m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
@@ -2831,7 +2832,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2091012597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74a85e173845a9345a4030e38f7c7456, type: 3}
+  m_Script: {fileID: 11500000, guid: 867567ab59bf1dd4a88287a62cc0bdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GameIsPaused: 0

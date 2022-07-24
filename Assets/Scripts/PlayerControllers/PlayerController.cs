@@ -65,29 +65,29 @@ public class PlayerController : MonoBehaviour
     
 
     //spawn character
-    void SelectCharacter(string playerNumber){
+    void SelectCharacter(PlayerSelectConstants.CharacterSelection playerNumber){
         
         Debug.Log(thisPlayerTag + playerNumber);
         switch(playerNumber){
-                case "Pawn":
+                case PlayerSelectConstants.CharacterSelection.Pawn:
                     selectedChar = Instantiate(pawnCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
                     characterConstants = GameObject.Find("PawnConstants").GetComponent<CharacterConstants>();
                     break;
                 
-                case "Bishop":
+                case PlayerSelectConstants.CharacterSelection.Bishop:
                     selectedChar = Instantiate(bishopCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
                     characterConstants = GameObject.Find("BishopConstants").GetComponent<CharacterConstants>();
                     break;
 
-                case "Rook":
+                case PlayerSelectConstants.CharacterSelection.Rook:
                     selectedChar = Instantiate(rookCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
                     characterConstants = GameObject.Find("RookConstants").GetComponent<CharacterConstants>();
                     break;
 
-                case "Knight":
+                case PlayerSelectConstants.CharacterSelection.Knight:
                     selectedChar = Instantiate(knightCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
                     characterConstants = GameObject.Find("KnightConstants").GetComponent<CharacterConstants>();

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33772fc8b27d17849952a9d59b505c81, type: 3}
+  m_Name: PlayerSelectConstants
+  m_EditorClassIdentifier: 
+  p1Character: 0
+  p2Character: 3
+  pawnSprite: {fileID: 21300000, guid: 787d45126751390418cdb856712947f0, type: 3}
+  bishopSprite: {fileID: 0}
+  rookSprite: {fileID: 21300000, guid: 8014e1965c117264c823adc18f787939, type: 3}
+  knightSprite: {fileID: 21300000, guid: 9d2aa95c5e8e8644eaa7a0563c5f58f1, type: 3}
