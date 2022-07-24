@@ -42,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 57b1d0e87a635d548a2be8abcb8380c3, type: 2}
+  m_Motion: {fileID: 7400000, guid: c044fc6df8fe81041b1a14ddd35aeb5c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -54,7 +54,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PawnForwardDownB
+  m_Name: PawnDownForwardB
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
