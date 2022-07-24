@@ -241,16 +241,14 @@ public class PlayerController : MonoBehaviour
 
 
     void OnMove(InputValue value) {
-        // use timescale to determine if game is paused
-        if(Time.timeScale == 0){
+        if(pauseMenuController.GameIsPaused){
             return;
         }
         movement = value.Get<Vector2>();
     }
 
     void OnDash(){
-        // use timescale to determine if game is paused
-        if(Time.timeScale == 0){
+        if(pauseMenuController.GameIsPaused){
             return;
         }
         if(canDashJumpCancel){
@@ -513,8 +511,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnANormal(){
-        // use timescale to determine if game is paused
-        if(Time.timeScale == 0){
+        if(pauseMenuController.GameIsPaused){
             return;
         }
         if(onGroundState && (canACancel || isIdle)){
@@ -549,8 +546,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnBNormal(){
-        // use timescale to determine if game is paused
-        if(Time.timeScale == 0){
+        if(pauseMenuController.GameIsPaused){
             return;
         }
         if(onGroundState && (canBCancel || isIdle)){
@@ -583,8 +579,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnSpecial(){
-        // use timescale to determine if game is paused
-        if(Time.timeScale == 0){
+        if(pauseMenuController.GameIsPaused){
             return;
         }
         if(onGroundState && (canSCancel || isIdle)){
@@ -612,7 +607,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnPause(){
-        if (PauseMenuController.GameIsPaused){
+        if (pauseMenuController.GameIsPaused){
             pauseMenuController.Resume();
         } else {
             pauseMenuController.Pause();
