@@ -25,7 +25,11 @@ public class GameManager : MonoBehaviour
     public int frameNumber;
     private int timeRemaining = 99;
     public GameObject timer;
+    private int preTimeRemaining = 3;
+    public GameObject preTimerObj;
+    private GameObject preTimer;
     private TextMeshProUGUI timerText;
+    private TextMeshProUGUI preTimerText;
     
     public int firstTo = 2;
     private int p1NumWins;
@@ -41,10 +45,14 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         frameNumber = 0;
         timerText = timer.GetComponent<TextMeshProUGUI>();
+        preTimer = preTimerObj.transform.Find("Timer").gameObject.transform.Find("TimerText").gameObject;
+        preTimerText = preTimer.GetComponent<TextMeshProUGUI>();
+        Debug.Log(preTimerText);
         p1StartPos = p1.transform.position;
         p2StartPos = p2.transform.position;
         p1Character = PlayerSelectConstants.p1Character;
         p2Character = PlayerSelectConstants.p2Character;
+        StartCoroutine(PreRoundTimer());
     }
 
     void Update(){
@@ -104,6 +112,7 @@ public class GameManager : MonoBehaviour
             GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
             gameFinishedUI.transform.SetParent(timer.transform,false);
             StartCoroutine(EndMatch());
+            return;
         }
 
 
@@ -117,8 +126,20 @@ public class GameManager : MonoBehaviour
         frameNumber = 0;
         timeRemaining = 99;
         timerText.text = timeRemaining.ToString();
+        StartCoroutine(PreRoundTimer());
         //super meter
        
+    }
+
+    private IEnumerator PreRoundTimer(){
+        preTimerObj.SetActive(true);
+        Time.timeScale = 0f;
+        for (int i = 0; i < preTimeRemaining; i++){
+            preTimerText.text = (preTimeRemaining-i).ToString();
+            yield return new WaitForSecondsRealtime(1);
+        }
+        preTimerObj.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     private IEnumerator EndMatch(){
