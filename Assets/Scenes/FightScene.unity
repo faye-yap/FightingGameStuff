@@ -593,7 +593,6 @@ MonoBehaviour:
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
   rookCharacter: {fileID: 0}
   hasBeenHit: 0
-  isTouchingWall: 0
 --- !u!114 &415806214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,7 +1458,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1419140569
@@ -2280,4 +2279,3 @@ MonoBehaviour:
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
   rookCharacter: {fileID: 0}
   hasBeenHit: 0
-  isTouchingWall: 0
