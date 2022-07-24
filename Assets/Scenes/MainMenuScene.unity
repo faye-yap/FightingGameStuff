@@ -1824,11 +1824,11 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca768aa44223c0240b9644de1cd20ae9, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 5fdb9585ef0af684bb3b5544e9902ec8, type: 3}
   m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: -5894606143249873461, guid: ca768aa44223c0240b9644de1cd20ae9, type: 3}
-  m_SubmitAction: {fileID: 2277533164720816265, guid: ca768aa44223c0240b9644de1cd20ae9, type: 3}
-  m_CancelAction: {fileID: -7768338312271141657, guid: ca768aa44223c0240b9644de1cd20ae9, type: 3}
+  m_MoveAction: {fileID: -5894606143249873461, guid: 5fdb9585ef0af684bb3b5544e9902ec8, type: 3}
+  m_SubmitAction: {fileID: 2277533164720816265, guid: 5fdb9585ef0af684bb3b5544e9902ec8, type: 3}
+  m_CancelAction: {fileID: -7768338312271141657, guid: 5fdb9585ef0af684bb3b5544e9902ec8, type: 3}
   m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}

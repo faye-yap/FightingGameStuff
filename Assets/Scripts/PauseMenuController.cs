@@ -32,7 +32,8 @@ public class PauseMenuController : MonoBehaviour
 
     public void Quit()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
         Debug.Log("quit match");
     }
 }

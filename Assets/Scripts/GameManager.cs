@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public string p1Character;
-    public string p2Character;
+    public PlayerSelectConstants PlayerSelectConstants;
+    public PlayerSelectConstants.CharacterSelection p1Character;
+    public PlayerSelectConstants.CharacterSelection p2Character;
     public int p1MaxHP; 
     public int p1CurrentHP;
     public Transform p1;
@@ -43,7 +43,8 @@ public class GameManager : MonoBehaviour
         timerText = timer.GetComponent<TextMeshProUGUI>();
         p1StartPos = p1.transform.position;
         p2StartPos = p2.transform.position;
-
+        p1Character = PlayerSelectConstants.p1Character;
+        p2Character = PlayerSelectConstants.p2Character;
     }
 
     void Update(){
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void EndMatch(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }
