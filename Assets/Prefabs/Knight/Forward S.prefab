@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4189160775911748019}
   - component: {fileID: 4497350186965892382}
   - component: {fileID: 8617084142300536821}
+  - component: {fileID: -5655078304765478848}
   m_Layer: 9
   m_Name: Forward S
   m_TagString: Untagged
@@ -149,6 +150,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5655078304765478848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714901490874840970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a5e1610e3291e4eb623b129c179adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2714901490874840970, guid: 41326874384f58145a029e686959306d, type: 3}
 --- !u!1 &7615728630707487226
 GameObject:
   m_ObjectHideFlags: 0

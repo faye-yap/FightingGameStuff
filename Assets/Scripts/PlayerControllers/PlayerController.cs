@@ -285,15 +285,17 @@ public class PlayerController : MonoBehaviour
     }
 
     void GroundBackdash(){
-        Debug.Log("backdash");
-        onGroundState = false;
-        airActions -= 1;
-        thisPlayerBody.transform.Translate(new Vector3(0.05f * movement.x,0.05f,0));
-        thisPlayerBody.gravityScale = 0;
-        gravityOn = gameManager.frameNumber + characterConstants.backdashDuration;        
-           
-        thisPlayerBody.AddForce(Vector2.right * characterConstants.backdashSpeed * movement.x,ForceMode2D.Impulse);
-        groundBackdashBool = false;
+        //Debug.Log("backdash");
+        if(onGroundState){
+            thisPlayerBody.transform.Translate(new Vector3(0.05f * movement.x,0.05f,0));
+            thisPlayerBody.gravityScale = 0;
+            gravityOn = gameManager.frameNumber + characterConstants.backdashDuration;        
+            
+            thisPlayerBody.AddForce(Vector2.right * characterConstants.backdashSpeed * movement.x,ForceMode2D.Impulse);
+            groundBackdashBool = false;
+            onGroundState = false;
+            airActions -= 1;
+        }
 
 
     }
@@ -541,7 +543,7 @@ public class PlayerController : MonoBehaviour
 
         } else if (!onGroundState && canAirNormal){
 
-            isIdle = false;
+            canAirNormal = false;
             canDashJumpCancel = false;
             GameObject jumpingA = Instantiate(characterConstants.jumpingAPrefab,this.transform.position,Quaternion.identity);
             jumpingA.transform.SetParent(transform);
@@ -589,7 +591,7 @@ public class PlayerController : MonoBehaviour
             }
 
         } else if (!onGroundState && canAirNormal){
-            isIdle = false;
+            canAirNormal = false;
             canDashJumpCancel = false;
             GameObject jumpingB = Instantiate(characterConstants.jumpingBPrefab,this.transform.position,Quaternion.identity);
             jumpingB.transform.SetParent(transform);
@@ -623,7 +625,7 @@ public class PlayerController : MonoBehaviour
                 neutralS.transform.localScale = new Vector3(1,1,1);
                 characterConstants.NeutralS();             
                 playerAnimator.Play("Neutral S");
-            } else if ((movement == Vector2.right && gameObject.transform.localScale.x > 0) && gameObject.transform.localScale.x < 0){
+            } else if ((movement == Vector2.right && gameObject.transform.localScale.x > 0) || (movement == Vector2.left && gameObject.transform.localScale.x < 0)){
                 GameObject forwardS = Instantiate(characterConstants.forwardSPrefab,this.transform.position,Quaternion.identity);
                 forwardS.transform.SetParent(transform);
                 forwardS.transform.localScale = new Vector3(1,1,1);
