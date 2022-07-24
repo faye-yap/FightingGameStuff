@@ -103,8 +103,7 @@ public class GameManager : MonoBehaviour
             
             GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
             gameFinishedUI.transform.SetParent(timer.transform,false);
-            
-                
+            StartCoroutine(EndMatch());
         }
 
 
@@ -122,7 +121,9 @@ public class GameManager : MonoBehaviour
        
     }
 
-    public void EndMatch(){
+    private IEnumerator EndMatch(){
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
