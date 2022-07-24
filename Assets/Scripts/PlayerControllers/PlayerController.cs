@@ -55,7 +55,8 @@ public class PlayerController : MonoBehaviour
     private GameObject selectedChar;
     [HideInInspector]
     public bool hasBeenHit = false;
-    public bool isTouchingWall = false;
+    private bool isStandBlocking = false;
+    private bool isCrouchBlocking = false;
     
     
 
@@ -191,8 +192,10 @@ public class PlayerController : MonoBehaviour
                     opponentController.canACancel = true;
                     opponentController.canBCancel = true;
                     opponentController.canSCancel = true;
-                    if(onGroundState) thisPlayerBody.AddForce(new Vector2(gameObject.transform.localScale.x * 1.25f * -3.0f,0),ForceMode2D.Impulse);
-                    if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.AddForce(new Vector2(gameObject.transform.localScale.x * 1.25f * 3.0f,0),ForceMode2D.Impulse);
+
+                    if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -3.0f,0);
+                    else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -1.0f,2);
+                    if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity =new Vector2(gameObject.transform.localScale.x * 1.25f * 3.0f,0);
                     
                     
                     //Debug.Log("A");
@@ -279,16 +282,10 @@ public class PlayerController : MonoBehaviour
 
             isIdle = true;
             canDashJumpCancel = true;
-        } else if (other.gameObject.CompareTag("Wall")){
-            isTouchingWall = true;
-        }
+        } 
     }
 
-    private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Wall")){
-            isTouchingWall = false;
-        }
-    }
+   
     private void AirJump(){
         if (airActions >= 1){
             thisPlayerBody.velocity = Vector2.zero;
