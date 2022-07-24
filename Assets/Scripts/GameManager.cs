@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerSelectConstants PlayerSelectConstants;
     public PlayerSelectConstants.CharacterSelection p1Character;
     public PlayerSelectConstants.CharacterSelection p2Character;
+    public PauseMenuController pauseMenuController;
     public int p1MaxHP; 
     public int p1CurrentHP;
     public Transform p1;
@@ -134,18 +135,22 @@ public class GameManager : MonoBehaviour
     private IEnumerator PreRoundTimer(){
         preTimerObj.SetActive(true);
         Time.timeScale = 0f;
+        pauseMenuController.GameIsPaused = true;
         for (int i = 0; i < preTimeRemaining; i++){
             preTimerText.text = (preTimeRemaining-i).ToString();
             yield return new WaitForSecondsRealtime(1);
         }
         preTimerObj.SetActive(false);
         Time.timeScale = 1f;
+        pauseMenuController.GameIsPaused = false;
     }
 
     private IEnumerator EndMatch(){
         Time.timeScale = 0f;
+        pauseMenuController.GameIsPaused = true;
         yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1f;
+        pauseMenuController.GameIsPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }
