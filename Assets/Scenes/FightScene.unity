@@ -1458,7 +1458,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1419140569
@@ -2018,7 +2018,7 @@ MonoBehaviour:
   backdashSpeed: 8
   airDashDuration: 20
   framesUntilAirJump: 5
-  neutralAPrefab: {fileID: 2714901490874840970, guid: 3adc600f36609d14b900647eb993e6e7, type: 3}
+  neutralAPrefab: {fileID: 2714901490874840970, guid: 5dddb4d17fab4064aa56b3e42fa471db, type: 3}
   downForwardBDamage: 1000000
 --- !u!1 &2066787389
 GameObject:

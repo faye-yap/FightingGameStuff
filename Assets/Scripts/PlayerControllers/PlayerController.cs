@@ -520,12 +520,16 @@ public class PlayerController : MonoBehaviour
             canSCancel = false;
             if(movement.y == 0){    
                 GameObject neutralA = Instantiate(characterConstants.neutralAPrefab,this.transform.position,Quaternion.identity);
-                neutralA.transform.parent = this.transform;
+                neutralA.transform.SetParent(transform);
                 neutralA.transform.localScale = new Vector3(1,1,1);
-                playerAnimator.SetTrigger("NeutralA");
+                playerAnimator.Play("Neutral A");
             } else if (movement.y == -1){
+                GameObject neutralA = Instantiate(characterConstants.crouchingAPrefab,this.transform.position,Quaternion.identity);
+                neutralA.transform.SetParent(transform);
+                neutralA.transform.localScale = new Vector3(1,1,1);
+            
                 
-                playerAnimator.SetTrigger("CrouchingA");
+                playerAnimator.Play("Crouching A");
             }
 
         } else if (!onGroundState && canAirNormal){

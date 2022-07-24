@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
             p1HPUI.localScale = new Vector3(newScale,1,1);
         } else {
             p2CurrentHP -= damage;
-            float newScale = p2CurrentHP/p2MaxHP;
+            float newScale = (float) p2CurrentHP/ (float) p2MaxHP;
             if(newScale < 0) newScale = 0;
             p2HPUI.localScale = new Vector3(newScale,1,1);
         }
