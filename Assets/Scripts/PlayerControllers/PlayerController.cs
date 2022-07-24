@@ -485,7 +485,7 @@ public class PlayerController : MonoBehaviour
             thisPlayerBody.velocity = Vector2.zero;
             if (gameObject.transform.localScale.x < 0){
                 //facing left
-                if (movement.x == 1){
+                if (movement.x > 0){
                     //backdash
                     AirBackdash(1.0f);
                 } else {
@@ -493,7 +493,7 @@ public class PlayerController : MonoBehaviour
                 }
             } else {
                 //facing right
-                if (movement.x == -1){
+                if (movement.x < 0){
                     //backdash
                     AirBackdash(-1.0f);
                 } else {
@@ -529,21 +529,25 @@ public class PlayerController : MonoBehaviour
                 GameObject neutralA = Instantiate(characterConstants.neutralAPrefab,this.transform.position,Quaternion.identity);
                 neutralA.transform.SetParent(transform);
                 neutralA.transform.localScale = new Vector3(1,1,1);
-                playerAnimator.Play("NeutralA");
+                characterConstants.NeutralA();
+                playerAnimator.Play("Neutral A");
             } else if (movement.y == -1){
-                GameObject neutralA = Instantiate(characterConstants.crouchingAPrefab,this.transform.position,Quaternion.identity);
-                neutralA.transform.SetParent(transform);
-                neutralA.transform.localScale = new Vector3(1,1,1);
-            
-                
-                playerAnimator.Play("CrouchingA");
+                GameObject crouchingA = Instantiate(characterConstants.crouchingAPrefab,this.transform.position,Quaternion.identity);
+                crouchingA.transform.SetParent(transform);
+                crouchingA.transform.localScale = new Vector3(1,1,1);
+                characterConstants.CrouchingA();            
+                playerAnimator.Play("Crouching A");
             }
 
         } else if (!onGroundState && canAirNormal){
 
             isIdle = false;
             canDashJumpCancel = false;
-            playerAnimator.Play("JumpingA");
+            GameObject jumpingA = Instantiate(characterConstants.jumpingAPrefab,this.transform.position,Quaternion.identity);
+            jumpingA.transform.SetParent(transform);
+            jumpingA.transform.localScale = new Vector3(1,1,1);
+            characterConstants.JumpingA();            
+            playerAnimator.Play("Jumping A");
 
         }
 
@@ -555,7 +559,7 @@ public class PlayerController : MonoBehaviour
         }
         if(onGroundState && (canBCancel || isIdle)){
 
-            if(transform.childCount > 1){
+            if(transform.childCount > 2){
                 Destroy(transform.GetChild(2).gameObject);
             }
 
@@ -565,18 +569,34 @@ public class PlayerController : MonoBehaviour
             canDashJumpCancel = false;
             isIdle = false;
             if(movement.y == 0){
-                
-                playerAnimator.Play("NeutralB");
+                GameObject neutralB = Instantiate(characterConstants.neutralBPrefab,this.transform.position,Quaternion.identity);
+                neutralB.transform.SetParent(transform);
+                neutralB.transform.localScale = new Vector3(1,1,1);
+                characterConstants.NeutralB();            
+                playerAnimator.Play("Neutral B");
+            } else if (movement.x == transform.localScale.x/Mathf.Abs(transform.localScale.x) && movement.y == -1){
+                GameObject downForwardB = Instantiate(characterConstants.downForwardBPrefab,this.transform.position,Quaternion.identity);
+                downForwardB.transform.SetParent(transform);
+                downForwardB.transform.localScale = new Vector3(1,1,1);
+                characterConstants.DownForwardB();            
+                playerAnimator.Play("Down Forward B");
             } else if (movement.y == -1){
-                
-                playerAnimator.Play("CrouchingB");
+                GameObject crouchingB = Instantiate(characterConstants.crouchingBPrefab,this.transform.position,Quaternion.identity);
+                crouchingB.transform.SetParent(transform);
+                crouchingB.transform.localScale = new Vector3(1,1,1);
+                characterConstants.CrouchingB(); 
+                playerAnimator.Play("Crouching B");
             }
 
         } else if (!onGroundState && canAirNormal){
             isIdle = false;
             canDashJumpCancel = false;
+            GameObject jumpingB = Instantiate(characterConstants.jumpingBPrefab,this.transform.position,Quaternion.identity);
+            jumpingB.transform.SetParent(transform);
+            jumpingB.transform.localScale = new Vector3(1,1,1);
+            characterConstants.JumpingB(); 
             
-            playerAnimator.Play("JumpingB");
+            playerAnimator.Play("Jumping B");
 
         }
 
@@ -588,7 +608,7 @@ public class PlayerController : MonoBehaviour
         }
         if(onGroundState && (canSCancel || isIdle)){
 
-            if(transform.childCount > 1){
+            if(transform.childCount > 2){
                 Destroy(transform.GetChild(2).gameObject);
             }
 
@@ -597,13 +617,24 @@ public class PlayerController : MonoBehaviour
             canSCancel = false;
             canDashJumpCancel = false;
             isIdle = false;
-            if(movement == Vector2.zero){                
-                playerAnimator.Play("NeutralS");
-            } else if ((movement == Vector2.right && gameObject.transform.localScale.x > 0) || gameObject.transform.localScale.x < 0){
-                
-                playerAnimator.Play("ForwardS");
+            if(movement == Vector2.zero){               
+                GameObject neutralS = Instantiate(characterConstants.neutralSPrefab,this.transform.position,Quaternion.identity);
+                neutralS.transform.SetParent(transform);
+                neutralS.transform.localScale = new Vector3(1,1,1);
+                characterConstants.NeutralS();             
+                playerAnimator.Play("Neutral S");
+            } else if ((movement == Vector2.right && gameObject.transform.localScale.x > 0) && gameObject.transform.localScale.x < 0){
+                GameObject forwardS = Instantiate(characterConstants.forwardSPrefab,this.transform.position,Quaternion.identity);
+                forwardS.transform.SetParent(transform);
+                forwardS.transform.localScale = new Vector3(1,1,1);
+                characterConstants.ForwardS(); 
+                playerAnimator.Play("Forward S");
             } else if (movement.y == -1){                
-                playerAnimator.Play("CrouchingS");    
+                GameObject crouchingS = Instantiate(characterConstants.crouchingSPrefab,this.transform.position,Quaternion.identity);
+                crouchingS.transform.SetParent(transform);
+                crouchingS.transform.localScale = new Vector3(1,1,1);
+                characterConstants.CrouchingS(); 
+                playerAnimator.Play("Crouching S");    
             }
 
         } 

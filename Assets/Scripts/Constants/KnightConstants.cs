@@ -24,4 +24,39 @@ public class KnightConstants : CharacterConstants
     {
         
     }
+
+    public override void NeutralB()
+    {
+        
+    }
+
+    public override void CrouchingB()
+    {
+        
+    }
+
+    public override void JumpingB()
+    {
+        
+    }
+
+    public override void DownForwardB()
+    {
+      
+    }
+
+    public override void NeutralS()
+    {
+        
+    }
+
+    public override void CrouchingS()
+    {
+        
+    }
+
+    public override void ForwardS()
+    {
+        
+    }
 }

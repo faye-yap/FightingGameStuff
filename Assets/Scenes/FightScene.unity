@@ -1047,7 +1047,15 @@ MonoBehaviour:
   airDashDuration: 0
   framesUntilAirJump: 5
   neutralAPrefab: {fileID: 0}
-  downForwardBDamage: 1000000
+  crouchingAPrefab: {fileID: 0}
+  jumpingAPrefab: {fileID: 0}
+  neutralBPrefab: {fileID: 0}
+  crouchingBPrefab: {fileID: 0}
+  jumpingBPrefab: {fileID: 0}
+  downForwardBPrefab: {fileID: 0}
+  neutralSPrefab: {fileID: 0}
+  crouchingSPrefab: {fileID: 0}
+  forwardSPrefab: {fileID: 0}
 --- !u!1 &495361149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,8 +2566,16 @@ MonoBehaviour:
   backdashSpeed: 8
   airDashDuration: 20
   framesUntilAirJump: 5
-  neutralAPrefab: {fileID: 2714901490874840970, guid: 5dddb4d17fab4064aa56b3e42fa471db, type: 3}
-  downForwardBDamage: 1000000
+  neutralAPrefab: {fileID: 2714901490874840970, guid: 3adc600f36609d14b900647eb993e6e7, type: 3}
+  crouchingAPrefab: {fileID: 2714901490874840970, guid: 02b96521528717c42bd8c80aa3f7f31c, type: 3}
+  jumpingAPrefab: {fileID: 2714901490874840970, guid: 6abf0fdfdd9e5e240bcc32344e464bd9, type: 3}
+  neutralBPrefab: {fileID: 2714901490874840970, guid: 710fd38b7462e10459608e295e7c6b27, type: 3}
+  crouchingBPrefab: {fileID: 2714901490874840970, guid: 6d0a633ba19c28841b98a537e1d42cc7, type: 3}
+  jumpingBPrefab: {fileID: 2714901490874840970, guid: 1aa716cfc7b134b43ad306feabd485c7, type: 3}
+  downForwardBPrefab: {fileID: 2714901490874840970, guid: 1860d620e090cbc45b1044b5473166bd, type: 3}
+  neutralSPrefab: {fileID: 2714901490874840970, guid: 2fcb2cdb58b9ad145a94bd8d6d147258, type: 3}
+  crouchingSPrefab: {fileID: 2714901490874840970, guid: 9f5b7832e42e89c4aa0a4c65df5fbc42, type: 3}
+  forwardSPrefab: {fileID: 2714901490874840970, guid: aa147feebf1df7d429905b221a6a5b65, type: 3}
 --- !u!1 &2066787389
 GameObject:
   m_ObjectHideFlags: 0
