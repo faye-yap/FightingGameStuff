@@ -32,6 +32,8 @@ public class PlayerSelectController : MonoBehaviour
             {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookSprite},
         };
         spriteDict.Keys.CopyTo(charArray, 0);
+        spriteRenderer.sprite = spriteDict[p1Character];
+        spriteRenderer.sprite = spriteDict[p2Character];
         StartCoroutine(WaitForSelect());
     }
 
