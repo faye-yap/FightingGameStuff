@@ -193,11 +193,33 @@ public class PlayerController : MonoBehaviour
                     opponentController.canBCancel = true;
                     opponentController.canSCancel = true;
 
-                    if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -3.0f,0);
-                    else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -1.0f,2);
-                    if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity =new Vector2(gameObject.transform.localScale.x * 1.25f * 3.0f,0);
-                    
-                    
+                    bool isBlocked;
+                    if (moveName.Contains("Neutral") && (isStandBlocking || isCrouchBlocking)){
+                        isBlocked = true;
+                    } else if (moveName.Contains("Crouching") && isCrouchBlocking) {
+                        isBlocked = true;
+                    } else if (moveName.Contains("Jumping") && isStandBlocking){
+                        isBlocked = true;
+                    } else {
+                        isBlocked = false;
+                    }
+
+
+                    if (isBlocked) {
+                        if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -3.0f,0);
+                        else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -2.0f,5f);
+                        if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 3.0f,0);
+                        playerAnimator.Play("Blocked");
+                        isIdle = false;
+                    } else {
+                        if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5.0f,0);
+                        else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -4,9);
+                        if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 5.0f,0);
+                        gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[moveName]);
+                        playerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                        isIdle = false;
+                        playerAnimator.Play("GotHit");
+                    }
                     //Debug.Log("A");
                     break;
 
@@ -206,18 +228,15 @@ public class PlayerController : MonoBehaviour
                     opponentController.canSCancel = true;
                     //Debug.Log("B");
                     break;
-                
-              
             }
-            
 
-
-            if (!hasBeenHit) {
-                gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[c.transform.parent.name.Substring(0,c.transform.parent.name.Length - 7)]);
+            if (!hasBeenHit) {                
                 hasBeenHit = true;
             }
         }
     }
+
+    
 
 
     void OnMove(InputValue value) {
@@ -305,6 +324,11 @@ public class PlayerController : MonoBehaviour
             onGroundState = false;
             
         }
+        if (gameObject.transform.localScale.x > 0){
+            isStandBlocking = true;
+        } else {
+            isStandBlocking = false;
+        }
     }
 
     private void NeutralJump(){
@@ -313,12 +337,19 @@ public class PlayerController : MonoBehaviour
             onGroundState = false;
             
         }
+        isStandBlocking  = false;
+        isCrouchBlocking = false;
     }
 
     private void RightJump(){
         if (onGroundState && canDashJumpCancel){
             thisPlayerBody.AddForce(new Vector2(characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed), ForceMode2D.Impulse);            
             onGroundState = false;            
+        }
+        if (gameObject.transform.localScale.x < 0){
+            isStandBlocking = true;
+        } else {
+            isStandBlocking = false;
         }
 
     }
@@ -337,15 +368,20 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        if (gameObject.transform.localScale.x > 0){
+            isStandBlocking = true;
+        } else {
+            isStandBlocking = false;
+        }
         
     }
 
     private void Stop(){
-        
-        
         //if(onGroundState){ thisPlayerBody.velocity = new Vector2(0,thisPlayerBody); }
         
         groundDashBool = false;
+        isStandBlocking  = false;
+        isCrouchBlocking = false;
 
     }
 
@@ -363,6 +399,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        if (gameObject.transform.localScale.x < 0){
+            isStandBlocking = true;
+        } else {
+            isStandBlocking = false;
+        }
         
     }
 
@@ -370,15 +412,27 @@ public class PlayerController : MonoBehaviour
     
 
     private void LeftCrouch(){
+        isStandBlocking = false;
+        if (gameObject.transform.localScale.x > 0){
+            isCrouchBlocking = true;
+        } else {
+            isCrouchBlocking = false;
+        }
 
     }
 
     private void NeutralCrouch(){
-
+        isStandBlocking  = false;
+        isCrouchBlocking = false;
     }
 
     private void RightCrouch(){
-
+        isStandBlocking = false;
+        if (gameObject.transform.localScale.x < 0){
+            isCrouchBlocking = true;
+        } else {
+            isCrouchBlocking = false;
+        }
     }
 
     private void Move(){
@@ -450,7 +504,15 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnANormal(){
+
+        
+
         if(onGroundState && (canACancel || isIdle)){
+
+            if(transform.childCount > 2){
+            Destroy(transform.GetChild(2).gameObject);
+            }
+
             canDashJumpCancel = false;
             isIdle = false;
             canACancel = false;
@@ -467,6 +529,7 @@ public class PlayerController : MonoBehaviour
             }
 
         } else if (!onGroundState && canAirNormal){
+
             isIdle = false;
             canDashJumpCancel = false;
             playerAnimator.SetTrigger("JumpingA");
@@ -477,7 +540,14 @@ public class PlayerController : MonoBehaviour
 
     void OnBNormal(){
 
+        
+
         if(onGroundState && (canBCancel || isIdle)){
+
+            if(transform.childCount > 1){
+                Destroy(transform.GetChild(2).gameObject);
+            }
+
             canACancel = false;
             canBCancel = false;
             canSCancel = false;
@@ -502,8 +572,14 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnSpecial(){
+        
 
         if(onGroundState && (canSCancel || isIdle)){
+
+            if(transform.childCount > 1){
+                Destroy(transform.GetChild(2).gameObject);
+            }
+
             canACancel = false;
             canBCancel = false;
             canSCancel = false;
@@ -521,4 +597,6 @@ public class PlayerController : MonoBehaviour
         } 
 
     }
+
+  
 }
