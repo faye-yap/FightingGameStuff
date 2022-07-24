@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     
     public CharacterConstants characterConstants;
     public GameManager gameManager;
+    public PauseMenuController pauseMenuController;
     public GameObject pawnCharacter;
     public GameObject bishopCharacter;
     public GameObject knightCharacter;
@@ -240,10 +241,18 @@ public class PlayerController : MonoBehaviour
 
 
     void OnMove(InputValue value) {
+        // use timescale to determine if game is paused
+        if(Time.timeScale == 0){
+            return;
+        }
         movement = value.Get<Vector2>();
     }
 
     void OnDash(){
+        // use timescale to determine if game is paused
+        if(Time.timeScale == 0){
+            return;
+        }
         if(canDashJumpCancel){
             if (!onGroundState && airActions >= 1){
                 airDashBool = true;
@@ -504,9 +513,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnANormal(){
-
-        
-
+        // use timescale to determine if game is paused
+        if(Time.timeScale == 0){
+            return;
+        }
         if(onGroundState && (canACancel || isIdle)){
 
             if(transform.childCount > 2){
@@ -539,9 +549,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnBNormal(){
-
-        
-
+        // use timescale to determine if game is paused
+        if(Time.timeScale == 0){
+            return;
+        }
         if(onGroundState && (canBCancel || isIdle)){
 
             if(transform.childCount > 1){
@@ -572,8 +583,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnSpecial(){
-        
-
+        // use timescale to determine if game is paused
+        if(Time.timeScale == 0){
+            return;
+        }
         if(onGroundState && (canSCancel || isIdle)){
 
             if(transform.childCount > 1){
@@ -598,5 +611,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-  
+    public void OnPause(){
+        if (PauseMenuController.GameIsPaused){
+            pauseMenuController.Resume();
+        } else {
+            pauseMenuController.Pause();
+        }
+    }
 }

@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
     }
 
     void Update(){
+        // use timescale to determine if game is paused
+        if(Time.timeScale == 0){
+            return;
+        }
         frameNumber += 1;
         if (frameNumber % 60 == 0){
             if(timeRemaining == 0){
@@ -116,5 +120,8 @@ public class GameManager : MonoBehaviour
         //super meter
        
     }
-    
+
+    public void EndMatch(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
 }
