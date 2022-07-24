@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public string p1Character;
-    public string p2Character;
+    public PlayerSelectConstants PlayerSelectConstants;
+    public PlayerSelectConstants.CharacterSelection p1Character;
+    public PlayerSelectConstants.CharacterSelection p2Character;
     public int p1MaxHP; 
     public int p1CurrentHP;
     public Transform p1;
@@ -43,10 +43,15 @@ public class GameManager : MonoBehaviour
         timerText = timer.GetComponent<TextMeshProUGUI>();
         p1StartPos = p1.transform.position;
         p2StartPos = p2.transform.position;
-
+        p1Character = PlayerSelectConstants.p1Character;
+        p2Character = PlayerSelectConstants.p2Character;
     }
 
     void Update(){
+        // use timescale to determine if game is paused
+        if(Time.timeScale == 0){
+            return;
+        }
         frameNumber += 1;
         if (frameNumber % 60 == 0){
             if(timeRemaining == 0){
@@ -98,8 +103,7 @@ public class GameManager : MonoBehaviour
             
             GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
             gameFinishedUI.transform.SetParent(timer.transform,false);
-            
-                
+            StartCoroutine(EndMatch());
         }
 
 
@@ -116,5 +120,11 @@ public class GameManager : MonoBehaviour
         //super meter
        
     }
-    
+
+    private IEnumerator EndMatch(){
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(5);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
 }

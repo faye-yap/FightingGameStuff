@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     
     public CharacterConstants characterConstants;
     public GameManager gameManager;
+    public PauseMenuController pauseMenuController;
     public GameObject pawnCharacter;
     public GameObject bishopCharacter;
     public GameObject knightCharacter;
@@ -64,29 +65,29 @@ public class PlayerController : MonoBehaviour
     
 
     //spawn character
-    void SelectCharacter(string playerNumber){
+    void SelectCharacter(PlayerSelectConstants.CharacterSelection playerNumber){
         
         Debug.Log(thisPlayerTag + playerNumber);
         switch(playerNumber){
-                case "Pawn":
+                case PlayerSelectConstants.CharacterSelection.Pawn:
                     selectedChar = Instantiate(pawnCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
                     characterConstants = GameObject.Find("PawnConstants").GetComponent<CharacterConstants>();
                     break;
                 
-                case "Bishop":
+                case PlayerSelectConstants.CharacterSelection.Bishop:
                     selectedChar = Instantiate(bishopCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
                     characterConstants = GameObject.Find("BishopConstants").GetComponent<CharacterConstants>();
                     break;
 
-                case "Rook":
+                case PlayerSelectConstants.CharacterSelection.Rook:
                     selectedChar = Instantiate(rookCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
                     characterConstants = GameObject.Find("RookConstants").GetComponent<CharacterConstants>();
                     break;
 
-                case "Knight":
+                case PlayerSelectConstants.CharacterSelection.Knight:
                     selectedChar = Instantiate(knightCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
                     characterConstants = GameObject.Find("KnightConstants").GetComponent<CharacterConstants>();
@@ -240,10 +241,16 @@ public class PlayerController : MonoBehaviour
 
 
     void OnMove(InputValue value) {
+        if(pauseMenuController.GameIsPaused){
+            return;
+        }
         movement = value.Get<Vector2>();
     }
 
     void OnDash(){
+        if(pauseMenuController.GameIsPaused){
+            return;
+        }
         if(canDashJumpCancel){
             if (!onGroundState && airActions >= 1){
                 airDashBool = true;
@@ -504,9 +511,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnANormal(){
-
-        
-
+        if(pauseMenuController.GameIsPaused){
+            return;
+        }
         if(onGroundState && (canACancel || isIdle)){
 
             if(transform.childCount > 2){
@@ -522,30 +529,30 @@ public class PlayerController : MonoBehaviour
                 GameObject neutralA = Instantiate(characterConstants.neutralAPrefab,this.transform.position,Quaternion.identity);
                 neutralA.transform.SetParent(transform);
                 neutralA.transform.localScale = new Vector3(1,1,1);
-                playerAnimator.Play("Neutral A");
+                playerAnimator.Play("NeutralA");
             } else if (movement.y == -1){
                 GameObject neutralA = Instantiate(characterConstants.crouchingAPrefab,this.transform.position,Quaternion.identity);
                 neutralA.transform.SetParent(transform);
                 neutralA.transform.localScale = new Vector3(1,1,1);
             
                 
-                playerAnimator.Play("Crouching A");
+                playerAnimator.Play("CrouchingA");
             }
 
         } else if (!onGroundState && canAirNormal){
 
             isIdle = false;
             canDashJumpCancel = false;
-            playerAnimator.SetTrigger("JumpingA");
+            playerAnimator.Play("JumpingA");
 
         }
 
     }
 
     void OnBNormal(){
-
-        
-
+        if(pauseMenuController.GameIsPaused){
+            return;
+        }
         if(onGroundState && (canBCancel || isIdle)){
 
             if(transform.childCount > 1){
@@ -559,25 +566,26 @@ public class PlayerController : MonoBehaviour
             isIdle = false;
             if(movement.y == 0){
                 
-                playerAnimator.SetTrigger("NeutralB");
+                playerAnimator.Play("NeutralB");
             } else if (movement.y == -1){
                 
-                playerAnimator.SetTrigger("CrouchingB");
+                playerAnimator.Play("CrouchingB");
             }
 
         } else if (!onGroundState && canAirNormal){
             isIdle = false;
             canDashJumpCancel = false;
             
-            playerAnimator.SetTrigger("JumpingB");
+            playerAnimator.Play("JumpingB");
 
         }
 
     }
 
     void OnSpecial(){
-        
-
+        if(pauseMenuController.GameIsPaused){
+            return;
+        }
         if(onGroundState && (canSCancel || isIdle)){
 
             if(transform.childCount > 1){
@@ -590,17 +598,23 @@ public class PlayerController : MonoBehaviour
             canDashJumpCancel = false;
             isIdle = false;
             if(movement == Vector2.zero){                
-                playerAnimator.SetTrigger("NeutralS");
+                playerAnimator.Play("NeutralS");
             } else if ((movement == Vector2.right && gameObject.transform.localScale.x > 0) || gameObject.transform.localScale.x < 0){
                 
-                playerAnimator.SetTrigger("ForwardS");
+                playerAnimator.Play("ForwardS");
             } else if (movement.y == -1){                
-                playerAnimator.SetTrigger("CrouchingS");    
+                playerAnimator.Play("CrouchingS");    
             }
 
         } 
 
     }
 
-  
+    public void OnPause(){
+        if (pauseMenuController.GameIsPaused){
+            pauseMenuController.Resume();
+        } else {
+            pauseMenuController.Pause();
+        }
+    }
 }
