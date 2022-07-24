@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerSelectConstants PlayerSelectConstants;
     public PlayerSelectConstants.CharacterSelection p1Character;
     public PlayerSelectConstants.CharacterSelection p2Character;
+    public PauseMenuController pauseMenuController;
     public int p1MaxHP; 
     public int p1CurrentHP;
     public Transform p1;
@@ -47,7 +48,6 @@ public class GameManager : MonoBehaviour
         timerText = timer.GetComponent<TextMeshProUGUI>();
         preTimer = preTimerObj.transform.Find("Timer").gameObject.transform.Find("TimerText").gameObject;
         preTimerText = preTimer.GetComponent<TextMeshProUGUI>();
-        Debug.Log(preTimerText);
         p1StartPos = p1.transform.position;
         p2StartPos = p2.transform.position;
         p1Character = PlayerSelectConstants.p1Character;
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void Update(){
         // use timescale to determine if game is paused
-        if(Time.timeScale == 0){
+        if(pauseMenuController.GameIsPaused){
             return;
         }
         frameNumber += 1;
@@ -107,15 +107,6 @@ public class GameManager : MonoBehaviour
             p1NumWins += 1;
         }
 
-        if(p1NumWins == firstTo || p2NumWins == firstTo){
-            
-            GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
-            gameFinishedUI.transform.SetParent(timer.transform,false);
-            StartCoroutine(EndMatch());
-            return;
-        }
-
-
         //reset everything
         p1CurrentHP = p1MaxHP;
         p2CurrentHP = p2MaxHP;
@@ -126,6 +117,12 @@ public class GameManager : MonoBehaviour
         frameNumber = 0;
         timeRemaining = 99;
         timerText.text = timeRemaining.ToString();
+        if(p1NumWins == firstTo || p2NumWins == firstTo){
+            GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
+            gameFinishedUI.transform.SetParent(timer.transform,false);
+            StartCoroutine(EndMatch());
+            return;
+        }
         StartCoroutine(PreRoundTimer());
         //super meter
        
@@ -134,18 +131,22 @@ public class GameManager : MonoBehaviour
     private IEnumerator PreRoundTimer(){
         preTimerObj.SetActive(true);
         Time.timeScale = 0f;
+        pauseMenuController.GameIsPaused = true;
         for (int i = 0; i < preTimeRemaining; i++){
             preTimerText.text = (preTimeRemaining-i).ToString();
             yield return new WaitForSecondsRealtime(1);
         }
         preTimerObj.SetActive(false);
         Time.timeScale = 1f;
+        pauseMenuController.GameIsPaused = false;
     }
 
     private IEnumerator EndMatch(){
         Time.timeScale = 0f;
+        pauseMenuController.GameIsPaused = true;
         yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1f;
+        pauseMenuController.GameIsPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }

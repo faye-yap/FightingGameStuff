@@ -1103,6 +1103,7 @@ MonoBehaviour:
   PlayerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
   p1Character: 3
   p2Character: 3
+  pauseMenuController: {fileID: 2091012598}
   p1MaxHP: 0
   p1CurrentHP: 0
   p1: {fileID: 2123830963}
