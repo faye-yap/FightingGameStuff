@@ -8,7 +8,6 @@ obj/
 Temp/
 UserSettings/
 
-*.meta
 Assembly-CSharp.csproj
 Assembly-CSharp.csproj
 *.csproj
