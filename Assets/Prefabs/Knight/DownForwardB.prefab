@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4497350186965892382}
   - component: {fileID: 8617084142300536821}
   m_Layer: 9
-  m_Name: Knight Crouching Special
+  m_Name: DownForwardB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f8ae55bc3b910364589a72b3c1311a16, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0646b9f76201c1f47bb5e9fc6f9372e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,18 +116,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.46732962, y: -0.12688303}
+  m_Offset: {x: -2.6077623, y: -2.5411527}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 6}
+    oldSize: {x: 7.72, y: 7.41}
     newSize: {x: 5.12, y: 3.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7818363, y: 2.2252564}
+  m_Size: {x: 2.4689856, y: 1.5618968}
   m_EdgeRadius: 0
 --- !u!95 &8617084142300536821
 Animator:
@@ -139,7 +139,7 @@ Animator:
   m_GameObject: {fileID: 2714901490874840970}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5a54ca954ac57945b1eb0eb7aec1073, type: 2}
+  m_Controller: {fileID: 9100000, guid: a24cffbd63e0c7843b14ae5faa12084a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859917250100710848}
   - component: {fileID: 4152408647005048630}
-  - component: {fileID: 2002497700560926002}
+  - component: {fileID: 7945372526183047321}
   m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
@@ -195,7 +195,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.50103235, y: -2.0264807}
+  m_Offset: {x: 0.78356636, y: 0.5302969}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -206,22 +206,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4380207, y: 0.80539143}
+  m_Size: {x: 2.6671326, y: 1.0632517}
   m_EdgeRadius: 0
---- !u!61 &2002497700560926002
+--- !u!61 &7945372526183047321
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7615728630707487226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.49990374, y: -2.7031772}
+  m_Offset: {x: 1.5073248, y: 2.120926}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -232,5 +232,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4292926, y: 0.43584108}
+  m_Size: {x: 2.1471674, y: 1.9870975}
   m_EdgeRadius: 0

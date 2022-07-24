@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4497350186965892382}
   - component: {fileID: 8617084142300536821}
   m_Layer: 9
-  m_Name: Knight Jumping A
+  m_Name: JumpingA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

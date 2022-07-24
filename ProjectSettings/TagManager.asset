@@ -4,17 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< Updated upstream
-  - Ground
-  - Player1
-  - Player2
-  - Wall
-=======
   - Player2
   - Wall
   - Ground
   - Player1
->>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -26,7 +19,7 @@ TagManager:
   - PlayerWallbox
   - Hitbox
   - Hurtbox
-  - 
+  - Projectile
   - 
   - 
   - 
