@@ -19,8 +19,8 @@ public class PlayerSelectController : MonoBehaviour
     private PlayerSelectConstants.CharacterSelection[] charArray;
     private PlayerSelectConstants.CharacterSelection[] stageArray;
     private string thisPlayerTag;
-    private static bool P1selected = false;
-    private static bool P2selected = false;
+    public static bool P1selected = false;
+    public static bool P2selected = false;
 
     private static bool stageSelected = false;
     // Start is called before the first frame update
