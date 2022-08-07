@@ -10,14 +10,20 @@ public class PlayerSelectController : MonoBehaviour
     public PlayerSelectConstants playerSelectConstants;
     public PlayerSelectConstants.CharacterSelection p1Character;
     public PlayerSelectConstants.CharacterSelection p2Character;
+    public PlayerSelectConstants.CharacterSelection stage;
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
-    private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> spriteDict;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> charSpriteDict;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> stageSpriteDict;
     // private PlayerSelectConstants.CharacterSelection[] charArray = new PlayerSelectConstants.CharacterSelection[3];
     private PlayerSelectConstants.CharacterSelection[] charArray = new PlayerSelectConstants.CharacterSelection[4];
+    private PlayerSelectConstants.CharacterSelection[] stageArray = new PlayerSelectConstants.CharacterSelection[2];
+    // private PlayerSelectConstants.CharacterSelection[] stageArray = new PlayerSelectConstants.CharacterSelection[4];
     private string thisPlayerTag;
     private static bool P1selected = false;
     private static bool P2selected = false;
+
+    private static bool stageSelected = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,96 +31,134 @@ public class PlayerSelectController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         p1Character = playerSelectConstants.p1Character;
         p2Character = playerSelectConstants.p2Character;
-        spriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
+        stage = playerSelectConstants.stage;
+        charSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
             {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnSprite},
             {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightSprite},
             {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopSprite},
             {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookSprite},
         };
-        spriteDict.Keys.CopyTo(charArray, 0);
+        charSpriteDict.Keys.CopyTo(charArray, 0);
+        stageSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
+            // {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageSprite},
+            // {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageSprite},
+            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageSprite},
+            {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageSprite},
+        };
+        stageSpriteDict.Keys.CopyTo(stageArray, 0);
         if (thisPlayerTag == "Player1"){
-            spriteRenderer.sprite = spriteDict[p1Character];
+            spriteRenderer.sprite = charSpriteDict[p1Character];
         } else if (thisPlayerTag == "Player2"){
-            spriteRenderer.sprite = spriteDict[p2Character];
+            spriteRenderer.sprite = charSpriteDict[p2Character];
         }
         StartCoroutine(WaitForSelect());
     }
 
     void OnNavigate(InputValue value)
     {
-        int len = charArray.Length;
+        int charLen = charArray.Length;
+        int stageLen = stageArray.Length;
         
         movement = value.Get<Vector2>();
         if (movement.x > 0){
              if (thisPlayerTag == "Player1" && !P1selected) {
                 int index = Array.IndexOf(charArray, p1Character);
-                if (index == len - 1) {
+                if (index == charLen - 1) {
                     index = 0;
                 } else {
                     index += 1;
                 }
                 p1Character = charArray[index];
                 playerSelectConstants.p1Character = p1Character;
-                spriteRenderer.sprite = spriteDict[p1Character];
+                spriteRenderer.sprite = charSpriteDict[p1Character];
             } else if (thisPlayerTag == "Player2" && !P2selected) {
                 int index = Array.IndexOf(charArray, p2Character);
-                if (index == len - 1) {
+                if (index == charLen - 1) {
                     index = 0;
                 } else {
                     index += 1;
                 }
                 p2Character = charArray[index];
                 playerSelectConstants.p2Character = p2Character;
-                spriteRenderer.sprite = spriteDict[p2Character];
+                spriteRenderer.sprite = charSpriteDict[p2Character];
+            } else if (P1selected && P2selected){
+                int index = Array.IndexOf(stageArray, stage);
+                if (index == stageLen - 1) {
+                    index = 0;
+                } else {
+                    index += 1;
+                }
+                stage = stageArray[index];
+                playerSelectConstants.stage = stage;
+                // change stage sprite
             }
         }else if (movement.x < 0){
             if (thisPlayerTag == "Player1" && !P1selected) {
                 int index = Array.IndexOf(charArray, p1Character);
                 if (index == 0) {
-                    index = len - 1;
+                    index = charLen - 1;
                 } else {
                     index -= 1;
                 }
                 p1Character = charArray[index];
                 playerSelectConstants.p1Character = p1Character;
-                spriteRenderer.sprite = spriteDict[p1Character];
+                spriteRenderer.sprite = charSpriteDict[p1Character];
             } else if (thisPlayerTag == "Player2" && !P2selected) {
                 int index = Array.IndexOf(charArray, p2Character);
                 if (index == 0) {
-                    index = len - 1;
+                    index = charLen - 1;
                 } else {
                     index -= 1;
                 }
                 p2Character = charArray[index];
                 playerSelectConstants.p2Character = p2Character;
-                spriteRenderer.sprite = spriteDict[p2Character];
+                spriteRenderer.sprite = charSpriteDict[p2Character];
+            } else if (P1selected && P2selected){
+                int index = Array.IndexOf(stageArray, stage);
+                if (index == 0) {
+                    index = stageLen - 1;
+                } else {
+                    index -= 1;
+                }
+                stage = stageArray[index];
+                playerSelectConstants.stage = stage;
+                // change stage sprite
             }
         }
     }
 
     void OnSelect()
     {
-        if (thisPlayerTag == "Player1") {
+        if (thisPlayerTag == "Player1" && !P1selected) {
             P1selected = true;
-        } else {
+        } else if (thisPlayerTag == "Player2" && !P2selected) {
             P2selected = true;
+        } else if (P1selected && P2selected){
+            stageSelected = true;
         }
     }
 
     void OnCancel()
     {
-        if (thisPlayerTag == "Player1") {
+        if (thisPlayerTag == "Player1" && P1selected) {
             P1selected = false;
-        } else {
+        } else if (thisPlayerTag == "Player2" && P2selected) {
             P2selected = false;
-        }
+        } 
     }
 
     private IEnumerator WaitForSelect()
     {   
-        if (!(P1selected == true && P2selected == true)) {
-		    yield  return  new  WaitUntil(() =>  (P1selected == true && P2selected == true));
+        if (!(P1selected == true && P2selected == true && stageSelected == true)) {
+		    yield  return  new  WaitUntil(() =>  (P1selected == true && P2selected == true && stageSelected == true));
 	    }
+
+        LoadFight(); 
+    }
+
+    void LoadFight()
+    {   
+        stageSelected = false;
         P1selected = false;
         P2selected = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

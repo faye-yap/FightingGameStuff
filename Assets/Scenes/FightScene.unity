@@ -187,8 +187,9 @@ GameObject:
   - component: {fileID: 46519118}
   - component: {fileID: 46519117}
   - component: {fileID: 46519119}
+  - component: {fileID: 46519120}
   m_Layer: 0
-  m_Name: ChurchVer1
+  m_Name: Stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,6 +358,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &46519120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46519116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6266c31c55d384ba4ee3d711944642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
 --- !u!1 &48629256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,7 +2273,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1419140569

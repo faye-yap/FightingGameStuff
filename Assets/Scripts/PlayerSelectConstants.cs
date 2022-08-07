@@ -12,4 +12,11 @@ public class PlayerSelectConstants : ScriptableObject
 	public Sprite bishopSprite;
 	public Sprite rookSprite;
 	public Sprite knightSprite;
+
+	public CharacterSelection stage = CharacterSelection.Bishop;
+
+	public Sprite pawnStageSprite;
+	public Sprite bishopStageSprite;
+	public Sprite rookStageSprite;
+	public Sprite knightStageSprite;
 }
