@@ -13,8 +13,8 @@ public class PlayerSelectController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
     private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> spriteDict;
-    private PlayerSelectConstants.CharacterSelection[] charArray = new PlayerSelectConstants.CharacterSelection[3];
-    // private PlayerSelectConstants.CharacterSelection[] charArray = new PlayerSelectConstants.CharacterSelection[4];
+    // private PlayerSelectConstants.CharacterSelection[] charArray = new PlayerSelectConstants.CharacterSelection[3];
+    private PlayerSelectConstants.CharacterSelection[] charArray = new PlayerSelectConstants.CharacterSelection[4];
     private string thisPlayerTag;
     private static bool P1selected = false;
     private static bool P2selected = false;
@@ -28,12 +28,15 @@ public class PlayerSelectController : MonoBehaviour
         spriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
             {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnSprite},
             {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightSprite},
-            // {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopSprite},
+            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopSprite},
             {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookSprite},
         };
         spriteDict.Keys.CopyTo(charArray, 0);
-        spriteRenderer.sprite = spriteDict[p1Character];
-        spriteRenderer.sprite = spriteDict[p2Character];
+        if (thisPlayerTag == "Player1"){
+            spriteRenderer.sprite = spriteDict[p1Character];
+        } else if (thisPlayerTag == "Player2"){
+            spriteRenderer.sprite = spriteDict[p2Character];
+        }
         StartCoroutine(WaitForSelect());
     }
 
