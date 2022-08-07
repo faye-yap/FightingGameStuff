@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerSelectController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerSelectController : MonoBehaviour
     public static bool P2selected = false;
 
     private static bool stageSelected = false;
+    public TextMeshProUGUI playerText;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,13 @@ public class PlayerSelectController : MonoBehaviour
         } else if (thisPlayerTag == "Player2"){
             spriteRenderer.sprite = charSpriteDict[p2Character];
         }
+
+        if (playerText.text == "P1"){
+            playerText.color =  PlayerSelectController.P1selected ? Color.green : Color.red;
+        }if (playerText.text == "P2"){
+            playerText.color =  PlayerSelectController.P2selected ? Color.green : Color.red;
+        }
+
         StartCoroutine(WaitForSelect());
     }
 
@@ -130,8 +139,10 @@ public class PlayerSelectController : MonoBehaviour
     {
         if (thisPlayerTag == "Player1" && !P1selected) {
             P1selected = true;
+            playerText.color =  Color.green;
         } else if (thisPlayerTag == "Player2" && !P2selected) {
             P2selected = true;
+            playerText.color =  Color.green;
         } else if (P1selected && P2selected){
             stageSelected = true;
         }
@@ -141,8 +152,10 @@ public class PlayerSelectController : MonoBehaviour
     {
         if (thisPlayerTag == "Player1" && P1selected) {
             P1selected = false;
+            playerText.color =  Color.red;
         } else if (thisPlayerTag == "Player2" && P2selected) {
             P2selected = false;
+            playerText.color =  Color.red;
         } 
     }
 
