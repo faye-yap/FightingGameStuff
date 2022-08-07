@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -15,10 +16,8 @@ public class PlayerSelectController : MonoBehaviour
     private Vector2 movement;
     private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> charSpriteDict;
     private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> stageSpriteDict;
-    // private PlayerSelectConstants.CharacterSelection[] charArray = new PlayerSelectConstants.CharacterSelection[3];
-    private PlayerSelectConstants.CharacterSelection[] charArray = new PlayerSelectConstants.CharacterSelection[4];
-    private PlayerSelectConstants.CharacterSelection[] stageArray = new PlayerSelectConstants.CharacterSelection[2];
-    // private PlayerSelectConstants.CharacterSelection[] stageArray = new PlayerSelectConstants.CharacterSelection[4];
+    private PlayerSelectConstants.CharacterSelection[] charArray;
+    private PlayerSelectConstants.CharacterSelection[] stageArray;
     private string thisPlayerTag;
     private static bool P1selected = false;
     private static bool P2selected = false;
@@ -38,14 +37,14 @@ public class PlayerSelectController : MonoBehaviour
             {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopSprite},
             {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookSprite},
         };
-        charSpriteDict.Keys.CopyTo(charArray, 0);
+        charArray = charSpriteDict.Keys.ToArray();
         stageSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
             // {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageSprite},
             // {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageSprite},
             {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageSprite},
             {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageSprite},
         };
-        stageSpriteDict.Keys.CopyTo(stageArray, 0);
+        stageArray = stageSpriteDict.Keys.ToArray();
         if (thisPlayerTag == "Player1"){
             spriteRenderer.sprite = charSpriteDict[p1Character];
         } else if (thisPlayerTag == "Player2"){

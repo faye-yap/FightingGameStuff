@@ -19,4 +19,9 @@ public class PlayerSelectConstants : ScriptableObject
 	public Sprite bishopStageSprite;
 	public Sprite rookStageSprite;
 	public Sprite knightStageSprite;
+
+	public AudioClip pawnStageAudio;
+	public AudioClip bishopStageAudio;
+	public AudioClip rookStageAudio;
+	public AudioClip knightStageAudio;	
 }

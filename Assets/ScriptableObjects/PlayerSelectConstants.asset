@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSelectConstants
   m_EditorClassIdentifier: 
   p1Character: 3
-  p2Character: 3
+  p2Character: 0
   pawnSprite: {fileID: 21300000, guid: 787d45126751390418cdb856712947f0, type: 3}
   bishopSprite: {fileID: 21300000, guid: 7b48ec61321a09046bdeed086e6a870f, type: 3}
   rookSprite: {fileID: 21300000, guid: 8014e1965c117264c823adc18f787939, type: 3}
@@ -23,3 +23,7 @@ MonoBehaviour:
   bishopStageSprite: {fileID: 21300000, guid: 4a4b77875a00642409c596f9593aeb33, type: 3}
   rookStageSprite: {fileID: 21300000, guid: fec9859db56f7474c9bbb87dbeaaecb9, type: 3}
   knightStageSprite: {fileID: 0}
+  pawnStageAudio: {fileID: 0}
+  bishopStageAudio: {fileID: 8300000, guid: abe708287e9b6d049be21e13a2d8a877, type: 3}
+  rookStageAudio: {fileID: 8300000, guid: abe708287e9b6d049be21e13a2d8a877, type: 3}
+  knightStageAudio: {fileID: 0}
