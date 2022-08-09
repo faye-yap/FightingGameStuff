@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     public bool hasBeenHit = false;
     private bool isStandBlocking = false;
     private bool isCrouchBlocking = false;
-    private bool isThrowInvuln = false;
+    public bool isThrowInvuln = false;
     
     
 
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(setAirJump);
             canAirJump = true;
             canAirNormal = true;
-            isThrowInvuln = true;
+            //isThrowInvuln = true;
             setAirJump = MaxInt;
         }
 
@@ -236,7 +236,15 @@ public class PlayerController : MonoBehaviour
             if (!hasBeenHit) {                
                 hasBeenHit = true;
             }
-        }
+        } else if  (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Throwbox"){
+            
+            if(!isThrowInvuln){
+                //get thrown
+                //opponent playercontroller play throw hit animation
+                c.gameObject.GetComponentInParent<MoveBase>().ThrowHit();
+                
+            }
+        }   
     }
 
     
@@ -335,6 +343,7 @@ public class PlayerController : MonoBehaviour
             
             thisPlayerBody.AddForce(new Vector2(-characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed),ForceMode2D.Impulse);
             onGroundState = false;
+            isThrowInvuln = true;
 
             
         }
@@ -349,6 +358,7 @@ public class PlayerController : MonoBehaviour
         if (onGroundState && canDashJumpCancel){
             thisPlayerBody.AddForce(new Vector2(0, characterConstants.jumpSpeed), ForceMode2D.Impulse);            
             onGroundState = false;
+            isThrowInvuln = true;
             
         }
         isStandBlocking  = false;
@@ -358,7 +368,8 @@ public class PlayerController : MonoBehaviour
     private void RightJump(){
         if (onGroundState && canDashJumpCancel){
             thisPlayerBody.AddForce(new Vector2(characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed), ForceMode2D.Impulse);            
-            onGroundState = false;            
+            onGroundState = false;     
+            isThrowInvuln = true;       
         }
         if (gameObject.transform.localScale.x < 0){
             isStandBlocking = true;
@@ -667,14 +678,15 @@ public class PlayerController : MonoBehaviour
             throwButton.transform.localScale = new Vector3(1,1,1);
             characterConstants.Throw();             
             playerAnimator.Play("Throw");
-
-            
-
-
-
-
         }
 
+    }
+
+    
+
+    public void TakeDamageFromThrow(){
+        gameManager.TakeDamage(thisPlayerTag,opponentDamageValues["Throw"]);
+        playerAnimator.Play("KnockedDown");
     }
 
     public void OnPause(){

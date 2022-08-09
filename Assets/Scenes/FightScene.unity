@@ -1167,6 +1167,7 @@ MonoBehaviour:
   neutralSPrefab: {fileID: 2714901490874840970, guid: d4886b1d587372941beeddd1dd6ed2fd, type: 3}
   crouchingSPrefab: {fileID: 2714901490874840970, guid: b43f40939df1fce48ab5974d94e8678a, type: 3}
   forwardSPrefab: {fileID: 2714901490874840970, guid: 70c5c4bf7f33663499b60e55e668b9b7, type: 3}
+  throwPrefab: {fileID: 0}
 --- !u!1 &495361149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,6 +3248,7 @@ MonoBehaviour:
   neutralSPrefab: {fileID: 2714901490874840970, guid: 2fcb2cdb58b9ad145a94bd8d6d147258, type: 3}
   crouchingSPrefab: {fileID: 2714901490874840970, guid: 9f5b7832e42e89c4aa0a4c65df5fbc42, type: 3}
   forwardSPrefab: {fileID: 2714901490874840970, guid: aa147feebf1df7d429905b221a6a5b65, type: 3}
+  throwPrefab: {fileID: 870924708383080130, guid: 398318de07ebd234d9a2a2fcaacd86b9, type: 3}
 --- !u!1 &2066787389
 GameObject:
   m_ObjectHideFlags: 0

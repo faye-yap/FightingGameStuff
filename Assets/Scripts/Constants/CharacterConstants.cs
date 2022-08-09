@@ -27,6 +27,7 @@ public abstract class CharacterConstants : MonoBehaviour{
         {"Neutral S", 50},
         {"Crouching S", 50},
         {"Forward S", 50},
+        {"Throw",100}
     };
 
 

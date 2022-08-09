@@ -9,6 +9,8 @@ public class MoveBase : MonoBehaviour
     public List<Collider2D> collider2Ds;
     public int collidersInParent;
     private PlayerController playerController;
+    private PlayerController opponentController;
+    private Animator moveAnimator;
     
     void Awake()
     {
@@ -22,6 +24,9 @@ public class MoveBase : MonoBehaviour
         this.gameObject.tag = this.transform.parent.name;
         this.transform.GetChild(0).tag = this.gameObject.tag;
         playerController = GetComponentInParent<PlayerController>();
+        moveAnimator = GetComponentInParent<Animator>();
+        string opponentTag = this.transform.parent.GetComponent<PlayerController>().opponentTag;
+        opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -50,9 +55,20 @@ public class MoveBase : MonoBehaviour
     }
 
     private void OnDestroy() {
-        string opponentTag = this.transform.parent.GetComponent<PlayerController>().opponentTag;
-        GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>().hasBeenHit = false;
+        
+       opponentController.hasBeenHit = false;
     }
 
+    public void ThrowHit(){
+        moveAnimator.Play("ThrowHit");
+        opponentController.isIdle = false;
+    }
+
+
+   
     
+    private void ThrowDamage(){
+        opponentController.TakeDamageFromThrow();
+      
+    }
 }
