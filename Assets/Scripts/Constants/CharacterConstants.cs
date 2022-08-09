@@ -51,6 +51,8 @@ public abstract class CharacterConstants : MonoBehaviour{
     public abstract void CrouchingS();
     public abstract void ForwardS();
 
+    public abstract void Throw();
+
 
     public GameObject neutralAPrefab;
     public GameObject crouchingAPrefab;
@@ -62,6 +64,7 @@ public abstract class CharacterConstants : MonoBehaviour{
     public GameObject neutralSPrefab;
     public GameObject crouchingSPrefab;
     public GameObject forwardSPrefab;
+    public GameObject throwPrefab;
 
     
    
