@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
     public bool hasBeenHit = false;
     private bool isStandBlocking = false;
     private bool isCrouchBlocking = false;
+    private bool isThrowInvuln = false;
     
     
 
@@ -169,6 +170,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(setAirJump);
             canAirJump = true;
             canAirNormal = true;
+            isThrowInvuln = true;
             setAirJump = MaxInt;
         }
 
@@ -294,6 +296,7 @@ public class PlayerController : MonoBehaviour
             thisPlayerBody.AddForce(Vector2.right * characterConstants.backdashSpeed * movement.x,ForceMode2D.Impulse);
             groundBackdashBool = false;
             onGroundState = false;
+            isThrowInvuln = true;
             airActions -= 1;
         }
 
@@ -306,10 +309,11 @@ public class PlayerController : MonoBehaviour
             canAirJump = false;
             canAirNormal = false;
             thisPlayerBody.velocity = Vector2.zero;
-            airActions = 1;
+            airActions = 1; 
 
             isIdle = true;
             canDashJumpCancel = true;
+            isThrowInvuln = false;
         } 
     }
 
@@ -331,6 +335,7 @@ public class PlayerController : MonoBehaviour
             
             thisPlayerBody.AddForce(new Vector2(-characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed),ForceMode2D.Impulse);
             onGroundState = false;
+
             
         }
         if (gameObject.transform.localScale.x > 0){
@@ -643,6 +648,35 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void OnThrow(){
+
+        if(pauseMenuController.GameIsPaused){
+            return;
+        }
+        if(onGroundState && isIdle){
+
+            canACancel = false;
+            canBCancel = false;
+            canSCancel = false;
+            canDashJumpCancel = false;
+            isIdle = false;
+
+            //throw comes out
+            GameObject throwButton = Instantiate(characterConstants.throwPrefab,this.transform.position,Quaternion.identity);
+            throwButton.transform.SetParent(transform);
+            throwButton.transform.localScale = new Vector3(1,1,1);
+            characterConstants.Throw();             
+            playerAnimator.Play("Throw");
+
+            
+
+
+
+
+        }
+
+    }
+
     public void OnPause(){
         if (pauseMenuController.GameIsPaused){
             pauseMenuController.Resume();
@@ -650,6 +684,8 @@ public class PlayerController : MonoBehaviour
             pauseMenuController.Pause();
         }
     }
+
+
 
     
 }

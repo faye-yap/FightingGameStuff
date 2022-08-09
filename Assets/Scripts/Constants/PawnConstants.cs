@@ -57,4 +57,8 @@ public class PawnConstants : CharacterConstants
     {
         
     }
+    public override void Throw()
+    {
+       
+    }
 }
