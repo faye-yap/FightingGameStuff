@@ -262,7 +262,7 @@ public class PlayerController : MonoBehaviour
                         gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[moveName]);
                         playerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
                         isIdle = false;
-                        playerAnimator.Play("GotHit");
+                        playerAnimator.Play("KnockedDown");
                     }
                     //Debug.Log("B");
                     break;
