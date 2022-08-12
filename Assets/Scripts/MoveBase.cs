@@ -37,7 +37,7 @@ public class MoveBase : MonoBehaviour
         playerController.isIdle = true;
         playerController.canDashJumpCancel = true;
         playerController.playerAnimator.SetTrigger("Idle");
-        opponentController.hasBeenHit = false;
+        
         Destroy(this.gameObject);
     }
 
@@ -53,6 +53,7 @@ public class MoveBase : MonoBehaviour
         foreach (Collider2D collider2D in collider2Ds){
             collider2D.enabled = false;
         }
+        opponentController.hasBeenHit = false;
     }
 
  
