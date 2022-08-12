@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
     private bool isStandBlocking = false;
     private bool isCrouchBlocking = false;
     public bool isThrowInvuln = false;
+    private bool aButtonPressed = false;
+    private bool bButtonPressed = false;
+
     
     
 
@@ -188,15 +191,17 @@ public class PlayerController : MonoBehaviour
         if (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Hitbox"){
             //Debug.Log(c.ToString());
             //Debug.Log(opponentTag);
+            bool isBlocked;
             string moveName = c.transform.parent.name.Substring(0,c.transform.parent.name.Length - 7);
             PlayerController opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
+            
             switch(moveName.Substring(moveName.Length - 1, 1)){
                 case "A":                    
                     opponentController.canACancel = true;
                     opponentController.canBCancel = true;
                     opponentController.canSCancel = true;
-
-                    bool isBlocked;
+                    opponentController.GainMeter(5);
+                    
                     if (moveName.Contains("Neutral") && (isStandBlocking || isCrouchBlocking)){
                         isBlocked = true;
                     } else if (moveName.Contains("Crouching") && isCrouchBlocking) {
@@ -206,6 +211,7 @@ public class PlayerController : MonoBehaviour
                     } else {
                         isBlocked = false;
                     }
+                    
 
 
                     if (isBlocked) {
@@ -227,9 +233,66 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case "B":   
-                    //if not 3b                 
-                    opponentController.canSCancel = true;
+                    //if not 3b   
+                    
+                    if(!moveName.Contains("Down Forward")) {
+                        opponentController.GainMeter(10);
+                        opponentController.canSCancel = true;
+                    }
+                   
+                    if ((moveName.Contains("Neutral")||moveName.Contains("Down Forward")) && (isStandBlocking || isCrouchBlocking)){
+                        isBlocked = true;
+                    } else if (moveName.Contains("Crouching") && isCrouchBlocking) {
+                        isBlocked = true;
+                    } else if (moveName.Contains("Jumping") && isStandBlocking){
+                        isBlocked = true;
+                    } else {
+                        isBlocked = false;
+                    }
+                    if (isBlocked) {
+                        if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -4.0f,0);
+                        else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -3.0f,5f);
+                        if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 4.0f,0);
+                        playerAnimator.Play("Blocked");
+                        isIdle = false;
+                    } else {
+                        if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6.0f,0);
+                        else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5,9);
+                        if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 6.0f,0);
+                        gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[moveName]);
+                        playerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                        isIdle = false;
+                        playerAnimator.Play("GotHit");
+                    }
                     //Debug.Log("B");
+                    break;
+
+                case "S":
+                    opponentController.GainMeter(15);
+
+                    if ((moveName.Contains("Neutral")||moveName.Contains("Forward")) && (isStandBlocking || isCrouchBlocking)){
+                        isBlocked = true;
+                    } else if (moveName.Contains("Crouching") && isCrouchBlocking) {
+                        isBlocked = true;                    
+                    } else {
+                        isBlocked = false;
+                    }
+                    if (isBlocked) {
+                        if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5.0f,0);
+                        else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -4.0f,5f);
+                        if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 5.0f,0);
+                        playerAnimator.Play("Blocked");
+                        isIdle = false;
+                    } else {
+                        if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -7.0f,0);
+                        else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6,9);
+                        if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 7.0f,0);
+                        gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[moveName]);
+                        playerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                        isIdle = false;
+                        playerAnimator.Play("GotHit");
+                    }
+
                     break;
             }
 
@@ -239,6 +302,8 @@ public class PlayerController : MonoBehaviour
         } else if  (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Throwbox"){
             
             if(!isThrowInvuln){
+                PlayerController opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
+                opponentController.GainMeter(20);
                 //get thrown
                 //opponent playercontroller play throw hit animation
                 c.gameObject.GetComponentInParent<MoveBase>().ThrowHit();
@@ -532,6 +597,14 @@ public class PlayerController : MonoBehaviour
         if(pauseMenuController.GameIsPaused){
             return;
         }
+
+        aButtonPressed = true;
+        StartCoroutine(AButtonBuffer(gameManager.frameNumber + 5)); 
+        if(bButtonPressed){
+            OnSuper();
+            return;
+        }       
+
         if(onGroundState && (canACancel || isIdle)){
 
             if(transform.childCount > 2){
@@ -575,6 +648,14 @@ public class PlayerController : MonoBehaviour
         if(pauseMenuController.GameIsPaused){
             return;
         }
+
+        bButtonPressed = true;
+        StartCoroutine(BButtonBuffer(gameManager.frameNumber + 5));
+        if(aButtonPressed){
+            OnSuper();
+            return;
+        }
+
         if(onGroundState && (canBCancel || isIdle)){
 
             if(transform.childCount > 2){
@@ -592,8 +673,9 @@ public class PlayerController : MonoBehaviour
                 neutralB.transform.localScale = new Vector3(1,1,1);
                 characterConstants.NeutralB();            
                 playerAnimator.Play("Neutral B");
-            } else if (movement.x == transform.localScale.x/Mathf.Abs(transform.localScale.x) && movement.y == -1){
+            } else if (movement.x == transform.localScale.x/Mathf.Abs(transform.localScale.x) && movement.y == -1 && gameManager.meter[thisPlayerTag] >= 25){
                 GameObject downForwardB = Instantiate(characterConstants.downForwardBPrefab,this.transform.position,Quaternion.identity);
+                gameManager.UseMeter(thisPlayerTag,25);
                 downForwardB.transform.SetParent(transform);
                 downForwardB.transform.localScale = new Vector3(1,1,1);
                 characterConstants.DownForwardB();            
@@ -659,6 +741,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void OnSuper(){
+        Debug.Log("Super");
+        
+        for (int i = 2; i < transform.childCount; i++){
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        playerAnimator.Play("Super");
+        characterConstants.Super();
+        isIdle = true;
+
+
+    }
+
     public void OnThrow(){
 
         if(pauseMenuController.GameIsPaused){
@@ -682,11 +777,33 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    bool FrameNumberPassed(int endFrame){
+        return gameManager.frameNumber > endFrame;
+    }
+
+    IEnumerator AButtonBuffer(int endFrame){
+        
+        yield return new WaitUntil(() => FrameNumberPassed(endFrame));
+        print("A buffer ended");
+        aButtonPressed = false;
+        
+    }
+
+    IEnumerator BButtonBuffer(int endFrame){
+        yield return new WaitUntil(() => FrameNumberPassed(endFrame));
+        print("B buffer ended");
+        bButtonPressed = false;
+    }
+
     
 
     public void TakeDamageFromThrow(){
         gameManager.TakeDamage(thisPlayerTag,opponentDamageValues["Throw"]);
         playerAnimator.Play("KnockedDown");
+    }
+    
+    public void GainMeter(int meterGain){
+        gameManager.GainMeter(thisPlayerTag,meterGain);
     }
 
     public void OnPause(){
