@@ -37,6 +37,7 @@ public class MoveBase : MonoBehaviour
         playerController.isIdle = true;
         playerController.canDashJumpCancel = true;
         playerController.playerAnimator.SetTrigger("Idle");
+        opponentController.hasBeenHit = false;
         Destroy(this.gameObject);
     }
 
@@ -54,10 +55,7 @@ public class MoveBase : MonoBehaviour
         }
     }
 
-    private void OnDestroy() {
-        
-       opponentController.hasBeenHit = false;
-    }
+ 
 
     public void ThrowHit(){
         moveAnimator.Play("ThrowHit");

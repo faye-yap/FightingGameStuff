@@ -11,3 +11,5 @@ UserSettings/
 Assembly-CSharp.csproj
 *.csproj
 cspell.json
+*.meta
+*.png.meta

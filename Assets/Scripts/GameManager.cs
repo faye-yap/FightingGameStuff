@@ -12,16 +12,30 @@ public class GameManager : MonoBehaviour
     public PlayerSelectConstants.CharacterSelection p1Character;
     public PlayerSelectConstants.CharacterSelection p2Character;
     public PauseMenuController pauseMenuController;
-    public int p1MaxHP; 
+    [HideInInspector]
+    public int p1MaxHP;
+    [HideInInspector] 
     public int p1CurrentHP;
+    [HideInInspector]
+    public Dictionary<string,int> meter = new Dictionary<string, int>(){{"Player1", 0},{ "Player2", 0}};
     public Transform p1;
     private Vector3 p1StartPos;
     public Transform p1HPUI;
+    public Transform p1MeterUI;
+    public Transform p1MeterNumberUI;
+    private TextMeshProUGUI p1MeterNumber;
+    [HideInInspector]
     public int p2MaxHP;
+    [HideInInspector]
     public int p2CurrentHP;
+    [HideInInspector]
+    
     public Transform p2;
     private Vector3 p2StartPos;
     public Transform p2HPUI;
+    public Transform p2MeterUI;
+    public Transform p2MeterNumberUI;
+    private TextMeshProUGUI p2MeterNumber;
     [HideInInspector]
     public int frameNumber;
     private int timeRemaining = 99;
@@ -40,6 +54,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameFinishedPrefab;
 
     
+
+    
     
     void Start()
     {
@@ -52,6 +68,8 @@ public class GameManager : MonoBehaviour
         p2StartPos = p2.transform.position;
         p1Character = PlayerSelectConstants.p1Character;
         p2Character = PlayerSelectConstants.p2Character;
+        p1MeterNumber = p1MeterNumberUI.GetComponent<TextMeshProUGUI>();
+        p2MeterNumber = p2MeterNumberUI.GetComponent<TextMeshProUGUI>();
         StartCoroutine(PreRoundTimer());
     }
 
@@ -93,6 +111,50 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void GainMeter(string player, int meterGain){
+        if (player == "Player1"){
+            meter["Player1"] += meterGain;
+            if(meter["Player1"] > 100) meter["Player1"] = 100;
+
+            int newMeterNumber = meter["Player1"]/25;
+            float newScale = (float) (meter["Player1"]%25)/ (float) 25.0f;
+            if(meter["Player1"] == 100) newScale = 1;
+            p1MeterNumber.text = newMeterNumber.ToString();            
+            p1MeterUI.localScale = new Vector3(newScale,1,1);
+        } else {
+            meter["Player2"] += meterGain;
+            if(meter["Player2"] > 100) meter["Player2"] = 100;
+
+            int newMeterNumber = meter["Player2"]/25;
+            float newScale = (float) (meter["Player2"] % 25)/ (float) 25.0f;
+            if(meter["Player2"] == 100) newScale = 1;
+            p2MeterNumber.text = newMeterNumber.ToString();            
+            p2MeterUI.localScale = new Vector3(newScale,1,1);
+        }
+    }
+
+    public void UseMeter(string player, int meterLoss){
+        if (player == "Player1"){
+            meter["Player1"] -= meterLoss;
+            if(meter["Player1"] < 0) meter["Player1"] = 0;
+
+            int newMeterNumber = meter["Player1"]/25;
+            float newScale = (float) (meter["Player1"]%25)/ (float) 25.0f;
+            
+            p1MeterNumber.text = newMeterNumber.ToString();            
+            p1MeterUI.localScale = new Vector3(newScale,1,1);
+        } else {
+            meter["Player2"] -= meterLoss;
+            if(meter["Player2"] < 0) meter["Player2"] = 0;
+
+            int newMeterNumber = meter["Player2"]/25;
+            float newScale = (float) (meter["Player2"] % 25)/ (float) 25.0f;
+            
+            p2MeterNumber.text = newMeterNumber.ToString();            
+            p2MeterUI.localScale = new Vector3(newScale,1,1);
+        }
+    }
+
     public void EndRound(){
         //round win animation
 
@@ -114,6 +176,12 @@ public class GameManager : MonoBehaviour
         p2.transform.position = p2StartPos;
         p1HPUI.localScale = new Vector3(1,1,1);
         p2HPUI.localScale = new Vector3(1,1,1);
+        meter["Player1"] = 0;
+        meter["Player2"] = 0;
+        p1MeterUI.localScale = new Vector3(0,1,1);
+        p2MeterUI.localScale = new Vector3(0,1,1);
+        p1MeterNumber.text = "0";
+        p2MeterNumber.text = "0"; 
         frameNumber = 0;
         timeRemaining = 99;
         timerText.text = timeRemaining.ToString();

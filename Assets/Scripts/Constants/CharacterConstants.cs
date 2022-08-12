@@ -17,7 +17,7 @@ public abstract class CharacterConstants : MonoBehaviour{
     public int framesUntilAirJump = 5;
      //Damage 
     public Dictionary<string,int> damageValues = new Dictionary<string, int>(){
-        {"Neutral A", 50},
+        {"Neutral A", 10},
         {"Crouching A", 50},
         {"Jumping A", 50},
         {"Neutral B", 50},
@@ -53,6 +53,7 @@ public abstract class CharacterConstants : MonoBehaviour{
     public abstract void ForwardS();
 
     public abstract void Throw();
+    public abstract void Super();
 
 
     public GameObject neutralAPrefab;

@@ -63,4 +63,8 @@ public class KnightConstants : CharacterConstants
     {
     
     }
+    public override void Super()
+    {
+        
+    }
 }
