@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859917250100710848}
   - component: {fileID: 4152408647005048630}
-  - component: {fileID: 7945372526183047321}
+  - component: {fileID: 2935639157414181832}
   m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
@@ -208,8 +208,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6671326, y: 1.0632517}
   m_EdgeRadius: 0
---- !u!61 &7945372526183047321
-BoxCollider2D:
+--- !u!60 &2935639157414181832
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -218,10 +218,10 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.5073248, y: 2.120926}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -231,6 +231,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.1471674, y: 1.9870975}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.6870883, y: 2.0993934}
+      - {x: 2.3210137, y: 3.4544046}
+      - {x: 0.9964603, y: 2.336569}
+      - {x: 0.5089215, y: 2.1614504}
+      - {x: 0.13252944, y: 1.1918565}
+      - {x: 1.067995, y: 1.1918566}
+      - {x: 2.2582943, y: 1.1093667}
