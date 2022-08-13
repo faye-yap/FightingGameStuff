@@ -244,7 +244,7 @@ SpriteRenderer:
   m_Size: {x: 12, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &46519118
@@ -1188,7 +1188,6 @@ MonoBehaviour:
   rookCharacter: {fileID: 0}
   hasBeenHit: 0
   isThrowInvuln: 0
-  meter: 0
 --- !u!114 &415806214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4589,4 +4588,3 @@ MonoBehaviour:
   rookCharacter: {fileID: 0}
   hasBeenHit: 0
   isThrowInvuln: 0
-  meter: 0
