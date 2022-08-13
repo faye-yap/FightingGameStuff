@@ -41,20 +41,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6306706990535534836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eab507d0188618e42b582dbbb7fda76c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b2d375ec6d9a4945aecfcf5f9a43d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1000
-  moveSpeed: 0
-  dashSpeed: 0
-  airdashSpeed: 0
-  jumpSpeed: 0
-  backdashDuration: 0
-  backdashSpeed: 0
-  airDashDuration: 0
+  moveSpeed: 5
+  dashSpeed: 15
+  airdashSpeed: 8
+  jumpSpeed: 15
+  backdashDuration: 15
+  backdashSpeed: 8
+  airDashDuration: 20
   framesUntilAirJump: 5
   neutralAPrefab: {fileID: 2714901490874840970, guid: 5fd9fbbf22a34194088d98ec6681e829, type: 3}
-  crouchingAPrefab: {fileID: 2714901490874840970, guid: f5083a2e801733947bda5cb087d18717, type: 3}
+  crouchingAPrefab: {fileID: 2714901490874840970, guid: 54b80c5300693a5469f1b3cf746219e4, type: 3}
   jumpingAPrefab: {fileID: 2714901490874840970, guid: ed15e15c83b5fd0499c670125a51b681, type: 3}
   neutralBPrefab: {fileID: 2714901490874840970, guid: 59e00a64c0665db49905dff048f2271f, type: 3}
   crouchingBPrefab: {fileID: 2714901490874840970, guid: e73a5ee039885264d84c7772cead8c6b, type: 3}
@@ -64,4 +64,4 @@ MonoBehaviour:
   crouchingSPrefab: {fileID: 2714901490874840970, guid: d5162aa41018f114c887f7ebb38b13d0, type: 3}
   forwardSPrefab: {fileID: 2714901490874840970, guid: 79c734e7803a21e449b518d010467189, type: 3}
   throwPrefab: {fileID: 870924708383080130, guid: efb1c3e9ce0b40b48b05a79003d9bc54, type: 3}
-  superPrefab: {fileID: 2714901490874840970, guid: df3012cc7ba511444a59065ce758c996, type: 3}
+  superPrefab: {fileID: 2714901490874840970, guid: 2b12c54ebac345342a429e6f2be849bf, type: 3}

@@ -54,7 +54,7 @@ MonoBehaviour:
   airDashDuration: 20
   framesUntilAirJump: 5
   neutralAPrefab: {fileID: 2714901490874840970, guid: 02690fcd89be2a345a99355cb33effde, type: 3}
-  crouchingAPrefab: {fileID: 2714901490874840970, guid: ee14a71ea5807244088fcbd4872618d8, type: 3}
+  crouchingAPrefab: {fileID: 2714901490874840970, guid: 8fd81af279ff8314abf40775fe428046, type: 3}
   jumpingAPrefab: {fileID: 2714901490874840970, guid: 80f5cd20e3a85384e8df3906a9090b88, type: 3}
   neutralBPrefab: {fileID: 2714901490874840970, guid: ca5d328ab6175a243abdb5f8d1bbab3d, type: 3}
   crouchingBPrefab: {fileID: 2714901490874840970, guid: cd02a3e132a934b49875a414cc44ce04, type: 3}
@@ -64,4 +64,4 @@ MonoBehaviour:
   crouchingSPrefab: {fileID: 2714901490874840970, guid: b43f40939df1fce48ab5974d94e8678a, type: 3}
   forwardSPrefab: {fileID: 2714901490874840970, guid: 70c5c4bf7f33663499b60e55e668b9b7, type: 3}
   throwPrefab: {fileID: 870924708383080130, guid: 07088d4890f7e174b9bac0cbd1bcc478, type: 3}
-  superPrefab: {fileID: 2714901490874840970, guid: a2e46f46dbde6fc4aaa6b256846d32c4, type: 3}
+  superPrefab: {fileID: 2714901490874840970, guid: 2a53d2220b5910f48a1f7a693030c33a, type: 3}
