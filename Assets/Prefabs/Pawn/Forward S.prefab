@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 859917250100710848}
   - component: {fileID: 4152408647005048630}
   m_Layer: 8
-  m_Name: Hitbox
+  m_Name: TeleportBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.5840402, y: -0.025823116}
+  m_Offset: {x: 3.183679, y: -1.7518187}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -205,5 +205,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9256337, y: 2.628058}
+  m_Size: {x: 2.0164747, y: 2.0830069}
   m_EdgeRadius: 0
