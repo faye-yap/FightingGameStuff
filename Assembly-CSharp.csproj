@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\InstantiateProjectile.cs" />
+     <Compile Include="Assets\Scripts\MainMenuCharacterController.cs" />
      <Compile Include="Assets\Scripts\PlayerControllers\Hitstop.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\StageController.cs" />
