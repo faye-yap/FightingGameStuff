@@ -1173,6 +1173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opponentTag: 
+  thisPlayerTag: 
   playerAnimator: {fileID: 0}
   isIdle: 1
   canDashJumpCancel: 1
@@ -1366,6 +1367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a9f4b6bea147049af7142896ce4fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p1Controller: {fileID: 0}
+  p2Controller: {fileID: 0}
   PlayerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
   p1Character: 3
   p2Character: 3
@@ -1376,12 +1379,14 @@ MonoBehaviour:
   p1HPUI: {fileID: 1471920192}
   p1MeterUI: {fileID: 1259981272}
   p1MeterNumberUI: {fileID: 73450809}
+  p1ComboCounter: {fileID: 0}
   p2MaxHP: 0
   p2CurrentHP: 0
   p2: {fileID: 415806218}
   p2HPUI: {fileID: 48629257}
   p2MeterUI: {fileID: 1781655153}
   p2MeterNumberUI: {fileID: 1144210128}
+  p2ComboCounter: {fileID: 0}
   frameNumber: 0
   timer: {fileID: 1581428624}
   preTimerObj: {fileID: 1206211834}
@@ -4384,6 +4389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opponentTag: 
+  thisPlayerTag: 
   playerAnimator: {fileID: 0}
   isIdle: 1
   canDashJumpCancel: 1
