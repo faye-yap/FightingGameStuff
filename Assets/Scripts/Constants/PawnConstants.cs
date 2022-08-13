@@ -55,9 +55,42 @@ public class PawnConstants : CharacterConstants
         
     }
 
+    IEnumerator PawnTeleport(){
+        Transform playerTransform = transform.GetComponentInParent<PlayerController>().transform;
+        Debug.Log(gameObject.name);
+        Transform pawnTransform = playerTransform.GetChild(1);
+        Transform noteTransform = playerTransform.GetChild(3);
+        Vector3 notePos = noteTransform.position;
+       
+        float facingDirection = playerTransform.localScale.x/Mathf.Abs(playerTransform.localScale.x);
+        
+        
+        SpriteRenderer pawnSprite = pawnTransform.GetComponent<SpriteRenderer>();
+        Debug.Log(pawnSprite);
+        for (int frame = 0; frame < 45; frame++){
+            if(frame >= 15 && frame < 22){
+                Color c =  pawnSprite.color;
+                c.a -= 0.125f;
+                pawnSprite.color = c;
+            } else if (frame >= 22 && frame < 26){
+                playerTransform.Translate( new Vector3(facingDirection * 1.5f,0,0));
+                noteTransform.SetPositionAndRotation(notePos,Quaternion.identity);
+                if(playerTransform.localScale.x * facingDirection < 0){
+                    noteTransform.localScale = new Vector3(-1,1,1);
+                }
+                    
+                
+            } else if (frame >= 26){
+                Color c =  pawnSprite.color;
+                c.a += 0.125f;
+                pawnSprite.color = c;
+            }
+            yield return null;
+        }
+    }
     public override void ForwardS()
     {
-        
+        StartCoroutine(PawnTeleport());
     }
     public override void Throw()
     {
