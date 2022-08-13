@@ -24,18 +24,8 @@ public class StageController : MonoBehaviour
             {PlayerSelectConstants.CharacterSelection.Rook, (playerSelectConstants.rookStageAnimation, playerSelectConstants.rookStageAudio, playerSelectConstants.rookStageSpeed)},
         };
         animator.runtimeAnimatorController = animatorOverrideController;
-        animatorOverrideController["stage_anim"] = stageAnimationDict[stage].Item1;
+        animatorOverrideController["blahaj_living_room"] = stageAnimationDict[stage].Item1;
         audioSource.clip = stageAnimationDict[stage].Item2;
         animator.speed = stageAnimationDict[stage].Item3;
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     if (stage != playerSelectConstants.stage){
-    //         stage = playerSelectConstants.stage;
-    //         spriteRenderer.sprite = stageSpriteDict[stage].Item1;
-    //         audioSource.clip = stageSpriteDict[stage].Item2;
-    //     }
-    // }
 }
