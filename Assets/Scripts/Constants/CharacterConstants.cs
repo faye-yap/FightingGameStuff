@@ -27,7 +27,8 @@ public abstract class CharacterConstants : MonoBehaviour{
         {"Neutral S", 50},
         {"Crouching S", 50},
         {"Forward S", 50},
-        {"Throw",100}
+        {"Throw",100},
+        {"Super",250}
     };
 
  
@@ -68,6 +69,7 @@ public abstract class CharacterConstants : MonoBehaviour{
     public GameObject crouchingSPrefab;
     public GameObject forwardSPrefab;
     public GameObject throwPrefab;
+    public GameObject superPrefab;
 
     
    

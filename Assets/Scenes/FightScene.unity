@@ -245,7 +245,7 @@ SpriteRenderer:
   m_Size: {x: 12.002931, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &46519118
@@ -382,7 +382,7 @@ Animator:
   m_GameObject: {fileID: 46519116}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f983889f9454d95428aa62c9604d271c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 57c4d2b147745094b83dc9d304c4012c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1175,6 +1175,7 @@ GameObject:
   - component: {fileID: 415806214}
   - component: {fileID: 415806212}
   - component: {fileID: 415806219}
+  - component: {fileID: 415806220}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player2
@@ -1212,7 +1213,7 @@ MonoBehaviour:
   pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
   bishopConstants: {fileID: 7791329279251805837, guid: fed1b16d5ce294946badbec4baa816e9, type: 3}
   knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
-  rookConstants: {fileID: 1541196981983895679, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
+  rookConstants: {fileID: 4024610757659896552, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
   hasBeenHit: 0
   isThrowInvuln: 0
 --- !u!114 &415806214
@@ -1289,9 +1290,9 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415806211}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 160e2417efdbb0f49a82e46ed7db031b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1308,6 +1309,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 2.2}
   m_EdgeRadius: 0
+--- !u!60 &415806220
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415806211}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.1}
+      - {x: -0.4, y: -1}
+      - {x: 0, y: -2.1}
+      - {x: 0.4, y: -1}
 --- !u!1 &448694719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3175,7 +3205,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9482ec20d6051cd4db7f5d3a9599681e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -4606,6 +4636,7 @@ GameObject:
   - component: {fileID: 2123830960}
   - component: {fileID: 2123830964}
   - component: {fileID: 2123830967}
+  - component: {fileID: 2123830968}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player1
@@ -4641,9 +4672,9 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123830959}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 160e2417efdbb0f49a82e46ed7db031b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4736,6 +4767,35 @@ MonoBehaviour:
   pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
   bishopConstants: {fileID: 7791329279251805837, guid: fed1b16d5ce294946badbec4baa816e9, type: 3}
   knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
-  rookConstants: {fileID: 1541196981983895679, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
+  rookConstants: {fileID: 4024610757659896552, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
   hasBeenHit: 0
   isThrowInvuln: 0
+--- !u!60 &2123830968
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123830959}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.1}
+      - {x: -0.4, y: -1}
+      - {x: 0, y: -2.1}
+      - {x: 0.4, y: -1}

@@ -64,3 +64,4 @@ MonoBehaviour:
   crouchingSPrefab: {fileID: 2714901490874840970, guid: 9e11074ffd1b395429883a4752c8e840, type: 3}
   forwardSPrefab: {fileID: 2714901490874840970, guid: 3ac526cd816ace34d8069c47992fae35, type: 3}
   throwPrefab: {fileID: 870924708383080130, guid: e8d4db7a8fd2a6b46abbd5c77e526ee5, type: 3}
+  superPrefab: {fileID: 2714901490874840970, guid: 8c5276308dde6da45b12887617e4fe27, type: 3}
