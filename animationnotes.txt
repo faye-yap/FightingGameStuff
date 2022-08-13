@@ -9,11 +9,16 @@ no main body animation for neutral special whiff either
 6s does not teleport yet, to be fixed in code
 grab is definitely implemented in an odd fashion
 apparently crouch is weird, might be a state machine issue if the knight one works fine
+check prefab spawn locations on a case-by-case basis, probably really finnicky with pawn
 
 Bishop:
-crouching S frame data is way off due to the animation requirements (needs testing to see if all the parts work properly)
+crouching S frame data is way off due to the animation requirements (needs testing to see if all the parts work properly with the current offsets)
 neutral A: can't possibly come out as fast as suggested
 book invulnerability is a bit inconsistent
+99% sure the bishop super should have its prefab x-axis offset = 12
+bishop grab whiff / success has no book sprite in the animations, not sure where to put it, also no "main body" animation (if any is required)
+neutral s: the eye has a hitbox, if it's too op you can remove it
+need to line up the book with the move, can just change x/y offsets of the move
 
 check:
 are the prefabs coming out of the right place? can be fixed by: 
