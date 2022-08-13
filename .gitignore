@@ -13,6 +13,4 @@ Assembly-CSharp.csproj
 *.csproj
 .sln
 cspell.json
-*.meta
-*.png.meta
 *.unity
