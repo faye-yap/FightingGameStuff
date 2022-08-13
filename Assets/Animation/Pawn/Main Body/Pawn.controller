@@ -594,19 +594,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Crouching
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsJumping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -682,8 +682,7 @@ AnimatorState:
   m_Name: Walking
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -6991698316110154705}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -972,7 +971,7 @@ AnimatorStateMachine:
     m_Position: {x: 1030, y: 340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4023873851306479713}
-    m_Position: {x: 1310, y: 120, z: 0}
+    m_Position: {x: 1300, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -887526252099537718}
     m_Position: {x: 40, y: 350, z: 0}
@@ -993,7 +992,7 @@ AnimatorStateMachine:
     m_Position: {x: 550, y: -260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 762196291993073000}
-    m_Position: {x: 979.46387, y: -266.94067, z: 0}
+    m_Position: {x: 980, y: -260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -404176886219649966}
     m_Position: {x: 180, y: -190, z: 0}
