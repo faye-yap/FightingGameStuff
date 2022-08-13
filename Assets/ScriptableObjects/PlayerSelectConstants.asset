@@ -27,7 +27,7 @@ MonoBehaviour:
   bishopStageSpeed: 0.6
   rookStageSpeed: 1
   knightStageSpeed: 0.4
-  pawnStageAudio: {fileID: 0}
+  pawnStageAudio: {fileID: 8300000, guid: b8589c27fb0870d4e9254fafed0f14e1, type: 3}
   bishopStageAudio: {fileID: 8300000, guid: abe708287e9b6d049be21e13a2d8a877, type: 3}
-  rookStageAudio: {fileID: 8300000, guid: abe708287e9b6d049be21e13a2d8a877, type: 3}
-  knightStageAudio: {fileID: 0}
+  rookStageAudio: {fileID: 8300000, guid: bdbb4f5fe4ec6374d80b590e6151edde, type: 3}
+  knightStageAudio: {fileID: 8300000, guid: b8589c27fb0870d4e9254fafed0f14e1, type: 3}
