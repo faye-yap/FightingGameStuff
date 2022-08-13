@@ -22,25 +22,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Enabled
-    path: Hurtbox
-    classID: 60
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -52,7 +33,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Jumping Hurtbox
+    path: Jump Hurtbox
     classID: 60
     script: {fileID: 0}
   - curve:
@@ -71,15 +52,19 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Hurtbox
-    classID: 61
+    path: Default Hurtbox
+    classID: 60
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 28f9c58c2ed7e1b48b54de0b57cb76d7, type: 3}
-    - time: 0.28333333
-      value: {fileID: 21300000, guid: 28f9c58c2ed7e1b48b54de0b57cb76d7, type: 3}
+      value: {fileID: 21300000, guid: 19094efc37c03e74b9de675cb587e79f, type: 3}
+    - time: 0.1
+      value: {fileID: 21300000, guid: 343f4e771131fa040ab22912ed26dbbe, type: 3}
+    - time: 0.18333334
+      value: {fileID: 21300000, guid: 19094efc37c03e74b9de675cb587e79f, type: 3}
+    - time: 0.3
+      value: {fileID: 21300000, guid: 343f4e771131fa040ab22912ed26dbbe, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -92,24 +77,17 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 566259038
+      path: 3214211884
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 60
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3759227669
+      path: 787513785
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 60
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 566259038
-      attribute: 3305885265
-      script: {fileID: 0}
-      typeID: 61
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
@@ -120,14 +98,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 28f9c58c2ed7e1b48b54de0b57cb76d7, type: 3}
-    - {fileID: 21300000, guid: 28f9c58c2ed7e1b48b54de0b57cb76d7, type: 3}
+    - {fileID: 21300000, guid: 19094efc37c03e74b9de675cb587e79f, type: 3}
+    - {fileID: 21300000, guid: 343f4e771131fa040ab22912ed26dbbe, type: 3}
+    - {fileID: 21300000, guid: 19094efc37c03e74b9de675cb587e79f, type: 3}
+    - {fileID: 21300000, guid: 343f4e771131fa040ab22912ed26dbbe, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.3
+    m_StopTime: 0.3166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -148,25 +128,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Enabled
-    path: Hurtbox
-    classID: 60
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -178,7 +139,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Jumping Hurtbox
+    path: Jump Hurtbox
     classID: 60
     script: {fileID: 0}
   - curve:
@@ -197,8 +158,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Hurtbox
-    classID: 61
+    path: Default Hurtbox
+    classID: 60
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0

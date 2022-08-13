@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4189160775911748019}
   - component: {fileID: 4497350186965892382}
   - component: {fileID: 8617084142300536821}
+  - component: {fileID: 5875959998377981877}
   m_Layer: 9
   m_Name: Jumping B
   m_TagString: Untagged
@@ -110,13 +111,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2714901490874840970}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15344357, y: -0.15344334}
+  m_Offset: {x: -0.75791025, y: 0.5930911}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -127,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.9362931, y: 2.1754985}
+  m_Size: {x: 1.1828413, y: 1.1478018}
   m_EdgeRadius: 0
 --- !u!95 &8617084142300536821
 Animator:
@@ -149,6 +150,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5875959998377981877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714901490874840970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a5e1610e3291e4eb623b129c179adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2714901490874840970, guid: 68b8fc955234bad4e914bab23f1f1436, type: 3}
+  initialVelocityMultiplier: 0.025
 --- !u!1 &7615728630707487226
 GameObject:
   m_ObjectHideFlags: 0
