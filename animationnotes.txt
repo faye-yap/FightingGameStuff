@@ -1,0 +1,18 @@
+Knight:
+some minor differences in frame data, but nothing major
+should be fully functional
+
+Pawn:
+added flashing colours on grab success for 3b, lasso awkwardly fades into oblivion on miss, no main body animation though
+no main body animation for neutral special whiff either
+2s stays out longer but has longer recovery time, animation looked weird otherwise
+6s does not teleport yet, to be fixed in code
+grab is definitely implemented in an odd fashion
+apparently crouch is weird, might be a state machine issue if the knight one works fine
+
+
+check:
+are the prefabs coming out of the right place? can be fixed by: 
+- exporting the sprites with better consistency
+- adding offset to the prefab on a case-by-case basis
+- changing the relative position at runtime via code
