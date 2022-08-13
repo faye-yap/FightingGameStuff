@@ -1,6 +1,6 @@
 Knight:
 some minor differences in frame data, but nothing major
-should be fully functional
+should be fully functional, including super, but no crouchblock?
 
 Pawn:
 added flashing colours on grab success for 3b, lasso awkwardly fades into oblivion on miss, no main body animation though
@@ -10,9 +10,14 @@ no main body animation for neutral special whiff either
 grab is definitely implemented in an odd fashion
 apparently crouch is weird, might be a state machine issue if the knight one works fine
 
+Bishop:
+crouching S frame data is way off due to the animation requirements (needs testing to see if all the parts work properly)
 
 check:
 are the prefabs coming out of the right place? can be fixed by: 
 - exporting the sprites with better consistency
 - adding offset to the prefab on a case-by-case basis
 - changing the relative position at runtime via code
+
+stretch improvements to try:
+- modify block / crouchblock hurtboxes for all

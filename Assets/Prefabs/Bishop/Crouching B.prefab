@@ -158,8 +158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 859917250100710848}
-  - component: {fileID: 4152408647005048630}
-  - component: {fileID: 7807529679212014690}
+  - component: {fileID: 9201590039077952334}
   m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
@@ -182,33 +181,7 @@ Transform:
   m_Father: {fileID: 492074201612723306}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4152408647005048630
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7615728630707487226}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -1.9410787, y: 0.9328991}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0933919, y: 0.35082108}
-  m_EdgeRadius: 0
---- !u!60 &7807529679212014690
+--- !u!60 &9201590039077952334
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,16 +206,6 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.018706322, y: 0.13132125}
-      - {x: -1.0132155, y: 0.63270944}
-      - {x: -1.9009461, y: 0.66364235}
-      - {x: -2.478182, y: 0.35889113}
-      - {x: -2.4823341, y: -0.2830824}
-      - {x: -2.080074, y: -0.6626798}
-      - {x: -1.5630052, y: -0.7203607}
-      - {x: -1.3372234, y: -0.32894015}
-      - {x: -1.6870509, y: 0.062079318}
-      - {x: -1.3621244, y: 0.36734483}
-      - {x: -0.35535175, y: -0.024323344}
-      - {x: 0.43580294, y: -0.56837827}
-      - {x: 0.6217613, y: -0.47622484}
+    - - {x: -0.53266525, y: -0.08197693}
+      - {x: -2.9319065, y: 0.29237115}
+      - {x: -2.9541225, y: -0.35144824}
