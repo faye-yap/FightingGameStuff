@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSelectConstants
   m_EditorClassIdentifier: 
   p1Character: 3
-  p2Character: 0
+  p2Character: 2
   pawnSprite: {fileID: 21300000, guid: 787d45126751390418cdb856712947f0, type: 3}
   bishopSprite: {fileID: 21300000, guid: 7b48ec61321a09046bdeed086e6a870f, type: 3}
   rookSprite: {fileID: 21300000, guid: 8014e1965c117264c823adc18f787939, type: 3}
