@@ -66,6 +66,7 @@ public class RookConstants : CharacterConstants
 
     public override void Super()
     {
-       
+        GameObject super = Instantiate(superPrefab,transform.position,Quaternion.identity);
+       super.transform.SetParent(controller.transform);
     }
 }

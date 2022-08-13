@@ -245,7 +245,7 @@ SpriteRenderer:
   m_Size: {x: 12.002931, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &46519118
@@ -382,7 +382,7 @@ Animator:
   m_GameObject: {fileID: 46519116}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f983889f9454d95428aa62c9604d271c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 57c4d2b147745094b83dc9d304c4012c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
   bishopConstants: {fileID: 7791329279251805837, guid: fed1b16d5ce294946badbec4baa816e9, type: 3}
   knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
-  rookConstants: {fileID: 1541196981983895679, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
+  rookConstants: {fileID: 4024610757659896552, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
   hasBeenHit: 0
   isThrowInvuln: 0
 --- !u!114 &415806214
@@ -1291,7 +1291,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 415806211}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 160e2417efdbb0f49a82e46ed7db031b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3175,7 +3175,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9482ec20d6051cd4db7f5d3a9599681e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -4643,7 +4643,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2123830959}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 160e2417efdbb0f49a82e46ed7db031b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4736,6 +4736,6 @@ MonoBehaviour:
   pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
   bishopConstants: {fileID: 7791329279251805837, guid: fed1b16d5ce294946badbec4baa816e9, type: 3}
   knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
-  rookConstants: {fileID: 1541196981983895679, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
+  rookConstants: {fileID: 4024610757659896552, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
   hasBeenHit: 0
   isThrowInvuln: 0

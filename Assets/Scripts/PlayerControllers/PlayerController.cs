@@ -318,6 +318,31 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
+            if(moveName.Contains("Super")){
+                if(isStandBlocking || isCrouchBlocking){
+                    isBlocked = true;
+                } else {
+                    isBlocked = false;
+                }
+                if (isBlocked) {
+                        if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6.0f,0);
+                        else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5.0f,5f);
+                        if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 6.0f,0);
+                        playerAnimator.Play("Blocked");
+                        isIdle = false;
+                    } else {
+                        if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -8.0f,0);
+                        else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -7,9);
+                        if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 8.0f,0);
+                        gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[moveName]);
+                        playerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                        isIdle = false;
+                        playerAnimator.Play("KnockedDown");
+                        gameManager.UpdateComboCounter(opponentTag);
+                    }
+
+            }
+
             
         } else if  (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Throwbox"){
             
@@ -709,7 +734,7 @@ public class PlayerController : MonoBehaviour
                 downForwardB.transform.SetParent(transform);
                 downForwardB.transform.localScale = new Vector3(1,1,1);
                 characterConstants.DownForwardB();            
-                playerAnimator.Play("Down Forward B");
+                playerAnimator.Play("DownForward B");
             } else if (movement.y == -1){
                 GameObject crouchingB = Instantiate(characterConstants.crouchingBPrefab,this.transform.position,Quaternion.identity);
                 crouchingB.transform.SetParent(transform);
@@ -777,7 +802,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnSuper(){
         Debug.Log("Super");
-        
+        if (gameManager.meter[thisPlayerTag] < 50){
+            return;
+        }
+        gameManager.UseMeter(thisPlayerTag,50); 
         for (int i = 3; i < transform.childCount; i++){
             Destroy(transform.GetChild(i).gameObject);
         }

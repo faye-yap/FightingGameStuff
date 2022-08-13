@@ -141,7 +141,7 @@ Animator:
   m_GameObject: {fileID: 2714901490874840970}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3e36f2aa5521acc4eb0676cce80c2b8f, type: 2}
+  m_Controller: {fileID: 9100000, guid: a729165924cbbe94387fccec62f21fe3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -269,7 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a5e1610e3291e4eb623b129c179adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2714901490874840970, guid: 4dafe5aa1c6590f4ea18b66e77043c5f, type: 3}
+  projectilePrefab: {fileID: 2714901490874840970, guid: c066d61080d5f2c4ca923844e47ef017, type: 3}
+  initialVelocityMultiplier: 1.25
 --- !u!1 &7615728630707487226
 GameObject:
   m_ObjectHideFlags: 0
