@@ -63,4 +63,4 @@ MonoBehaviour:
   neutralSPrefab: {fileID: 2714901490874840970, guid: d4886b1d587372941beeddd1dd6ed2fd, type: 3}
   crouchingSPrefab: {fileID: 2714901490874840970, guid: b43f40939df1fce48ab5974d94e8678a, type: 3}
   forwardSPrefab: {fileID: 2714901490874840970, guid: 70c5c4bf7f33663499b60e55e668b9b7, type: 3}
-  throwPrefab: {fileID: 0}
+  throwPrefab: {fileID: 870924708383080130, guid: 07088d4890f7e174b9bac0cbd1bcc478, type: 3}
