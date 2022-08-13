@@ -8,4 +8,8 @@ public class Projectile : MonoBehaviour
     private void OnBecameInvisible() {
         Destroy(gameObject);
     }
+
+    private void DestroySelf() {
+        Destroy(this.gameObject);
+    }
 }
