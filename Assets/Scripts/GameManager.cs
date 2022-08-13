@@ -182,6 +182,8 @@ public class GameManager : MonoBehaviour
         //reset everything
         p1CurrentHP = p1MaxHP;
         p2CurrentHP = p2MaxHP;
+        p1Controller.StopMovement();
+        p2Controller.StopMovement();
         p1.transform.position = p1StartPos;
         p2.transform.position = p2StartPos;
         p1HPUI.localScale = new Vector3(1,1,1);

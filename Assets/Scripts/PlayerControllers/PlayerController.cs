@@ -875,8 +875,8 @@ public class PlayerController : MonoBehaviour
             pauseMenuController.Pause();
         }
     }
-
-
-
-    
+    public void StopMovement(){
+        movement = Vector2.zero;
+        thisPlayerBody.velocity = Vector2.zero;
+    }
 }
