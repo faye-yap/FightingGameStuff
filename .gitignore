@@ -7,9 +7,4 @@ obj/
 
 
 Temp/
-UserSettings/
 
-Assembly-CSharp.csproj
-*.csproj
-.sln
-cspell.json
