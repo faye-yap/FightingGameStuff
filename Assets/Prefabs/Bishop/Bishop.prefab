@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 6422374833926789151}
   - component: {fileID: 4053366597405395568}
   m_Layer: 0
-  m_Name: Pawn
+  m_Name: Bishop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
