@@ -107,6 +107,12 @@ public class PlayerController : MonoBehaviour
         characterConstants.transform.SetParent(transform);
     }
     
+    IEnumerator GetOpponent(string player){
+        yield return null;
+        opponentDamageValues = GameObject.FindGameObjectWithTag(player).GetComponent<PlayerController>().characterConstants.damageValues; 
+        Debug.Log(opponentDamageValues);
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -120,14 +126,15 @@ public class PlayerController : MonoBehaviour
             SelectCharacter(gameManager.p1Character);
             gameManager.p1MaxHP = characterConstants.maxHP;
             gameManager.p1CurrentHP = characterConstants.maxHP;
-            opponentDamageValues = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().characterConstants.damageValues; 
+            StartCoroutine(GetOpponent("Player2"));
+            
 
         } else {
             opponentBody = GameObject.FindGameObjectWithTag("Player1").GetComponent<Rigidbody2D>();
             SelectCharacter(gameManager.p2Character);
             gameManager.p2MaxHP = characterConstants.maxHP;
             gameManager.p2CurrentHP = characterConstants.maxHP;
-            opponentDamageValues = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().characterConstants.damageValues; 
+            StartCoroutine(GetOpponent("Player1"));
         }
 
         opponentTag = opponentBody.tag;
@@ -138,11 +145,14 @@ public class PlayerController : MonoBehaviour
         thisPlayerSprite = GetComponentInChildren<SpriteRenderer>();
         thisPlayerCollider = GetComponent<BoxCollider2D>();
         this.transform.GetChild(1).tag = thisPlayerTag; //assign character to player
-        this.transform.GetChild(1).transform.GetChild(0).tag = thisPlayerTag; //assign character hurtbox to player
+        for (int i = 0; i < transform.GetChild(1).transform.childCount; i++){
+            this.transform.GetChild(1).transform.GetChild(i).tag = thisPlayerTag;
+        }
+         //assign character hurtbox to player
         
         gravityScale = thisPlayerBody.gravityScale;
         playerAnimator = GetComponentInChildren<Animator>();
-        Debug.Log(opponentDamageValues);
+        //Debug.Log(opponentDamageValues);
 
         
         
@@ -457,11 +467,13 @@ public class PlayerController : MonoBehaviour
     private void LeftWalk(){
         if (onGroundState){
             if(groundDashBool){
+                playerAnimator.Play("Running");
                 thisPlayerBody.AddForce(Vector2.left * characterConstants.dashSpeed);
                 if (thisPlayerBody.velocity.x > -characterConstants.dashSpeed){
                     thisPlayerBody.velocity = Vector2.left * characterConstants.dashSpeed;
                 }   
             } else {
+                playerAnimator.Play("Walking");
                 thisPlayerBody.AddForce(Vector2.left * characterConstants.moveSpeed);
                 if (thisPlayerBody.velocity.x > -characterConstants.moveSpeed){
                     thisPlayerBody.velocity = Vector2.left * characterConstants.moveSpeed;
@@ -488,11 +500,13 @@ public class PlayerController : MonoBehaviour
     private void RightWalk(){
         if (onGroundState){
             if(groundDashBool){
+                playerAnimator.Play("Running");
                 thisPlayerBody.AddForce(Vector2.right * characterConstants.dashSpeed);
                 if (thisPlayerBody.velocity.x < characterConstants.dashSpeed){
                     thisPlayerBody.velocity = Vector2.right * characterConstants.dashSpeed;
                 }
             } else {
+                playerAnimator.Play("Walking");
                 thisPlayerBody.AddForce(Vector2.right * characterConstants.moveSpeed);
                 if (thisPlayerBody.velocity.x < characterConstants.moveSpeed){
                     thisPlayerBody.velocity = Vector2.right * characterConstants.moveSpeed;
@@ -513,7 +527,8 @@ public class PlayerController : MonoBehaviour
 
     private void LeftCrouch(){
         isStandBlocking = false;
-        playerAnimator.Play("Crouching");
+        //playerAnimator.Play("Crouching");
+        playerAnimator.SetTrigger("Crouching");
         if (gameObject.transform.localScale.x > 0){
             isCrouchBlocking = true;
         } else {
@@ -523,13 +538,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private void NeutralCrouch(){
-        playerAnimator.Play("Crouching");
+        //playerAnimator.Play("Crouching");
+        playerAnimator.SetTrigger("Crouching");
         isStandBlocking  = false;
         isCrouchBlocking = false;
     }
 
     private void RightCrouch(){
-        playerAnimator.Play("Crouching");
+        //playerAnimator.Play("Crouching");
+        playerAnimator.SetTrigger("Crouching");
         isStandBlocking = false;
         if (gameObject.transform.localScale.x < 0){
             isCrouchBlocking = true;
@@ -620,8 +637,8 @@ public class PlayerController : MonoBehaviour
 
         if(onGroundState && (canACancel || isIdle)){
 
-            if(transform.childCount > 2){
-            Destroy(transform.GetChild(2).gameObject);
+            if(transform.childCount > 3){
+            Destroy(transform.GetChild(3).gameObject);
             }
 
             canDashJumpCancel = false;
@@ -671,8 +688,8 @@ public class PlayerController : MonoBehaviour
 
         if(onGroundState && (canBCancel || isIdle)){
 
-            if(transform.childCount > 2){
-                Destroy(transform.GetChild(2).gameObject);
+            if(transform.childCount > 3){
+                Destroy(transform.GetChild(3).gameObject);
             }
 
             canACancel = false;
@@ -721,8 +738,8 @@ public class PlayerController : MonoBehaviour
         }
         if(onGroundState && (canSCancel || isIdle)){
 
-            if(transform.childCount > 2){
-                Destroy(transform.GetChild(2).gameObject);
+            if(transform.childCount > 3){
+                Destroy(transform.GetChild(3).gameObject);
             }
 
             canACancel = false;
