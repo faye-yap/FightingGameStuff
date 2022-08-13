@@ -20,6 +20,11 @@ public class PlayerSelectConstants : ScriptableObject
 	public AnimationClip rookStageAnimation;
 	public AnimationClip knightStageAnimation;
 
+	public float pawnStageSpeed;
+	public float bishopStageSpeed;
+	public float rookStageSpeed;
+	public float knightStageSpeed;
+
 	public AudioClip pawnStageAudio;
 	public AudioClip bishopStageAudio;
 	public AudioClip rookStageAudio;
