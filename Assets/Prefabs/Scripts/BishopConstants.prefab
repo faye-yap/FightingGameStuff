@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1719095208203199911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3228766bde7906d4f8bf89de71d53b80, type: 3}
+  m_Script: {fileID: 11500000, guid: e3412585cf3870348b78f9ae41d91e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1000
@@ -53,15 +53,15 @@ MonoBehaviour:
   backdashSpeed: 0
   airDashDuration: 0
   framesUntilAirJump: 5
-  neutralAPrefab: {fileID: 2714901490874840970, guid: fdf18078e26c5be4db3b812982f2fe54, type: 3}
-  crouchingAPrefab: {fileID: 2714901490874840970, guid: 68fb942106cfaad489f4064e98b7df6d, type: 3}
-  jumpingAPrefab: {fileID: 2714901490874840970, guid: 4c973cb588871b84383c1ca48adbfd4a, type: 3}
-  neutralBPrefab: {fileID: 2714901490874840970, guid: b7a0c56f9f468294c8e7f90ff75469dc, type: 3}
-  crouchingBPrefab: {fileID: 2714901490874840970, guid: f6b9c75c09306774795691b30a30a2f1, type: 3}
-  jumpingBPrefab: {fileID: 2714901490874840970, guid: a5d6332a775ece047a99054b86cfadcb, type: 3}
-  downForwardBPrefab: {fileID: 2714901490874840970, guid: 260c949d007989c4dba8369395ac602b, type: 3}
-  neutralSPrefab: {fileID: 2714901490874840970, guid: 6921e40217dd104499c0d72b0d248066, type: 3}
-  crouchingSPrefab: {fileID: 2714901490874840970, guid: 9e11074ffd1b395429883a4752c8e840, type: 3}
-  forwardSPrefab: {fileID: 2714901490874840970, guid: 3ac526cd816ace34d8069c47992fae35, type: 3}
-  throwPrefab: {fileID: 870924708383080130, guid: e8d4db7a8fd2a6b46abbd5c77e526ee5, type: 3}
-  superPrefab: {fileID: 2714901490874840970, guid: 8c5276308dde6da45b12887617e4fe27, type: 3}
+  neutralAPrefab: {fileID: 0}
+  crouchingAPrefab: {fileID: 0}
+  jumpingAPrefab: {fileID: 0}
+  neutralBPrefab: {fileID: 0}
+  crouchingBPrefab: {fileID: 0}
+  jumpingBPrefab: {fileID: 0}
+  downForwardBPrefab: {fileID: 0}
+  neutralSPrefab: {fileID: 0}
+  crouchingSPrefab: {fileID: 0}
+  forwardSPrefab: {fileID: 0}
+  throwPrefab: {fileID: 0}
+  superPrefab: {fileID: 0}

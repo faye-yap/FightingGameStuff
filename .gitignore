@@ -13,4 +13,3 @@ Assembly-CSharp.csproj
 *.csproj
 .sln
 cspell.json
-*.unity

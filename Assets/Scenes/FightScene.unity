@@ -382,7 +382,7 @@ Animator:
   m_GameObject: {fileID: 46519116}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 57c4d2b147745094b83dc9d304c4012c, type: 2}
+  m_Controller: {fileID: 9100000, guid: a465234cd3626a74d84c6ef5f8acc80e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1207,13 +1207,13 @@ MonoBehaviour:
   gameManager: {fileID: 495361151}
   pauseMenuController: {fileID: 2091012598}
   pawnCharacter: {fileID: 6422374833926789126, guid: 435353eec8c4b314cae0921ffa9350b6, type: 3}
-  bishopCharacter: {fileID: 6422374833926789126, guid: baa7c85739c47054a964ba1323645e73, type: 3}
+  bishopCharacter: {fileID: 6422374833926789126, guid: 760b524de5593d548b160fe433c2ffd4, type: 3}
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
-  rookCharacter: {fileID: 6422374833926789126, guid: 5aab7afc5c005464eb408351f7f37e7a, type: 3}
-  pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
-  bishopConstants: {fileID: 7791329279251805837, guid: fed1b16d5ce294946badbec4baa816e9, type: 3}
-  knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
-  rookConstants: {fileID: 4024610757659896552, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
+  rookCharacter: {fileID: 6422374833926789126, guid: c509343c5f98ea24a82bbc374267c2b5, type: 3}
+  pawnConstants: {fileID: 6306706990535534838, guid: 024b5e2e1f911744d923324cc530dae7, type: 3}
+  bishopConstants: {fileID: 7791329279251805837, guid: 39c46f02ac3ce064cb0fe25b3223d63b, type: 3}
+  knightConstants: {fileID: 8309540413617926206, guid: 2313165794c58714fb843d28038a95c5, type: 3}
+  rookConstants: {fileID: 8188231852673149296, guid: 63afff3ee1ed275418e164699129195f, type: 3}
   hasBeenHit: 0
   isThrowInvuln: 0
 --- !u!114 &415806214
@@ -4761,13 +4761,13 @@ MonoBehaviour:
   gameManager: {fileID: 495361151}
   pauseMenuController: {fileID: 2091012598}
   pawnCharacter: {fileID: 6422374833926789126, guid: 435353eec8c4b314cae0921ffa9350b6, type: 3}
-  bishopCharacter: {fileID: 6422374833926789126, guid: baa7c85739c47054a964ba1323645e73, type: 3}
+  bishopCharacter: {fileID: 6422374833926789126, guid: 760b524de5593d548b160fe433c2ffd4, type: 3}
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
-  rookCharacter: {fileID: 6422374833926789126, guid: 5aab7afc5c005464eb408351f7f37e7a, type: 3}
-  pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
-  bishopConstants: {fileID: 7791329279251805837, guid: fed1b16d5ce294946badbec4baa816e9, type: 3}
-  knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
-  rookConstants: {fileID: 4024610757659896552, guid: 2be83be62e319ec4cba9f377f368a55f, type: 3}
+  rookCharacter: {fileID: 6422374833926789126, guid: c509343c5f98ea24a82bbc374267c2b5, type: 3}
+  pawnConstants: {fileID: 6306706990535534838, guid: 024b5e2e1f911744d923324cc530dae7, type: 3}
+  bishopConstants: {fileID: 7791329279251805837, guid: 39c46f02ac3ce064cb0fe25b3223d63b, type: 3}
+  knightConstants: {fileID: 8309540413617926206, guid: 2313165794c58714fb843d28038a95c5, type: 3}
+  rookConstants: {fileID: 8188231852673149296, guid: 63afff3ee1ed275418e164699129195f, type: 3}
   hasBeenHit: 0
   isThrowInvuln: 0
 --- !u!60 &2123830968

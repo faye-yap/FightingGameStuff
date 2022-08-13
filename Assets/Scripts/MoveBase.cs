@@ -59,12 +59,11 @@ public class MoveBase : MonoBehaviour
  
 
     public void ThrowHit(){
+        playerController.playerAnimator.Play("ThrowHit");
         moveAnimator.Play("ThrowHit");
         opponentController.isIdle = false;
     }
-
-
-   
+    
     
     private void ThrowDamage(){
         opponentController.TakeDamageFromThrow();
