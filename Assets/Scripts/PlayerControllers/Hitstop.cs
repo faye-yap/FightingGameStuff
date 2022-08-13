@@ -20,12 +20,14 @@ public class Hitstop : MonoBehaviour
     }
 
     void StartTime(){
+        
         Time.timeScale = 1;
         playerAnimator.updateMode = AnimatorUpdateMode.Normal;
     }
 
     void ReenableMovement(){
         playerController.isIdle = true;
+        playerAnimator.SetTrigger("Idle");
         gameManager.ResetComboCounter(playerController.opponentTag);
         //Debug.Log("a");
     }
