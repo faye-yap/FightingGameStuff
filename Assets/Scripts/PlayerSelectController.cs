@@ -13,10 +13,10 @@ public class PlayerSelectController : MonoBehaviour
     public PlayerSelectConstants.CharacterSelection p1Character;
     public PlayerSelectConstants.CharacterSelection p2Character;
     public PlayerSelectConstants.CharacterSelection stage;
-    private SpriteRenderer spriteRenderer;
+    private Animator animator;
     private Vector2 movement;
-    private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> charSpriteDict;
-    private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> stageSpriteDict;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, RuntimeAnimatorController> charSpriteDict;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, AnimationClip> stageAnimationDict;
     private PlayerSelectConstants.CharacterSelection[] charArray;
     private PlayerSelectConstants.CharacterSelection[] stageArray;
     private string thisPlayerTag;
@@ -29,28 +29,28 @@ public class PlayerSelectController : MonoBehaviour
     void Start()
     {
         thisPlayerTag = this.gameObject.tag;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         p1Character = playerSelectConstants.p1Character;
         p2Character = playerSelectConstants.p2Character;
         stage = playerSelectConstants.stage;
-        charSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
+        charSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, RuntimeAnimatorController>(){
             {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnSprite},
             {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightSprite},
             {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopSprite},
             {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookSprite},
         };
         charArray = charSpriteDict.Keys.ToArray();
-        stageSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
-            // {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageSprite},
-            // {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageSprite},
-            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageSprite},
-            {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageSprite},
+        stageAnimationDict = new Dictionary<PlayerSelectConstants.CharacterSelection, AnimationClip>(){
+            {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageAnimation},
         };
-        stageArray = stageSpriteDict.Keys.ToArray();
+        stageArray = stageAnimationDict.Keys.ToArray();
         if (thisPlayerTag == "Player1"){
-            spriteRenderer.sprite = charSpriteDict[p1Character];
+            animator.runtimeAnimatorController = charSpriteDict[p1Character];
         } else if (thisPlayerTag == "Player2"){
-            spriteRenderer.sprite = charSpriteDict[p2Character];
+            animator.runtimeAnimatorController = charSpriteDict[p2Character];
         }
 
         if (playerText.text == "P1"){
@@ -78,7 +78,7 @@ public class PlayerSelectController : MonoBehaviour
                 }
                 p1Character = charArray[index];
                 playerSelectConstants.p1Character = p1Character;
-                spriteRenderer.sprite = charSpriteDict[p1Character];
+                animator.runtimeAnimatorController = charSpriteDict[p1Character];
             } else if (thisPlayerTag == "Player2" && !P2selected) {
                 int index = Array.IndexOf(charArray, p2Character);
                 if (index == charLen - 1) {
@@ -88,7 +88,7 @@ public class PlayerSelectController : MonoBehaviour
                 }
                 p2Character = charArray[index];
                 playerSelectConstants.p2Character = p2Character;
-                spriteRenderer.sprite = charSpriteDict[p2Character];
+                animator.runtimeAnimatorController = charSpriteDict[p2Character];
             } else if (P1selected && P2selected){
                 int index = Array.IndexOf(stageArray, stage);
                 if (index == stageLen - 1) {
@@ -110,7 +110,7 @@ public class PlayerSelectController : MonoBehaviour
                 }
                 p1Character = charArray[index];
                 playerSelectConstants.p1Character = p1Character;
-                spriteRenderer.sprite = charSpriteDict[p1Character];
+                animator.runtimeAnimatorController = charSpriteDict[p1Character];
             } else if (thisPlayerTag == "Player2" && !P2selected) {
                 int index = Array.IndexOf(charArray, p2Character);
                 if (index == 0) {
@@ -120,7 +120,7 @@ public class PlayerSelectController : MonoBehaviour
                 }
                 p2Character = charArray[index];
                 playerSelectConstants.p2Character = p2Character;
-                spriteRenderer.sprite = charSpriteDict[p2Character];
+                animator.runtimeAnimatorController = charSpriteDict[p2Character];
             } else if (P1selected && P2selected){
                 int index = Array.IndexOf(stageArray, stage);
                 if (index == 0) {

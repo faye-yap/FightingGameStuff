@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 46519117}
   - component: {fileID: 46519119}
   - component: {fileID: 46519120}
+  - component: {fileID: 46519121}
   m_Layer: 0
   m_Name: Stage
   m_TagString: Untagged
@@ -236,15 +237,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a4b77875a00642409c596f9593aeb33, type: 3}
+  m_Sprite: {fileID: 1020988919, guid: 867192e29485b124d9a1c16b86d2eff1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12, y: 4}
+  m_Size: {x: 12.002931, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &46519118
@@ -371,6 +372,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
+--- !u!95 &46519121
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46519116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f983889f9454d95428aa62c9604d271c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &48629256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,7 +1393,7 @@ MonoBehaviour:
   p2Controller: {fileID: 0}
   PlayerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
   p1Character: 3
-  p2Character: 3
+  p2Character: 2
   pauseMenuController: {fileID: 2091012598}
   p1MaxHP: 0
   p1CurrentHP: 0
@@ -3208,7 +3229,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1419140569

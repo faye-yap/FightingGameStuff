@@ -6,20 +6,26 @@ public class StageSelectController : MonoBehaviour
 {
     public PlayerSelectConstants playerSelectConstants;
     private PlayerSelectConstants.CharacterSelection stage;
-    private SpriteRenderer spriteRenderer;
-    private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> stageSpriteDict;
+    private Animator animator;
+    private AnimatorOverrideController animatorOverrideController;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, (AnimationClip, float)> stageAnimationDict;
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
         stage = playerSelectConstants.stage;
-        stageSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
-            // {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageSprite},
-            // {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageSprite},
-            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageSprite},
-            {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageSprite},
+        stageAnimationDict = new Dictionary<PlayerSelectConstants.CharacterSelection, (AnimationClip, float)>(){
+            {PlayerSelectConstants.CharacterSelection.Pawn, (playerSelectConstants.pawnStageAnimation, playerSelectConstants.pawnStageSpeed)},
+            {PlayerSelectConstants.CharacterSelection.Knight, (playerSelectConstants.knightStageAnimation, playerSelectConstants.knightStageSpeed)},
+            {PlayerSelectConstants.CharacterSelection.Bishop, (playerSelectConstants.bishopStageAnimation, playerSelectConstants.bishopStageSpeed)},
+            {PlayerSelectConstants.CharacterSelection.Rook, (playerSelectConstants.rookStageAnimation, playerSelectConstants.rookStageSpeed)},
         };
-        spriteRenderer.sprite = stageSpriteDict[stage];
+        Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+        animator.runtimeAnimatorController = animatorOverrideController;
+        
+        animatorOverrideController["blahaj_living_room"] = stageAnimationDict[stage].Item1;
+        animator.speed = stageAnimationDict[stage].Item2;
     }
 
     // Update is called once per frame
@@ -27,7 +33,8 @@ public class StageSelectController : MonoBehaviour
     {
         if (stage != playerSelectConstants.stage){
             stage = playerSelectConstants.stage;
-            spriteRenderer.sprite = stageSpriteDict[playerSelectConstants.stage];
+            animatorOverrideController["blahaj_living_room"] = stageAnimationDict[stage].Item1;
+            animator.speed = stageAnimationDict[stage].Item2;
         }
     }
 }

@@ -6,32 +6,27 @@ public class StageController : MonoBehaviour
 {
     public PlayerSelectConstants playerSelectConstants;
     private PlayerSelectConstants.CharacterSelection stage;
-    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private AnimatorOverrideController animatorOverrideController;
     private AudioSource audioSource;
-    private Dictionary<PlayerSelectConstants.CharacterSelection, (Sprite, AudioClip)> stageSpriteDict;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, (AnimationClip, AudioClip, float)> stageAnimationDict;
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
         audioSource = GetComponent<AudioSource>();
         stage = playerSelectConstants.stage;
-        stageSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, (Sprite, AudioClip)>(){
-            // {PlayerSelectConstants.CharacterSelection.Pawn, (playerSelectConstants.pawnStageSprite, playerSelectConstants.pawnStageAudio)},
-            // {PlayerSelectConstants.CharacterSelection.Knight, (playerSelectConstants.knightStageSprite, playerSelectConstants.knightStageAudio)},
-            {PlayerSelectConstants.CharacterSelection.Bishop, (playerSelectConstants.bishopStageSprite, playerSelectConstants.bishopStageAudio)},
-            {PlayerSelectConstants.CharacterSelection.Rook, (playerSelectConstants.rookStageSprite, playerSelectConstants.rookStageAudio)},
+        stageAnimationDict = new Dictionary<PlayerSelectConstants.CharacterSelection, (AnimationClip, AudioClip, float)>(){
+            {PlayerSelectConstants.CharacterSelection.Pawn, (playerSelectConstants.pawnStageAnimation, playerSelectConstants.pawnStageAudio, playerSelectConstants.pawnStageSpeed)},
+            {PlayerSelectConstants.CharacterSelection.Knight, (playerSelectConstants.knightStageAnimation, playerSelectConstants.knightStageAudio, playerSelectConstants.knightStageSpeed)},
+            {PlayerSelectConstants.CharacterSelection.Bishop, (playerSelectConstants.bishopStageAnimation, playerSelectConstants.bishopStageAudio, playerSelectConstants.bishopStageSpeed)},
+            {PlayerSelectConstants.CharacterSelection.Rook, (playerSelectConstants.rookStageAnimation, playerSelectConstants.rookStageAudio, playerSelectConstants.rookStageSpeed)},
         };
-        spriteRenderer.sprite = stageSpriteDict[stage].Item1;
-        audioSource.clip = stageSpriteDict[stage].Item2;
+        animator.runtimeAnimatorController = animatorOverrideController;
+        animatorOverrideController["blahaj_living_room"] = stageAnimationDict[stage].Item1;
+        audioSource.clip = stageAnimationDict[stage].Item2;
+        audioSource.Play();
+        animator.speed = stageAnimationDict[stage].Item3;
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     if (stage != playerSelectConstants.stage){
-    //         stage = playerSelectConstants.stage;
-    //         spriteRenderer.sprite = stageSpriteDict[stage].Item1;
-    //         audioSource.clip = stageSpriteDict[stage].Item2;
-    //     }
-    // }
 }
