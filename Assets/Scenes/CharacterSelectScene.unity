@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 24021443}
   - component: {fileID: 24021445}
   - component: {fileID: 24021446}
+  - component: {fileID: 24021447}
   m_Layer: 0
   m_Name: P1 Character
   m_TagString: Player1
@@ -256,6 +257,26 @@ MonoBehaviour:
   p2Character: 0
   stage: 0
   playerText: {fileID: 921942956}
+--- !u!95 &24021447
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24021442}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a841a60cc625e14dbd273b220183289, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &285941984
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +694,7 @@ GameObject:
   - component: {fileID: 1024769188}
   - component: {fileID: 1024769190}
   - component: {fileID: 1024769191}
+  - component: {fileID: 1024769192}
   m_Layer: 0
   m_Name: P2 Character
   m_TagString: Player2
@@ -794,6 +816,26 @@ MonoBehaviour:
   p2Character: 0
   stage: 0
   playerText: {fileID: 372006138}
+--- !u!95 &1024769192
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024769187}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a841a60cc625e14dbd273b220183289, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1085221358
 GameObject:
   m_ObjectHideFlags: 0
