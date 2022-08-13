@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class KnightConstants : CharacterConstants
 {
-    
+    PlayerController controller;
 
     void Start(){
-        
+        controller = GetComponentInParent<PlayerController>();
     }
 
     public override void NeutralA()
@@ -67,4 +67,7 @@ public class KnightConstants : CharacterConstants
     {
         
     }
+
+    
+
 }

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8309540413617926204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8309540413617926205}
+  - component: {fileID: 8309540413617926206}
+  m_Layer: 0
+  m_Name: KnightConstants
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8309540413617926205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309540413617926204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8309540413617926206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309540413617926204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183992bbf5cf01544a5491e8c2960c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1000
+  moveSpeed: 5
+  dashSpeed: 15
+  airdashSpeed: 8
+  jumpSpeed: 15
+  backdashDuration: 15
+  backdashSpeed: 8
+  airDashDuration: 20
+  framesUntilAirJump: 5
+  neutralAPrefab: {fileID: 2714901490874840970, guid: 3adc600f36609d14b900647eb993e6e7, type: 3}
+  crouchingAPrefab: {fileID: 2714901490874840970, guid: 02b96521528717c42bd8c80aa3f7f31c, type: 3}
+  jumpingAPrefab: {fileID: 2714901490874840970, guid: 6abf0fdfdd9e5e240bcc32344e464bd9, type: 3}
+  neutralBPrefab: {fileID: 2714901490874840970, guid: 710fd38b7462e10459608e295e7c6b27, type: 3}
+  crouchingBPrefab: {fileID: 2714901490874840970, guid: 6d0a633ba19c28841b98a537e1d42cc7, type: 3}
+  jumpingBPrefab: {fileID: 2714901490874840970, guid: 1aa716cfc7b134b43ad306feabd485c7, type: 3}
+  downForwardBPrefab: {fileID: 2714901490874840970, guid: 1860d620e090cbc45b1044b5473166bd, type: 3}
+  neutralSPrefab: {fileID: 2714901490874840970, guid: 2fcb2cdb58b9ad145a94bd8d6d147258, type: 3}
+  crouchingSPrefab: {fileID: 2714901490874840970, guid: 9f5b7832e42e89c4aa0a4c65df5fbc42, type: 3}
+  forwardSPrefab: {fileID: 2714901490874840970, guid: aa147feebf1df7d429905b221a6a5b65, type: 3}
+  throwPrefab: {fileID: 870924708383080130, guid: 398318de07ebd234d9a2a2fcaacd86b9, type: 3}
