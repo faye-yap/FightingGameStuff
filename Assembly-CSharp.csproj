@@ -70,10 +70,11 @@
     <Compile Include="Assets\Scripts\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\InstantiateProjectile.cs" />
     <Compile Include="Assets\Scripts\PlayerControllers\Hitstop.cs" />
+    <Compile Include="Assets\Scripts\Constants\RookConstants.cs" />
+    <Compile Include="Assets\Scripts\Constants\BishopConstants.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\StageController.cs" />
     <Compile Include="Assets\Scripts\Constants\PawnConstants.cs" />
-    <Compile Include="Assets\Scripts\Constants\RookConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
