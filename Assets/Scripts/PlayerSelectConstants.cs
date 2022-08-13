@@ -8,10 +8,10 @@ public class PlayerSelectConstants : ScriptableObject
 	public CharacterSelection p1Character = CharacterSelection.Knight;
 	public CharacterSelection p2Character = CharacterSelection.Knight;
 
-	public Sprite pawnSprite;
-	public Sprite bishopSprite;
-	public Sprite rookSprite;
-	public Sprite knightSprite;
+	public RuntimeAnimatorController pawnSprite;
+	public RuntimeAnimatorController bishopSprite;
+	public RuntimeAnimatorController rookSprite;
+	public RuntimeAnimatorController knightSprite;
 
 	public CharacterSelection stage = CharacterSelection.Bishop;
 
