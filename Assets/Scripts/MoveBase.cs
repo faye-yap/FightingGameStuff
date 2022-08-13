@@ -27,6 +27,7 @@ public class MoveBase : MonoBehaviour
         moveAnimator = GetComponentInParent<Animator>();
         string opponentTag = this.transform.parent.GetComponent<PlayerController>().opponentTag;
         opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
+        opponentController.hasBeenHit = false;
     }
 
     // Update is called once per frame
@@ -37,7 +38,6 @@ public class MoveBase : MonoBehaviour
         playerController.isIdle = true;
         playerController.canDashJumpCancel = true;
         playerController.playerAnimator.SetTrigger("Idle");
-        
         Destroy(this.gameObject);
     }
 

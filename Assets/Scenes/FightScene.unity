@@ -244,7 +244,7 @@ SpriteRenderer:
   m_Size: {x: 12, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &46519118
@@ -756,7 +756,7 @@ RectTransform:
   - {fileID: 1425390065}
   - {fileID: 965806108}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1186,9 +1186,12 @@ MonoBehaviour:
   bishopCharacter: {fileID: 0}
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
   rookCharacter: {fileID: 0}
+  pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
+  bishopConstants: {fileID: 0}
+  knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
+  rookConstants: {fileID: 0}
   hasBeenHit: 0
   isThrowInvuln: 0
-  meter: 0
 --- !u!114 &415806214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,70 +1322,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &466961976
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 466961977}
-  - component: {fileID: 466961978}
-  m_Layer: 0
-  m_Name: PawnConstants
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &466961977
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466961976}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2066787390}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &466961978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466961976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3fa01ea72874904faaef4828b4abc5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 1000
-  moveSpeed: 5
-  dashSpeed: 15
-  airdashSpeed: 8
-  jumpSpeed: 15
-  backdashDuration: 15
-  backdashSpeed: 8
-  airDashDuration: 20
-  framesUntilAirJump: 5
-  neutralAPrefab: {fileID: 2714901490874840970, guid: 02690fcd89be2a345a99355cb33effde, type: 3}
-  crouchingAPrefab: {fileID: 2714901490874840970, guid: 8fd81af279ff8314abf40775fe428046, type: 3}
-  jumpingAPrefab: {fileID: 2714901490874840970, guid: 80f5cd20e3a85384e8df3906a9090b88, type: 3}
-  neutralBPrefab: {fileID: 2714901490874840970, guid: ca5d328ab6175a243abdb5f8d1bbab3d, type: 3}
-  crouchingBPrefab: {fileID: 2714901490874840970, guid: cd02a3e132a934b49875a414cc44ce04, type: 3}
-  jumpingBPrefab: {fileID: 2714901490874840970, guid: 257a6364e1536224099731b4824c44fe, type: 3}
-  downForwardBPrefab: {fileID: 2714901490874840970, guid: 0b206ac331a37c141859cff98239981e, type: 3}
-  neutralSPrefab: {fileID: 2714901490874840970, guid: d4886b1d587372941beeddd1dd6ed2fd, type: 3}
-  crouchingSPrefab: {fileID: 2714901490874840970, guid: b43f40939df1fce48ab5974d94e8678a, type: 3}
-  forwardSPrefab: {fileID: 2714901490874840970, guid: 70c5c4bf7f33663499b60e55e668b9b7, type: 3}
-  throwPrefab: {fileID: 0}
 --- !u!1 &495361149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,7 +1368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
   p1Character: 3
-  p2Character: 0
+  p2Character: 3
   pauseMenuController: {fileID: 2091012598}
   p1MaxHP: 0
   p1CurrentHP: 0
@@ -1852,7 +1791,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &877342791
 MonoBehaviour:
@@ -4004,135 +3943,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781655152}
   m_CullTransparentMesh: 1
---- !u!1 &1865464578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1865464579}
-  m_Layer: 0
-  m_Name: Scripts
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1865464579
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865464578}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2066787390}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1948409348
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1948409349}
-  - component: {fileID: 1948409350}
-  m_Layer: 0
-  m_Name: KnightConstants
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1948409349
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948409348}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2066787390}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1948409350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948409348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183992bbf5cf01544a5491e8c2960c85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 1000
-  moveSpeed: 5
-  dashSpeed: 15
-  airdashSpeed: 8
-  jumpSpeed: 15
-  backdashDuration: 15
-  backdashSpeed: 8
-  airDashDuration: 20
-  framesUntilAirJump: 5
-  neutralAPrefab: {fileID: 2714901490874840970, guid: 3adc600f36609d14b900647eb993e6e7, type: 3}
-  crouchingAPrefab: {fileID: 2714901490874840970, guid: 02b96521528717c42bd8c80aa3f7f31c, type: 3}
-  jumpingAPrefab: {fileID: 2714901490874840970, guid: 6abf0fdfdd9e5e240bcc32344e464bd9, type: 3}
-  neutralBPrefab: {fileID: 2714901490874840970, guid: 710fd38b7462e10459608e295e7c6b27, type: 3}
-  crouchingBPrefab: {fileID: 2714901490874840970, guid: 6d0a633ba19c28841b98a537e1d42cc7, type: 3}
-  jumpingBPrefab: {fileID: 2714901490874840970, guid: 1aa716cfc7b134b43ad306feabd485c7, type: 3}
-  downForwardBPrefab: {fileID: 2714901490874840970, guid: 1860d620e090cbc45b1044b5473166bd, type: 3}
-  neutralSPrefab: {fileID: 2714901490874840970, guid: 2fcb2cdb58b9ad145a94bd8d6d147258, type: 3}
-  crouchingSPrefab: {fileID: 2714901490874840970, guid: 9f5b7832e42e89c4aa0a4c65df5fbc42, type: 3}
-  forwardSPrefab: {fileID: 2714901490874840970, guid: aa147feebf1df7d429905b221a6a5b65, type: 3}
-  throwPrefab: {fileID: 870924708383080130, guid: 398318de07ebd234d9a2a2fcaacd86b9, type: 3}
---- !u!1 &2066787389
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2066787390}
-  m_Layer: 0
-  m_Name: Constants
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2066787390
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066787389}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1948409349}
-  - {fileID: 466961977}
-  m_Father: {fileID: 1865464579}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075995796
 GameObject:
   m_ObjectHideFlags: 0
@@ -4262,7 +4072,7 @@ RectTransform:
   - {fileID: 2078638567}
   - {fileID: 1206211835}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4393,7 +4203,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2114026231
 GameObject:
@@ -4587,6 +4397,9 @@ MonoBehaviour:
   bishopCharacter: {fileID: 0}
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
   rookCharacter: {fileID: 0}
+  pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
+  bishopConstants: {fileID: 0}
+  knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
+  rookConstants: {fileID: 0}
   hasBeenHit: 0
   isThrowInvuln: 0
-  meter: 0

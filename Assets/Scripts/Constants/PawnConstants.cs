@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PawnConstants : CharacterConstants
 {
-    void Awake(){
-        
+    PlayerController controller;
+
+    void Start(){
+        controller = GetComponentInParent<PlayerController>();
     }
 
     public override void NeutralA()

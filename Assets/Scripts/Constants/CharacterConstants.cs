@@ -30,10 +30,11 @@ public abstract class CharacterConstants : MonoBehaviour{
         {"Throw",100}
     };
 
-
+ 
+    
     //A normals
 
-
+    
     public abstract void NeutralA();
     public abstract void CrouchingA();
     public abstract void JumpingA();

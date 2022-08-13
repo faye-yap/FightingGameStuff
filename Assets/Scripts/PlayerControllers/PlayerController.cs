@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     public string opponentTag;
     private Dictionary<string,int> opponentDamageValues;
     private Rigidbody2D thisPlayerBody;
-    private string thisPlayerTag;
+    [HideInInspector]
+    public string thisPlayerTag;
     
     private SpriteRenderer thisPlayerSprite;
     private BoxCollider2D thisPlayerCollider; 
@@ -53,6 +54,10 @@ public class PlayerController : MonoBehaviour
     public GameObject bishopCharacter;
     public GameObject knightCharacter;
     public GameObject rookCharacter;
+    public CharacterConstants pawnConstants;
+    public CharacterConstants bishopConstants;
+    public CharacterConstants knightConstants;
+    public CharacterConstants rookConstants;
     private GameObject selectedChar;
     [HideInInspector]
     public bool hasBeenHit = false;
@@ -76,28 +81,30 @@ public class PlayerController : MonoBehaviour
                 case PlayerSelectConstants.CharacterSelection.Pawn:
                     selectedChar = Instantiate(pawnCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
-                    characterConstants = GameObject.Find("PawnConstants").GetComponent<CharacterConstants>();
+                    characterConstants = Instantiate(pawnConstants, transform.position,Quaternion.identity);
+                    
                     break;
                 
                 case PlayerSelectConstants.CharacterSelection.Bishop:
                     selectedChar = Instantiate(bishopCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
-                    characterConstants = GameObject.Find("BishopConstants").GetComponent<CharacterConstants>();
+                    characterConstants = Instantiate(bishopConstants, transform.position,Quaternion.identity);
                     break;
 
                 case PlayerSelectConstants.CharacterSelection.Rook:
                     selectedChar = Instantiate(rookCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
-                    characterConstants = GameObject.Find("RookConstants").GetComponent<CharacterConstants>();
+                    characterConstants = Instantiate(rookConstants, transform.position,Quaternion.identity);
                     break;
 
                 case PlayerSelectConstants.CharacterSelection.Knight:
                     selectedChar = Instantiate(knightCharacter, this.transform.position,Quaternion.identity);
                     selectedChar.transform.parent = gameObject.transform;
-                    characterConstants = GameObject.Find("KnightConstants").GetComponent<CharacterConstants>();
+                    characterConstants = Instantiate(knightConstants, transform.position,Quaternion.identity);
                     break;
             }
         selectedChar.transform.localScale = new Vector3(1,1,1);
+        characterConstants.transform.SetParent(transform);
     }
     
 
@@ -188,9 +195,10 @@ public class PlayerController : MonoBehaviour
     
 
     private void OnTriggerEnter2D(Collider2D c) {
-        if (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Hitbox"){
+        if (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Hitbox" && !hasBeenHit){
             //Debug.Log(c.ToString());
             //Debug.Log(opponentTag);
+            hasBeenHit = true;
             bool isBlocked;
             string moveName = c.transform.parent.name.Substring(0,c.transform.parent.name.Length - 7);
             PlayerController opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
@@ -228,6 +236,7 @@ public class PlayerController : MonoBehaviour
                         playerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
                         isIdle = false;
                         playerAnimator.Play("GotHit");
+                        gameManager.UpdateComboCounter(opponentTag);
                     }
                     //Debug.Log("A");
                     break;
@@ -262,7 +271,8 @@ public class PlayerController : MonoBehaviour
                         gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[moveName]);
                         playerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
                         isIdle = false;
-                        playerAnimator.Play("KnockedDown");
+                        playerAnimator.Play("GotHit");
+                        gameManager.UpdateComboCounter(opponentTag);
                     }
                     //Debug.Log("B");
                     break;
@@ -290,15 +300,15 @@ public class PlayerController : MonoBehaviour
                         gameManager.TakeDamage(thisPlayerTag,opponentDamageValues[moveName]);
                         playerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
                         isIdle = false;
-                        playerAnimator.Play("GotHit");
+                        playerAnimator.Play("KnockedDown");
+                        gameManager.UpdateComboCounter(opponentTag);
                     }
+                    //TODO: account for super
 
                     break;
             }
 
-            if (!hasBeenHit) {                
-                hasBeenHit = true;
-            }
+            
         } else if  (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Throwbox"){
             
             if(!isThrowInvuln){
@@ -468,7 +478,7 @@ public class PlayerController : MonoBehaviour
 
     private void Stop(){
         //if(onGroundState){ thisPlayerBody.velocity = new Vector2(0,thisPlayerBody); }
-        
+        playerAnimator.Play("Idle");
         groundDashBool = false;
         isStandBlocking  = false;
         isCrouchBlocking = false;
@@ -503,6 +513,7 @@ public class PlayerController : MonoBehaviour
 
     private void LeftCrouch(){
         isStandBlocking = false;
+        playerAnimator.Play("Crouching");
         if (gameObject.transform.localScale.x > 0){
             isCrouchBlocking = true;
         } else {
@@ -512,11 +523,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void NeutralCrouch(){
+        playerAnimator.Play("Crouching");
         isStandBlocking  = false;
         isCrouchBlocking = false;
     }
 
     private void RightCrouch(){
+        playerAnimator.Play("Crouching");
         isStandBlocking = false;
         if (gameObject.transform.localScale.x < 0){
             isCrouchBlocking = true;
@@ -744,7 +757,7 @@ public class PlayerController : MonoBehaviour
     public void OnSuper(){
         Debug.Log("Super");
         
-        for (int i = 2; i < transform.childCount; i++){
+        for (int i = 3; i < transform.childCount; i++){
             Destroy(transform.GetChild(i).gameObject);
         }
         playerAnimator.Play("Super");
@@ -784,14 +797,14 @@ public class PlayerController : MonoBehaviour
     IEnumerator AButtonBuffer(int endFrame){
         
         yield return new WaitUntil(() => FrameNumberPassed(endFrame));
-        print("A buffer ended");
+        
         aButtonPressed = false;
         
     }
 
     IEnumerator BButtonBuffer(int endFrame){
         yield return new WaitUntil(() => FrameNumberPassed(endFrame));
-        print("B buffer ended");
+        
         bButtonPressed = false;
     }
 

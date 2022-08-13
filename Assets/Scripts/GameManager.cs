@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public PlayerController p1Controller;
+    public PlayerController p2Controller;
     public PlayerSelectConstants PlayerSelectConstants;
     public PlayerSelectConstants.CharacterSelection p1Character;
     public PlayerSelectConstants.CharacterSelection p2Character;
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     public Transform p1HPUI;
     public Transform p1MeterUI;
     public Transform p1MeterNumberUI;
+    public TextMeshProUGUI p1ComboCounter;
     private TextMeshProUGUI p1MeterNumber;
     [HideInInspector]
     public int p2MaxHP;
@@ -35,6 +38,7 @@ public class GameManager : MonoBehaviour
     public Transform p2HPUI;
     public Transform p2MeterUI;
     public Transform p2MeterNumberUI;
+    public TextMeshProUGUI p2ComboCounter;
     private TextMeshProUGUI p2MeterNumber;
     [HideInInspector]
     public int frameNumber;
@@ -45,6 +49,7 @@ public class GameManager : MonoBehaviour
     private GameObject preTimer;
     private TextMeshProUGUI timerText;
     private TextMeshProUGUI preTimerText;
+    public Dictionary<string,int> comboCounter = new Dictionary<string, int> {{"Player1", 0},{"Player2",0}};
     
     public int firstTo = 2;
     private int p1NumWins;
@@ -70,6 +75,8 @@ public class GameManager : MonoBehaviour
         p2Character = PlayerSelectConstants.p2Character;
         p1MeterNumber = p1MeterNumberUI.GetComponent<TextMeshProUGUI>();
         p2MeterNumber = p2MeterNumberUI.GetComponent<TextMeshProUGUI>();
+        p1Controller = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
+        p2Controller = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>();
         StartCoroutine(PreRoundTimer());
     }
 
@@ -216,5 +223,68 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenuController.GameIsPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+
+    public void UpdateComboCounter(string player){
+        comboCounter[player] += 1;
+        Debug.Log(comboCounter[player]);
+        Debug.Log(p1Controller.hasBeenHit);
+        //update text
+        if(player == "Player1"){
+            p1ComboCounter.text = comboCounter[player].ToString() + " Hit";
+            if(comboCounter[player] > 1){
+                p1ComboCounter.alpha = 1;
+            }
+        } else if (player == "Player2"){
+            p2ComboCounter.text = comboCounter[player].ToString() + " Hit";
+            if(comboCounter[player] > 1){
+                p2ComboCounter.alpha = 1;
+            }
+        }
+
+        
+        
+    }
+    public void ResetComboCounter(string player){
+        comboCounter[player] = 0;
+        
+        //hide text
+        if(player == "Player1"){
+                    
+
+            StartCoroutine(FadeP1ComboCounter());
+            
+            
+            
+        } else {
+            //Debug.Log("b");
+            StartCoroutine(FadeP2ComboCounter());
+            
+
+        }
+    }
+
+    IEnumerator FadeP1ComboCounter(){
+        
+    
+        for (float a = p1ComboCounter.alpha; a >= -0.5f; a-= 0.05f){
+            
+            p1ComboCounter.alpha = a; 
+            yield return null;
+        }
+        p1ComboCounter.text = "0 Hit";
+       
+        
+    }
+    IEnumerator FadeP2ComboCounter(){
+        
+        for (float a = p2ComboCounter.alpha; a >= -0.5f; a-= 0.05f){
+            
+            p2ComboCounter.alpha = a; 
+            yield return null;
+        }
+        p2ComboCounter.text = "0 Hit";
+       
+        
     }
 }
