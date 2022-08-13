@@ -754,7 +754,8 @@ public class PlayerController : MonoBehaviour
                 characterConstants.NeutralS();             
                 playerAnimator.Play("Neutral S");
             } else if ((movement == Vector2.right && gameObject.transform.localScale.x > 0) || (movement == Vector2.left && gameObject.transform.localScale.x < 0)){
-                GameObject forwardS = Instantiate(characterConstants.forwardSPrefab,this.transform.position,Quaternion.identity);
+                Vector3 initVector = new Vector3(this.transform.position.x + transform.localScale.x * characterConstants.forwardSPrefab.transform.position.x,this.transform.position.y + characterConstants.forwardSPrefab.transform.position.y,this.transform.position.z + characterConstants.forwardSPrefab.transform.position.z);
+                GameObject forwardS = Instantiate(characterConstants.forwardSPrefab,initVector,Quaternion.identity);
                 forwardS.transform.SetParent(transform);
                 forwardS.transform.localScale = new Vector3(1,1,1);
                 characterConstants.ForwardS(); 
@@ -765,6 +766,9 @@ public class PlayerController : MonoBehaviour
                 crouchingS.transform.localScale = new Vector3(1,1,1);
                 characterConstants.CrouchingS(); 
                 playerAnimator.Play("Crouching S");    
+            } else {
+                canDashJumpCancel = true;
+                isIdle = true;
             }
 
         } 

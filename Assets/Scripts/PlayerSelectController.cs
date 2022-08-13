@@ -150,13 +150,21 @@ public class PlayerSelectController : MonoBehaviour
 
     void OnCancel()
     {
-        if (thisPlayerTag == "Player1" && P1selected) {
-            P1selected = false;
-            playerText.color =  Color.red;
-        } else if (thisPlayerTag == "Player2" && P2selected) {
-            P2selected = false;
-            playerText.color =  Color.red;
-        } 
+        if (thisPlayerTag == "Player1"){
+            if (P1selected) {
+                P1selected = false;
+                playerText.color =  Color.red;
+            }else{
+                LoadMain();
+            }
+        } else if (thisPlayerTag == "Player2"){
+            if (P2selected) {
+                P2selected = false;
+                playerText.color =  Color.red;
+            }else{
+                LoadMain();
+            }
+        }
     }
 
     private IEnumerator WaitForSelect()
@@ -174,5 +182,12 @@ public class PlayerSelectController : MonoBehaviour
         P1selected = false;
         P2selected = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    void LoadMain()
+    {
+        stageSelected = false;
+        P1selected = false;
+        P2selected = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
