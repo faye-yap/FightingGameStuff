@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI p2MeterNumber;
     [HideInInspector]
     public int frameNumber;
-    private int timeRemaining = 99;
+    private int timeRemaining;
     public GameObject timer;
     private int preTimeRemaining = 3;
     public GameObject preTimerObj;

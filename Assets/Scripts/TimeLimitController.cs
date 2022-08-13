@@ -15,8 +15,10 @@ public class TimeLimitController : MonoBehaviour, ISelectHandler
         foreach (var button in timeLimitButtons){
             if (optionConstants.TimeLimit == int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text)){
                 StartCoroutine(selectTimeLimit(button));
+                return;
             }
         }
+        selectTimeLimit(timeLimitButtons[1]);
     }
 
     private IEnumerator selectTimeLimit(Button button){
