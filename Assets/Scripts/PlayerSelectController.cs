@@ -16,7 +16,7 @@ public class PlayerSelectController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
     private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> charSpriteDict;
-    private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> stageSpriteDict;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, AnimationClip> stageAnimationDict;
     private PlayerSelectConstants.CharacterSelection[] charArray;
     private PlayerSelectConstants.CharacterSelection[] stageArray;
     private string thisPlayerTag;
@@ -40,13 +40,13 @@ public class PlayerSelectController : MonoBehaviour
             {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookSprite},
         };
         charArray = charSpriteDict.Keys.ToArray();
-        stageSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
-            // {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageSprite},
-            // {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageSprite},
-            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageSprite},
-            {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageSprite},
+        stageAnimationDict = new Dictionary<PlayerSelectConstants.CharacterSelection, AnimationClip>(){
+            {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageAnimation},
         };
-        stageArray = stageSpriteDict.Keys.ToArray();
+        stageArray = stageAnimationDict.Keys.ToArray();
         if (thisPlayerTag == "Player1"){
             spriteRenderer.sprite = charSpriteDict[p1Character];
         } else if (thisPlayerTag == "Player2"){

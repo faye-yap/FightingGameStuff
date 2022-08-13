@@ -6,23 +6,26 @@ public class StageController : MonoBehaviour
 {
     public PlayerSelectConstants playerSelectConstants;
     private PlayerSelectConstants.CharacterSelection stage;
-    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private AnimatorOverrideController animatorOverrideController;
     private AudioSource audioSource;
-    private Dictionary<PlayerSelectConstants.CharacterSelection, (Sprite, AudioClip)> stageSpriteDict;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, (AnimationClip, AudioClip)> stageAnimationDict;
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
         audioSource = GetComponent<AudioSource>();
         stage = playerSelectConstants.stage;
-        stageSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, (Sprite, AudioClip)>(){
-            // {PlayerSelectConstants.CharacterSelection.Pawn, (playerSelectConstants.pawnStageSprite, playerSelectConstants.pawnStageAudio)},
-            // {PlayerSelectConstants.CharacterSelection.Knight, (playerSelectConstants.knightStageSprite, playerSelectConstants.knightStageAudio)},
-            {PlayerSelectConstants.CharacterSelection.Bishop, (playerSelectConstants.bishopStageSprite, playerSelectConstants.bishopStageAudio)},
-            {PlayerSelectConstants.CharacterSelection.Rook, (playerSelectConstants.rookStageSprite, playerSelectConstants.rookStageAudio)},
+        stageAnimationDict = new Dictionary<PlayerSelectConstants.CharacterSelection, (AnimationClip, AudioClip)>(){
+            {PlayerSelectConstants.CharacterSelection.Pawn, (playerSelectConstants.pawnStageAnimation, playerSelectConstants.pawnStageAudio)},
+            {PlayerSelectConstants.CharacterSelection.Knight, (playerSelectConstants.knightStageAnimation, playerSelectConstants.knightStageAudio)},
+            {PlayerSelectConstants.CharacterSelection.Bishop, (playerSelectConstants.bishopStageAnimation, playerSelectConstants.bishopStageAudio)},
+            {PlayerSelectConstants.CharacterSelection.Rook, (playerSelectConstants.rookStageAnimation, playerSelectConstants.rookStageAudio)},
         };
-        spriteRenderer.sprite = stageSpriteDict[stage].Item1;
-        audioSource.clip = stageSpriteDict[stage].Item2;
+        animator.runtimeAnimatorController = animatorOverrideController;
+        animatorOverrideController["stage_anim"] = stageAnimationDict[stage].Item1;
+        audioSource.clip = stageAnimationDict[stage].Item2;
     }
 
     // Update is called once per frame

@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: PlayerSelectConstants
   m_EditorClassIdentifier: 
   p1Character: 3
-  p2Character: 2
+  p2Character: 0
   pawnSprite: {fileID: 21300000, guid: 787d45126751390418cdb856712947f0, type: 3}
   bishopSprite: {fileID: 21300000, guid: 7b48ec61321a09046bdeed086e6a870f, type: 3}
-  rookSprite: {fileID: 21300000, guid: 8014e1965c117264c823adc18f787939, type: 3}
+  rookSprite: {fileID: 21300000, guid: b396cbd4eb7c7bc43b35a4c1b283fcb5, type: 3}
   knightSprite: {fileID: 21300000, guid: 9d2aa95c5e8e8644eaa7a0563c5f58f1, type: 3}
-  stage: 2
-  pawnStageSprite: {fileID: 0}
-  bishopStageSprite: {fileID: 21300000, guid: 4a4b77875a00642409c596f9593aeb33, type: 3}
-  rookStageSprite: {fileID: 21300000, guid: fec9859db56f7474c9bbb87dbeaaecb9, type: 3}
-  knightStageSprite: {fileID: 0}
+  stage: 1
+  pawnStageAnimation: {fileID: 7400000, guid: 7f3214cf55d3fc2498d3ea760c2b6693, type: 2}
+  bishopStageAnimation: {fileID: 7400000, guid: 1927234379b0ab94b9c78d4497e77f50, type: 2}
+  rookStageAnimation: {fileID: 7400000, guid: ec06172dd562cad4fbff3c93cb97af13, type: 2}
+  knightStageAnimation: {fileID: 7400000, guid: fef4d957a8e0e79408872e2eee3f8cc2, type: 2}
   pawnStageAudio: {fileID: 0}
   bishopStageAudio: {fileID: 8300000, guid: abe708287e9b6d049be21e13a2d8a877, type: 3}
   rookStageAudio: {fileID: 8300000, guid: abe708287e9b6d049be21e13a2d8a877, type: 3}

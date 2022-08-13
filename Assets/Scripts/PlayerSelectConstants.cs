@@ -15,10 +15,10 @@ public class PlayerSelectConstants : ScriptableObject
 
 	public CharacterSelection stage = CharacterSelection.Bishop;
 
-	public Sprite pawnStageSprite;
-	public Sprite bishopStageSprite;
-	public Sprite rookStageSprite;
-	public Sprite knightStageSprite;
+	public AnimationClip pawnStageAnimation;
+	public AnimationClip bishopStageAnimation;
+	public AnimationClip rookStageAnimation;
+	public AnimationClip knightStageAnimation;
 
 	public AudioClip pawnStageAudio;
 	public AudioClip bishopStageAudio;

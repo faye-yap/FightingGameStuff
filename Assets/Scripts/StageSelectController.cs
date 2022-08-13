@@ -6,20 +6,25 @@ public class StageSelectController : MonoBehaviour
 {
     public PlayerSelectConstants playerSelectConstants;
     private PlayerSelectConstants.CharacterSelection stage;
-    private SpriteRenderer spriteRenderer;
-    private Dictionary<PlayerSelectConstants.CharacterSelection, Sprite> stageSpriteDict;
+    private Animator animator;
+    private AnimatorOverrideController animatorOverrideController;
+    private Dictionary<PlayerSelectConstants.CharacterSelection, AnimationClip> stageAnimationDict;
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
         stage = playerSelectConstants.stage;
-        stageSpriteDict = new Dictionary<PlayerSelectConstants.CharacterSelection, Sprite>(){
-            // {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageSprite},
-            // {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageSprite},
-            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageSprite},
-            {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageSprite},
+        stageAnimationDict = new Dictionary<PlayerSelectConstants.CharacterSelection, AnimationClip>(){
+            {PlayerSelectConstants.CharacterSelection.Pawn, playerSelectConstants.pawnStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Knight, playerSelectConstants.knightStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Bishop, playerSelectConstants.bishopStageAnimation},
+            {PlayerSelectConstants.CharacterSelection.Rook, playerSelectConstants.rookStageAnimation},
         };
-        spriteRenderer.sprite = stageSpriteDict[stage];
+        Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+        animator.runtimeAnimatorController = animatorOverrideController;
+        
+        animatorOverrideController["blahaj_living_room"] = stageAnimationDict[stage];
     }
 
     // Update is called once per frame
@@ -27,7 +32,7 @@ public class StageSelectController : MonoBehaviour
     {
         if (stage != playerSelectConstants.stage){
             stage = playerSelectConstants.stage;
-            spriteRenderer.sprite = stageSpriteDict[playerSelectConstants.stage];
+            animatorOverrideController["blahaj_living_room"] = stageAnimationDict[stage];
         }
     }
 }
