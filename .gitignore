@@ -5,6 +5,7 @@ UserSettings/
 Library/
 obj/
 
+
 Temp/
 UserSettings/
 
@@ -14,3 +15,4 @@ Assembly-CSharp.csproj
 cspell.json
 *.meta
 *.png.meta
+*.unity
