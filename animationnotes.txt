@@ -12,6 +12,8 @@ apparently crouch is weird, might be a state machine issue if the knight one wor
 
 Bishop:
 crouching S frame data is way off due to the animation requirements (needs testing to see if all the parts work properly)
+neutral A: can't possibly come out as fast as suggested
+book invulnerability is a bit inconsistent
 
 check:
 are the prefabs coming out of the right place? can be fixed by: 
@@ -21,3 +23,6 @@ are the prefabs coming out of the right place? can be fixed by:
 
 stretch improvements to try:
 - modify block / crouchblock hurtboxes for all
+
+important note:
+to edit frame data, make sure to edit both the move prefab AND the move animation in the main body, or the recovery times may not be what you expect
