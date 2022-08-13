@@ -10,6 +10,9 @@ public class OptionConstants : ScriptableObject
     [HideInInspector]
     public List<int> TimeLimits = new List<int>{60, 99, 120};
     public int TimeLimit = 99;
+    [HideInInspector]
+    public List<int> FirstTos = new List<int>{1, 2, 3};
+    public int FirstTo = 2;
 
     public void OnGlobalVolumeChanged(float newVolume)
     {
@@ -24,5 +27,9 @@ public class OptionConstants : ScriptableObject
     public void OnTimeLimitChanged(int newTimeLimit)
     {
         TimeLimit = newTimeLimit;
+    }
+    public void OnFirstToChanged(int newFirstTo)
+    {
+        FirstTo = newFirstTo;
     }
 }

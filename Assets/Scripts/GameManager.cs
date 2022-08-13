@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI preTimerText;
     public Dictionary<string,int> comboCounter = new Dictionary<string, int> {{"Player1", 0},{"Player2",0}};
     
-    public int firstTo = 2;
+    public int firstTo;
     private int p1NumWins;
     private int p2NumWins;
     public WinManager p1Wins;
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         timerText = timer.GetComponent<TextMeshProUGUI>();
         timeRemaining = optionConstants.TimeLimit;
         timerText.text = optionConstants.TimeLimit.ToString();
+        firstTo = optionConstants.FirstTo;
         preTimer = preTimerObj.transform.Find("Timer").gameObject.transform.Find("TimerText").gameObject;
         preTimerText = preTimer.GetComponent<TextMeshProUGUI>();
         p1StartPos = p1.transform.position;

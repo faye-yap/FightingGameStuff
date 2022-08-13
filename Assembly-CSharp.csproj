@@ -60,6 +60,8 @@
      <Compile Include="Assets\Scripts\OptionsController.cs" />
      <Compile Include="Assets\Scripts\TimeLimitController.cs" />
      <Compile Include="Assets\Scripts\TimeLimitOptionsController.cs" />
+     <Compile Include="Assets\Scripts\FirstToController.cs" />
+     <Compile Include="Assets\Scripts\FirstToOptionsController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
