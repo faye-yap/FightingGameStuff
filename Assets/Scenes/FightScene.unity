@@ -1186,11 +1186,11 @@ MonoBehaviour:
   pawnCharacter: {fileID: 6422374833926789126, guid: 435353eec8c4b314cae0921ffa9350b6, type: 3}
   bishopCharacter: {fileID: 0}
   knightCharacter: {fileID: 7958742711531522280, guid: 82e8b45be9e41a4488c5df3431ed8be0, type: 3}
-  rookCharacter: {fileID: 0}
+  rookCharacter: {fileID: 6422374833926789126, guid: 9863f98f8b340424f97e71e7d14eafee, type: 3}
   pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
   bishopConstants: {fileID: 0}
   knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
-  rookConstants: {fileID: 0}
+  rookConstants: {fileID: -5992353156207993633, guid: 4e7cb0735e3c22f47aee0e155bd3a58b, type: 3}
   hasBeenHit: 0
   isThrowInvuln: 0
 --- !u!114 &415806214
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   p2Controller: {fileID: 0}
   PlayerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
   p1Character: 3
-  p2Character: 3
+  p2Character: 2
   pauseMenuController: {fileID: 2091012598}
   p1MaxHP: 0
   p1CurrentHP: 0
@@ -4405,7 +4405,7 @@ MonoBehaviour:
   rookCharacter: {fileID: 0}
   pawnConstants: {fileID: 6306706990535534838, guid: e64d7804689bb2d41b42f40b59272159, type: 3}
   bishopConstants: {fileID: 0}
-  knightConstants: {fileID: 8309540413617926206, guid: 8b5a79494655343498a4c13f40fc38e9, type: 3}
-  rookConstants: {fileID: 0}
+  knightConstants: {fileID: 8309540413617926206, guid: 03306ac5a4bedf64e96dad3a8ff63719, type: 3}
+  rookConstants: {fileID: -5992353156207993633, guid: 4e7cb0735e3c22f47aee0e155bd3a58b, type: 3}
   hasBeenHit: 0
   isThrowInvuln: 0
