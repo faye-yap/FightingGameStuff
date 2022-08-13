@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public PlayerController p1Controller;
     public PlayerController p2Controller;
+    public OptionConstants optionConstants;
     public PlayerSelectConstants PlayerSelectConstants;
     public PlayerSelectConstants.CharacterSelection p1Character;
     public PlayerSelectConstants.CharacterSelection p2Character;
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         frameNumber = 0;
         timerText = timer.GetComponent<TextMeshProUGUI>();
+        timeRemaining = optionConstants.TimeLimit;
+        timerText.text = optionConstants.TimeLimit.ToString();
         preTimer = preTimerObj.transform.Find("Timer").gameObject.transform.Find("TimerText").gameObject;
         preTimerText = preTimer.GetComponent<TextMeshProUGUI>();
         p1StartPos = p1.transform.position;
@@ -190,8 +193,8 @@ public class GameManager : MonoBehaviour
         p1MeterNumber.text = "0";
         p2MeterNumber.text = "0"; 
         frameNumber = 0;
-        timeRemaining = 99;
-        timerText.text = timeRemaining.ToString();
+        timeRemaining = optionConstants.TimeLimit;
+        timerText.text = optionConstants.TimeLimit.ToString();
         if(p1NumWins == firstTo || p2NumWins == firstTo){
             GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
             gameFinishedUI.transform.SetParent(timer.transform,false);

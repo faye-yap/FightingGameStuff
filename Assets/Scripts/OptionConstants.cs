@@ -9,7 +9,7 @@ public class OptionConstants : ScriptableObject
     public float MusicVolume = 1.0f;
     [HideInInspector]
     public List<int> TimeLimits = new List<int>{60, 99, 120};
-    public int TimeLimit = 99;
+    public int TimeLimit;
 
     public void OnGlobalVolumeChanged(float newVolume)
     {
