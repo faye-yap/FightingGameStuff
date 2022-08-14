@@ -55,7 +55,9 @@ public class MoveBase : MonoBehaviour
     void DeactivateColliders(){
         //Debug.Log("Colliders Deactivated");
         foreach (Collider2D collider2D in collider2Ds){
-            collider2D.enabled = false;
+            if (collider2D.gameObject.layer != 9){ // Hurtbox layer
+                collider2D.enabled = false;
+            }
         }
         opponentController.hasBeenHit = false;
     }
