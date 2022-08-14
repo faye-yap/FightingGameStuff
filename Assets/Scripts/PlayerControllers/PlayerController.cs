@@ -249,7 +249,8 @@ public class PlayerController : MonoBehaviour
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -3.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -2.0f,5f);
                         if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 3.0f,0);
-                        playerAnimator.Play("Blocked");
+                        if(movement.y >= 0)playerAnimator.Play("Standing Block");
+                        else playerAnimator.Play("Crouching Block");
                         isIdle = false;
                         moveBase.PlayAudioOnBlock();
                         GainMeter(2);
@@ -289,7 +290,8 @@ public class PlayerController : MonoBehaviour
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -4.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -3.0f,5f);
                         if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 4.0f,0);
-                        playerAnimator.Play("Blocked");
+                        if(movement.y >= 0)playerAnimator.Play("Standing Block");
+                        else playerAnimator.Play("Crouching Block");
                         isIdle = false;
                         moveBase.PlayAudioOnBlock();
                         GainMeter(3);
@@ -323,7 +325,8 @@ public class PlayerController : MonoBehaviour
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -4.0f,5f);
                         if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 5.0f,0);
-                        playerAnimator.Play("Blocked");
+                        if(movement.y >= 0)playerAnimator.Play("Standing Block");
+                        else playerAnimator.Play("Crouching Block");
                         isIdle = false;
                         moveBase.PlayAudioOnBlock();
                         GainMeter(5);
@@ -355,7 +358,8 @@ public class PlayerController : MonoBehaviour
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5.0f,5f);
                         if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 6.0f,0);
-                        playerAnimator.Play("Blocked");
+                        if(movement.y >= 0)playerAnimator.Play("Standing Block");
+                        else playerAnimator.Play("Crouching Block");
                         isIdle = false;
                         moveBase.PlayAudioOnBlock();
                         GainMeter(5);
