@@ -103,11 +103,27 @@ public class KnightConstants : CharacterConstants
 
     public override void Super()
     {
+  
         Vector3 initVector = new Vector3(transform.parent.position.x +  superPrefab.transform.position.x,transform.position.y + superPrefab.transform.position.y,transform.position.z + superPrefab.transform.position.z);
         GameObject super = Instantiate(superPrefab,initVector,Quaternion.identity);
         super.transform.SetParent(transform.parent);
         super.transform.localScale = new Vector3(1,1,1);
+        StartCoroutine(SuperMovement());
     }
+
+
+   
+   
+   
+    IEnumerator SuperMovement(){
+        for (int i = 0; i < 35; i++){
+            controller.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (controller.transform.localScale.x * 15,0);
+            yield return null;
+        }
+        controller.StopMovement();
+    }
+
+    
     
 
 }
