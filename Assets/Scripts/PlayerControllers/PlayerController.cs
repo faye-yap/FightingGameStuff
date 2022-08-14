@@ -208,11 +208,13 @@ public class PlayerController : MonoBehaviour
     
 
     private void OnTriggerEnter2D(Collider2D c) {
-        
+        MoveBase moveBase = c.transform.parent.GetComponent<MoveBase>();
         if (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Hitbox" && !hasBeenHit){
             //Debug.Log(c.ToString());
             //Debug.Log(opponentTag);
             //Debug.Log("a");
+            
+
             hasBeenHit = true;
             bool isBlocked;
             bool isProjectile = false;
@@ -247,6 +249,7 @@ public class PlayerController : MonoBehaviour
                         if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 3.0f,0);
                         playerAnimator.Play("Blocked");
                         isIdle = false;
+                        moveBase.PlayAudioOnBlock();
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -4,9);
@@ -256,6 +259,7 @@ public class PlayerController : MonoBehaviour
                         isIdle = false;
                         playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
+                        moveBase.PlayAudioOnHit();
                     }
                     //Debug.Log("A");
                     break;
@@ -283,6 +287,7 @@ public class PlayerController : MonoBehaviour
                         if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 4.0f,0);
                         playerAnimator.Play("Blocked");
                         isIdle = false;
+                        moveBase.PlayAudioOnBlock();
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5,9);
@@ -292,6 +297,8 @@ public class PlayerController : MonoBehaviour
                         isIdle = false;
                         playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
+                        moveBase.PlayAudioOnHit();
+
                     }
                     //Debug.Log("B");
                     break;
@@ -312,6 +319,7 @@ public class PlayerController : MonoBehaviour
                         if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 5.0f,0);
                         playerAnimator.Play("Blocked");
                         isIdle = false;
+                        moveBase.PlayAudioOnBlock();
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -7.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6,9);
@@ -322,6 +330,7 @@ public class PlayerController : MonoBehaviour
                         if (!isProjectile) playerAnimator.Play("KnockedDown");
                         else playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
+                        moveBase.PlayAudioOnHit();
                     }
                     //TODO: account for super
 
@@ -340,6 +349,7 @@ public class PlayerController : MonoBehaviour
                         if(Mathf.Abs(thisPlayerBody.transform.position.x) > 12f) opponentBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * 6.0f,0);
                         playerAnimator.Play("Blocked");
                         isIdle = false;
+                        moveBase.PlayAudioOnBlock();
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -8.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -7,9);
@@ -349,6 +359,7 @@ public class PlayerController : MonoBehaviour
                         isIdle = false;
                         playerAnimator.Play("KnockedDown");
                         gameManager.UpdateComboCounter(opponentTag);
+                        moveBase.PlayAudioOnHit();
                     }
 
             }
@@ -362,6 +373,7 @@ public class PlayerController : MonoBehaviour
                 //get thrown
                 //opponent playercontroller play throw hit animation
                 c.gameObject.GetComponentInParent<MoveBase>().ThrowHit();
+                moveBase.PlayAudioOnHit();
                 
             }
         }   

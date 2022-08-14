@@ -11,6 +11,9 @@ public class MoveBase : MonoBehaviour
     private PlayerController playerController;
     private PlayerController opponentController;
     private Animator moveAnimator;
+    public AudioSource audioOnHit;
+    public AudioSource audioOnBlock;
+    public AudioSource moveAudio;
     
     void Awake()
     {
@@ -30,10 +33,36 @@ public class MoveBase : MonoBehaviour
         string opponentTag = this.transform.parent.GetComponent<PlayerController>().opponentTag;
         opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
         opponentController.hasBeenHit = false;
+        moveAudio = transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>();   
+        audioOnHit = transform.GetChild(transform.childCount - 1).GetChild(0).GetComponent<AudioSource>();
+        audioOnBlock = transform.GetChild(transform.childCount - 1).GetChild(1).GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     
+    public void PlayMoveAudio(){
+        if(moveAudio.clip!=null) {
+            moveAudio.enabled = true;
+            moveAudio.Play();
+
+        }
+    }
+
+    public void PlayAudioOnHit(){
+        if(audioOnHit.clip!=null) {
+            audioOnHit.enabled = true;
+            audioOnHit.Play();
+
+        }
+    }
+
+    public void PlayAudioOnBlock(){
+       if(audioOnBlock.clip!=null) {
+            audioOnBlock.enabled = true;
+            audioOnBlock.Play();
+
+        }
+    }
 
     void DestroySelf(){
         
