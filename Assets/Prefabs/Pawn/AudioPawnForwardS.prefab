@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 4602929726230614458}
   - component: {fileID: 3006937898913926162}
   m_Layer: 0
-  m_Name: AudioPawnNeutralB
+  m_Name: AudioPawnForwardS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,7 +300,7 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7537402304457587992, guid: f2e1f6708d67ed34e946383521c9fbec, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 155227fba7817af4aa708814f8db1ad6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6783fd7f4adccaf49b28c89e68205a69, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
