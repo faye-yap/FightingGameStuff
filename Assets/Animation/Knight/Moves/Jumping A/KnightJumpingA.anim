@@ -19,19 +19,19 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
-    - time: 0
+    - time: 0.05
       value: {fileID: 21300000, guid: 1d83d4b69a0637243bc0d4c13861d54d, type: 3}
-    - time: 0.06666667
+    - time: 0.1
       value: {fileID: 21300000, guid: d8e954cbe6858ce4cb6fc6b735b395a2, type: 3}
-    - time: 0.13333334
+    - time: 0.15
       value: {fileID: 21300000, guid: 625ba21ff25da9741962a7b9d662921c, type: 3}
     - time: 0.2
       value: {fileID: 21300000, guid: 936e715a74b247a41a37437ec5346cf1, type: 3}
     - time: 0.25
       value: {fileID: 21300000, guid: 936e715a74b247a41a37437ec5346cf1, type: 3}
-    - time: 0.31666666
+    - time: 0.3
       value: {fileID: 21300000, guid: 7e478156d879b7947ab7a707d19b5794, type: 3}
-    - time: 0.38333333
+    - time: 0.35
       value: {fileID: 21300000, guid: 410942b962f011243af8c2c8b705aa50, type: 3}
     attribute: m_Sprite
     path: 
@@ -64,7 +64,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.45
+    m_StopTime: 0.4
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -98,7 +98,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.45
+  - time: 0.4
     functionName: DestroySelf
     data: 
     objectReferenceParameter: {fileID: 0}
