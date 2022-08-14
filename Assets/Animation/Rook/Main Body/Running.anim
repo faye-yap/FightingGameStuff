@@ -55,7 +55,70 @@ AnimationClip:
     path: Crouching A Hurtbox
     classID: 212
     script: {fileID: 0}
-  m_PPtrCurves: []
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: Dash Hurtbox
+    classID: 60
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: Default Hurtbox
+    classID: 60
+    script: {fileID: 0}
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 62c0ea4ab4c69a04ca05e978064208bb, type: 3}
+    - time: 0.016666668
+      value: {fileID: 21300000, guid: 153d8b7bfee3c52459f382ae55985990, type: 3}
+    - time: 0.033333335
+      value: {fileID: 21300000, guid: 97e2115a3d2c8714cb0651f33ce63cf2, type: 3}
+    - time: 0.05
+      value: {fileID: 21300000, guid: 55f138c649551ae4faa8f4fd6755fd0c, type: 3}
+    - time: 0.06666667
+      value: {fileID: 21300000, guid: c65681862c55bf845952f2483f63cc5f, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: 77f65d198443a814eb6c7dd84d9daf45, type: 3}
+    - time: 0.1
+      value: {fileID: 21300000, guid: b45cc8213b82a1249bfa95bcea67b336, type: 3}
+    - time: 0.11666667
+      value: {fileID: 21300000, guid: ffaaa78c70914d247875e2fa27280710, type: 3}
+    - time: 0.13333334
+      value: {fileID: 21300000, guid: 87f4c760dfa69594cbb6ec1fa2000241, type: 3}
+    - time: 0.15
+      value: {fileID: 21300000, guid: 09595e05c0aa4ad41b5e54df255f6281, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -77,13 +140,44 @@ AnimationClip:
       typeID: 212
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    - serializedVersion: 2
+      path: 1727385161
+      attribute: 3305885265
+      script: {fileID: 0}
+      typeID: 60
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 787513785
+      attribute: 3305885265
+      script: {fileID: 0}
+      typeID: 60
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: 62c0ea4ab4c69a04ca05e978064208bb, type: 3}
+    - {fileID: 21300000, guid: 153d8b7bfee3c52459f382ae55985990, type: 3}
+    - {fileID: 21300000, guid: 97e2115a3d2c8714cb0651f33ce63cf2, type: 3}
+    - {fileID: 21300000, guid: 55f138c649551ae4faa8f4fd6755fd0c, type: 3}
+    - {fileID: 21300000, guid: c65681862c55bf845952f2483f63cc5f, type: 3}
+    - {fileID: 21300000, guid: 77f65d198443a814eb6c7dd84d9daf45, type: 3}
+    - {fileID: 21300000, guid: b45cc8213b82a1249bfa95bcea67b336, type: 3}
+    - {fileID: 21300000, guid: ffaaa78c70914d247875e2fa27280710, type: 3}
+    - {fileID: 21300000, guid: 87f4c760dfa69594cbb6ec1fa2000241, type: 3}
+    - {fileID: 21300000, guid: 09595e05c0aa4ad41b5e54df255f6281, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0
+    m_StopTime: 0.16666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -136,6 +230,44 @@ AnimationClip:
     attribute: m_Enabled
     path: Crouching A Hurtbox
     classID: 212
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: Dash Hurtbox
+    classID: 60
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: Default Hurtbox
+    classID: 60
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
