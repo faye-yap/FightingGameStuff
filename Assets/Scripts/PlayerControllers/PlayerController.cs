@@ -463,7 +463,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Ground")) {
             onGroundState = true;
             canAirJump = false;
-            canAirNormal = false;
+            canAirNormal = true;
             thisPlayerBody.velocity = Vector2.zero;
             airActions = 1; 
 
