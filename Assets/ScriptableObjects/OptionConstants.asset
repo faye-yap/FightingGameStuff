@@ -16,3 +16,5 @@ MonoBehaviour:
   MusicVolume: 0.4999999
   TimeLimits: 3c0000006300000078000000
   TimeLimit: 99
+  FirstTos: 010000000200000003000000
+  FirstTo: 1

@@ -261,7 +261,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1f;
         pauseMenuController.GameIsPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void UpdateComboCounter(string player){
