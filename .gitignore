@@ -4,8 +4,8 @@ Packages/
 UserSettings/
 Library/
 obj/
-
-
+build/
+FightingGameStuff_BurstDebugInformation_DoNotShip/
 Temp/
 
 cspell.json
