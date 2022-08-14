@@ -38,7 +38,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerSelectConstants.cs" />
      <Compile Include="Assets\Scripts\PauseMenuController.cs" />
-     <Compile Include="Assets\Scripts\TimeLimitOptionsController.cs" />
      <Compile Include="Assets\Scripts\StageSelectController.cs" />
      <Compile Include="Assets\Scripts\Constants\BishopConstants.cs" />
      <Compile Include="Assets\Scripts\WinManager.cs" />
@@ -47,21 +46,22 @@
      <Compile Include="Assets\Scripts\Constants\CharacterConstants.cs" />
      <Compile Include="Assets\Scripts\PlayerSelectController.cs" />
      <Compile Include="Assets\Scripts\Constants\KnightConstants.cs" />
-     <Compile Include="Assets\Scripts\TimeLimitController.cs" />
      <Compile Include="Assets\Scripts\MoveBase.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\InstantiateProjectile.cs" />
      <Compile Include="Assets\Scripts\MainMenuCharacterController.cs" />
      <Compile Include="Assets\Scripts\PlayerControllers\Hitstop.cs" />
-     <Compile Include="Assets\Scripts\OptionsController.cs" />
-     <Compile Include="Assets\Scripts\OptionConstants.cs" />
-     <Compile Include="Assets\Scripts\FirstToController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\StageController.cs" />
      <Compile Include="Assets\Scripts\Constants\RookConstants.cs" />
      <Compile Include="Assets\Scripts\Constants\PawnConstants.cs" />
+     <Compile Include="Assets\Scripts\TimeLimitController.cs" />
+     <Compile Include="Assets\Scripts\TimeLimitOptionsController.cs" />
      <Compile Include="Assets\Scripts\FirstToOptionsController.cs" />
+     <Compile Include="Assets\Scripts\OptionConstants.cs" />
+     <Compile Include="Assets\Scripts\OptionsController.cs" />
+     <Compile Include="Assets\Scripts\FirstToController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
