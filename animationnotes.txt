@@ -23,6 +23,7 @@ need to line up the book with the move, can just change x/y offsets of the move
 rook: 
 crouching a, jumping a, neutral a, throw needs a main body animation
 rest of the moves can hide body for the duration of the move, since move is handled completely in the prefab
+super and jB movement need to be handled in code
 
 check:
 are the prefabs coming out of the right place? can be fixed by: 
