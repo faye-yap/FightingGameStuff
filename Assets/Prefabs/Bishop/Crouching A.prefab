@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 859917250100710848}
+  - {fileID: 8141812543272901679}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,6 +104,9 @@ MonoBehaviour:
   collider2Ds:
   - {fileID: 0}
   collidersInParent: 0
+  audioOnHit: {fileID: 0}
+  audioOnBlock: {fileID: 0}
+  moveAudio: {fileID: 0}
 --- !u!61 &4497350186965892382
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -207,3 +211,77 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.9551754, y: 1.3259912}
   m_EdgeRadius: 0
+--- !u!1001 &5700822019626896789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 492074201612723306}
+    m_Modifications:
+    - target: {fileID: 3006937898913926162, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 56732dc4aae593d4ba307b3c79640141, type: 3}
+    - target: {fileID: 4598156827357939713, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b1942c9cdf98aa642b56407be493a208, type: 3}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5278775687030318214, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b1942c9cdf98aa642b56407be493a208, type: 3}
+    - target: {fileID: 7790820169185858832, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+      propertyPath: m_Name
+      value: AudioBishopCrouchingA
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+--- !u!4 &8141812543272901679 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4602929726230614458, guid: bc143b8ae071a0c45b5d8b32e342bed8, type: 3}
+  m_PrefabInstance: {fileID: 5700822019626896789}
+  m_PrefabAsset: {fileID: 0}
