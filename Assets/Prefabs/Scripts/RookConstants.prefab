@@ -45,23 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1000
-  moveSpeed: 0
-  dashSpeed: 0
-  airdashSpeed: 0
-  jumpSpeed: 0
-  backdashDuration: 0
-  backdashSpeed: 0
-  airDashDuration: 0
+  moveSpeed: 10
+  dashSpeed: 10
+  airdashSpeed: 10
+  jumpSpeed: 10
+  backdashDuration: 10
+  backdashSpeed: 10
+  airDashDuration: 10
   framesUntilAirJump: 5
-  neutralAPrefab: {fileID: 0}
-  crouchingAPrefab: {fileID: 0}
-  jumpingAPrefab: {fileID: 0}
-  neutralBPrefab: {fileID: 0}
-  crouchingBPrefab: {fileID: 0}
-  jumpingBPrefab: {fileID: 0}
-  downForwardBPrefab: {fileID: 0}
-  neutralSPrefab: {fileID: 0}
-  crouchingSPrefab: {fileID: 0}
-  forwardSPrefab: {fileID: 0}
-  throwPrefab: {fileID: 0}
-  superPrefab: {fileID: 0}
+  neutralAPrefab: {fileID: 2714901490874840970, guid: 5fd9fbbf22a34194088d98ec6681e829, type: 3}
+  crouchingAPrefab: {fileID: 2714901490874840970, guid: 54b80c5300693a5469f1b3cf746219e4, type: 3}
+  jumpingAPrefab: {fileID: 2714901490874840970, guid: ed15e15c83b5fd0499c670125a51b681, type: 3}
+  neutralBPrefab: {fileID: 2714901490874840970, guid: 59e00a64c0665db49905dff048f2271f, type: 3}
+  crouchingBPrefab: {fileID: 2714901490874840970, guid: e73a5ee039885264d84c7772cead8c6b, type: 3}
+  jumpingBPrefab: {fileID: 2714901490874840970, guid: 1baf3bf2da0335941a00632869baff1b, type: 3}
+  downForwardBPrefab: {fileID: 2714901490874840970, guid: 230b8123d7cdeda4c9ae2e24b053d78d, type: 3}
+  neutralSPrefab: {fileID: 2714901490874840970, guid: 60db586343adda741b8cdb900a1e8722, type: 3}
+  crouchingSPrefab: {fileID: 2714901490874840970, guid: d5162aa41018f114c887f7ebb38b13d0, type: 3}
+  forwardSPrefab: {fileID: 2714901490874840970, guid: 79c734e7803a21e449b518d010467189, type: 3}
+  throwPrefab: {fileID: 870924708383080130, guid: efb1c3e9ce0b40b48b05a79003d9bc54, type: 3}
+  superPrefab: {fileID: 2714901490874840970, guid: 2b12c54ebac345342a429e6f2be849bf, type: 3}

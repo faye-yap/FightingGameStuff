@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719095208203199911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 459.0496, y: 299.9512, z: -3.2806125}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,23 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1000
-  moveSpeed: 0
-  dashSpeed: 0
-  airdashSpeed: 0
-  jumpSpeed: 0
-  backdashDuration: 0
-  backdashSpeed: 0
-  airDashDuration: 0
+  moveSpeed: 15
+  dashSpeed: 15
+  airdashSpeed: 15
+  jumpSpeed: 15
+  backdashDuration: 15
+  backdashSpeed: 15
+  airDashDuration: 15
   framesUntilAirJump: 5
-  neutralAPrefab: {fileID: 0}
-  crouchingAPrefab: {fileID: 0}
-  jumpingAPrefab: {fileID: 0}
-  neutralBPrefab: {fileID: 0}
-  crouchingBPrefab: {fileID: 0}
-  jumpingBPrefab: {fileID: 0}
-  downForwardBPrefab: {fileID: 0}
-  neutralSPrefab: {fileID: 0}
-  crouchingSPrefab: {fileID: 0}
-  forwardSPrefab: {fileID: 0}
-  throwPrefab: {fileID: 0}
-  superPrefab: {fileID: 0}
+  neutralAPrefab: {fileID: 2714901490874840970, guid: fdf18078e26c5be4db3b812982f2fe54, type: 3}
+  crouchingAPrefab: {fileID: 2714901490874840970, guid: 0ef469a0903ddd641b9ec1f330a2f65f, type: 3}
+  jumpingAPrefab: {fileID: 2714901490874840970, guid: 4c973cb588871b84383c1ca48adbfd4a, type: 3}
+  neutralBPrefab: {fileID: 2714901490874840970, guid: b7a0c56f9f468294c8e7f90ff75469dc, type: 3}
+  crouchingBPrefab: {fileID: 2714901490874840970, guid: f6b9c75c09306774795691b30a30a2f1, type: 3}
+  jumpingBPrefab: {fileID: 2714901490874840970, guid: a5d6332a775ece047a99054b86cfadcb, type: 3}
+  downForwardBPrefab: {fileID: 2714901490874840970, guid: 260c949d007989c4dba8369395ac602b, type: 3}
+  neutralSPrefab: {fileID: 2714901490874840970, guid: 6921e40217dd104499c0d72b0d248066, type: 3}
+  crouchingSPrefab: {fileID: 2714901490874840970, guid: 9e11074ffd1b395429883a4752c8e840, type: 3}
+  forwardSPrefab: {fileID: 2714901490874840970, guid: 3ac526cd816ace34d8069c47992fae35, type: 3}
+  throwPrefab: {fileID: 870924708383080130, guid: e8d4db7a8fd2a6b46abbd5c77e526ee5, type: 3}
+  superPrefab: {fileID: 2714901490874840970, guid: d1e45e727bf34ff4a8233b99ae77f95e, type: 3}
