@@ -205,8 +205,10 @@ public class GameManager : MonoBehaviour
         for (int i = 3; i < p2Controller.transform.childCount; i++){
             Destroy(p2Controller.transform.GetChild(i).gameObject);
         }
-
-        foreach(GameObject go in transform.parent){
+        List<GameObject> objectsInScene = new List<GameObject>();
+        Scene scene = SceneManager.GetActiveScene();
+        scene.GetRootGameObjects(objectsInScene);
+        foreach(GameObject go in objectsInScene){
             if(go.name.Contains("Projectile")){
                 Destroy(go);
             }

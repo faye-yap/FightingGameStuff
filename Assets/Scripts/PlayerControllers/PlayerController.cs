@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Animator playerAnimator;
     private Vector2 movement;
-    private bool onGroundState = true;
+    [HideInInspector]
+    public bool onGroundState = true;
     private bool airDashBool;
     private bool groundDashBool;
     private bool groundBackdashBool;
@@ -208,12 +209,13 @@ public class PlayerController : MonoBehaviour
     
 
     private void OnTriggerEnter2D(Collider2D c) {
-        MoveBase moveBase = c.transform.parent.GetComponent<MoveBase>();
+        Debug.Log(c.transform.name);
+        
         if (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Hitbox" && !hasBeenHit){
             //Debug.Log(c.ToString());
             //Debug.Log(opponentTag);
             //Debug.Log("a");
-            
+            MoveBase moveBase = c.transform.parent.GetComponent<MoveBase>();
 
             hasBeenHit = true;
             bool isBlocked;
@@ -368,6 +370,7 @@ public class PlayerController : MonoBehaviour
         } else if  (c.gameObject.CompareTag(opponentTag) && c.gameObject.name == "Throwbox"){
             
             if(!isThrowInvuln){
+                MoveBase moveBase = c.transform.parent.GetComponent<MoveBase>();
                 PlayerController opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
                 opponentController.GainMeter(20);
                 //get thrown
