@@ -35,3 +35,8 @@ MonoBehaviour:
   bishopStageAudio: {fileID: 8300000, guid: abe708287e9b6d049be21e13a2d8a877, type: 3}
   rookStageAudio: {fileID: 8300000, guid: bdbb4f5fe4ec6374d80b590e6151edde, type: 3}
   knightStageAudio: {fileID: 8300000, guid: c6b63643e2e6d0244a873c73f4647a50, type: 3}
+  winner: 0
+  pawnWinText: "\u265F\u265F\u265F!"
+  bishopWinText: "\u265D\u265D\u265D!"
+  rookWinText: "\u265C\u265C\u265C!"
+  knightWinText: "\u265E\u265E\u265E!"

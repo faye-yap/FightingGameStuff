@@ -33,5 +33,12 @@ public class PlayerSelectConstants : ScriptableObject
 	public AudioClip pawnStageAudio;
 	public AudioClip bishopStageAudio;
 	public AudioClip rookStageAudio;
-	public AudioClip knightStageAudio;	
+	public AudioClip knightStageAudio;
+
+	public bool winner = false; // false = player 1, true = player 2
+
+	public string pawnWinText = "♟♟♟!";
+	public string bishopWinText = "♝♝♝!";
+	public string rookWinText = "♜♜♜!";
+	public string knightWinText = "♞♞♞!";
 }
