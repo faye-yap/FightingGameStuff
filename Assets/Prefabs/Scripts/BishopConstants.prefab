@@ -59,7 +59,7 @@ MonoBehaviour:
   neutralBPrefab: {fileID: 2714901490874840970, guid: b7a0c56f9f468294c8e7f90ff75469dc, type: 3}
   crouchingBPrefab: {fileID: 2714901490874840970, guid: f6b9c75c09306774795691b30a30a2f1, type: 3}
   jumpingBPrefab: {fileID: 2714901490874840970, guid: a5d6332a775ece047a99054b86cfadcb, type: 3}
-  downForwardBPrefab: {fileID: 2714901490874840970, guid: 4aebdd05fe311434a93ff37157fd61bd, type: 3}
+  downForwardBPrefab: {fileID: 2714901490874840970, guid: 260c949d007989c4dba8369395ac602b, type: 3}
   neutralSPrefab: {fileID: 2714901490874840970, guid: 6921e40217dd104499c0d72b0d248066, type: 3}
   crouchingSPrefab: {fileID: 2714901490874840970, guid: 9e11074ffd1b395429883a4752c8e840, type: 3}
   forwardSPrefab: {fileID: 2714901490874840970, guid: 3ac526cd816ace34d8069c47992fae35, type: 3}
