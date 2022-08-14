@@ -206,6 +206,13 @@ public class GameManager : MonoBehaviour
             Destroy(p2Controller.transform.GetChild(i).gameObject);
         }
 
+        foreach(GameObject go in transform.parent){
+            if(go.name.Contains("Projectile")){
+                Destroy(go);
+            }
+
+        }
+
         p1.transform.position = p1StartPos;
         //p1.transform.GetChild(1).position = new Vector3(0,0,0);
         p2.transform.position = p2StartPos;
