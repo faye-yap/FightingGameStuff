@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1443704268014761589, guid: f2e1f6708d67ed34e946383521c9fbec, type: 2}
-  m_audioClip: {fileID: 8300000, guid: af9e47a2b592e794e93a0662aad978dc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 91b6568a134be2e4e877a8a7fa2ef596, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -170,7 +170,7 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1443704268014761589, guid: f2e1f6708d67ed34e946383521c9fbec, type: 2}
-  m_audioClip: {fileID: 8300000, guid: af9e47a2b592e794e93a0662aad978dc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d382f70fdd8cb694a8ce802c9c487a0b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 4602929726230614458}
   - component: {fileID: 3006937898913926162}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: AudioKnightNeutralA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,7 +300,7 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1443704268014761589, guid: f2e1f6708d67ed34e946383521c9fbec, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1cf905bd657db914587a8139fa3f37ca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 91b6568a134be2e4e877a8a7fa2ef596, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
