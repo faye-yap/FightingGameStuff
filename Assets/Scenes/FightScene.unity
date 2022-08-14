@@ -1424,8 +1424,8 @@ MonoBehaviour:
   p1Controller: {fileID: 0}
   p2Controller: {fileID: 0}
   optionConstants: {fileID: 11400000, guid: b4e0b1788ec03594f8d3607f1d766a49, type: 2}
-  PlayerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
-  p1Character: 3
+  playerSelectConstants: {fileID: 11400000, guid: fa4da819c94f69648944d43826d0c44b, type: 2}
+  p1Character: 1
   p2Character: 2
   pauseMenuController: {fileID: 2091012598}
   p1MaxHP: 0

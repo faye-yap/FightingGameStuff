@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public PlayerController p1Controller;
     public PlayerController p2Controller;
     public OptionConstants optionConstants;
-    public PlayerSelectConstants PlayerSelectConstants;
+    public PlayerSelectConstants playerSelectConstants;
     public PlayerSelectConstants.CharacterSelection p1Character;
     public PlayerSelectConstants.CharacterSelection p2Character;
     public PauseMenuController pauseMenuController;
@@ -78,8 +78,8 @@ public class GameManager : MonoBehaviour
         preTimerText = preTimer.GetComponent<TextMeshProUGUI>();
         p1StartPos = p1.transform.position;
         p2StartPos = p2.transform.position;
-        p1Character = PlayerSelectConstants.p1Character;
-        p2Character = PlayerSelectConstants.p2Character;
+        p1Character = playerSelectConstants.p1Character;
+        p2Character = playerSelectConstants.p2Character;
         p1MeterNumber = p1MeterNumberUI.GetComponent<TextMeshProUGUI>();
         p2MeterNumber = p2MeterNumberUI.GetComponent<TextMeshProUGUI>();
         p1Controller = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
@@ -231,6 +231,7 @@ public class GameManager : MonoBehaviour
         timeRemaining = optionConstants.TimeLimit;
         timerText.text = optionConstants.TimeLimit.ToString();
         if(p1NumWins == firstTo || p2NumWins == firstTo){
+            playerSelectConstants.winner = (p2NumWins == firstTo);
             GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
             gameFinishedUI.transform.SetParent(timer.transform,false);
             StartCoroutine(EndMatch());
