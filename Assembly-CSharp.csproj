@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Constants\RookConstants.cs" />
      <Compile Include="Assets\Scripts\Constants\PawnConstants.cs" />
      <Compile Include="Assets\Scripts\FirstToOptionsController.cs" />
+     <Compile Include="Assets\Scripts\InitController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

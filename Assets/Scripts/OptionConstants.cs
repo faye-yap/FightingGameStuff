@@ -16,6 +16,7 @@ public class OptionConstants : ScriptableObject
 
     public void OnGlobalVolumeChanged(float newVolume)
     {
+        AudioListener.volume = newVolume;
         GlobalVolume = newVolume;
     }
 
