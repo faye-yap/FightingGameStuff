@@ -252,6 +252,7 @@ public class PlayerController : MonoBehaviour
                         playerAnimator.Play("Blocked");
                         isIdle = false;
                         moveBase.PlayAudioOnBlock();
+                        GainMeter(2);
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -4,9);
@@ -262,6 +263,7 @@ public class PlayerController : MonoBehaviour
                         playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
                         moveBase.PlayAudioOnHit();
+                        GainMeter(5);
                     }
                     //Debug.Log("A");
                     break;
@@ -290,6 +292,7 @@ public class PlayerController : MonoBehaviour
                         playerAnimator.Play("Blocked");
                         isIdle = false;
                         moveBase.PlayAudioOnBlock();
+                        GainMeter(3);
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5,9);
@@ -300,6 +303,7 @@ public class PlayerController : MonoBehaviour
                         playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
                         moveBase.PlayAudioOnHit();
+                        GainMeter(5);
 
                     }
                     //Debug.Log("B");
@@ -322,6 +326,7 @@ public class PlayerController : MonoBehaviour
                         playerAnimator.Play("Blocked");
                         isIdle = false;
                         moveBase.PlayAudioOnBlock();
+                        GainMeter(5);
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -7.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6,9);
@@ -333,6 +338,7 @@ public class PlayerController : MonoBehaviour
                         else playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
                         moveBase.PlayAudioOnHit();
+                        GainMeter(10);
                     }
                     //TODO: account for super
 
@@ -352,6 +358,7 @@ public class PlayerController : MonoBehaviour
                         playerAnimator.Play("Blocked");
                         isIdle = false;
                         moveBase.PlayAudioOnBlock();
+                        GainMeter(5);
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -8.0f,0);
                         else thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -7,9);
@@ -362,6 +369,7 @@ public class PlayerController : MonoBehaviour
                         playerAnimator.Play("KnockedDown");
                         gameManager.UpdateComboCounter(opponentTag);
                         moveBase.PlayAudioOnHit();
+                        GainMeter(3);
                     }
 
             }
@@ -377,6 +385,7 @@ public class PlayerController : MonoBehaviour
                 //opponent playercontroller play throw hit animation
                 c.gameObject.GetComponentInParent<MoveBase>().ThrowHit();
                 moveBase.PlayAudioOnHit();
+                GainMeter(10);
                 
             }
         }   
@@ -472,6 +481,11 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    IEnumerator CheckJumpReleased(){
+        yield return new WaitUntil(()=> movement.y < 1);
+        canAirJump = true;
+    }
     
     private void LeftJump(){
         if (onGroundState && canDashJumpCancel){
@@ -482,6 +496,8 @@ public class PlayerController : MonoBehaviour
 
             
         }
+
+
         if (gameObject.transform.localScale.x > 0){
             isStandBlocking = true;
         } else {
@@ -611,13 +627,14 @@ public class PlayerController : MonoBehaviour
                 if (canAirJump && !onGroundState) {
                     AirJump();
                 } else if (onGroundState){
-                    setAirJump = gameManager.frameNumber + characterConstants.framesUntilAirJump;
+                    
                     //Debug.Log(setAirJump);
                     switch (movement.x){
                         case (1) : RightJump(); break;                    
                         case (0) : NeutralJump(); break;
                         case (-1): LeftJump(); break;                    
                     }
+                    StartCoroutine(CheckJumpReleased());
                     
                     
                 }
