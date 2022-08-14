@@ -27,7 +27,7 @@ public class StageController : MonoBehaviour
         animator.runtimeAnimatorController = animatorOverrideController;
         animatorOverrideController["blahaj_living_room"] = stageAnimationDict[stage].Item1;
         audioSource.clip = stageAnimationDict[stage].Item2;
-        audioSource.volume = optionConstants.GlobalVolume * optionConstants.MusicVolume;
+        audioSource.volume = optionConstants.MusicVolume;
         audioSource.Play();
         animator.speed = stageAnimationDict[stage].Item3;
     }
