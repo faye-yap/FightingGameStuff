@@ -1448,6 +1448,7 @@ MonoBehaviour:
   p1Wins: {fileID: 2114026233}
   p2Wins: {fileID: 45250728}
   gameFinishedPrefab: {fileID: 8849713096746866709, guid: 4a2fa319ed2fa4c4c8af2fd48ff4c81d, type: 3}
+  timescale: 0
 --- !u!1 &503349859
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,7 +3262,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1419140569

@@ -44,7 +44,9 @@ public class MoveBase : MonoBehaviour
     void ActivateColliders(){
         //Debug.Log("Colliders Activated");
         foreach (Collider2D collider2D in collider2Ds){
-            collider2D.enabled = true;
+            if (collider2D.gameObject.layer != 9){ // Hurtbox layer
+                collider2D.enabled = true;
+            }
         }
     }
 
