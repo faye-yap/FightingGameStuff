@@ -56,6 +56,36 @@ public class RookConstants : CharacterConstants
         GameObject jumpingB = Instantiate(jumpingBPrefab,initVector,Quaternion.identity);
         jumpingB.transform.SetParent(transform.parent);
         jumpingB.transform.localScale = new Vector3(1,1,1);
+        StartCoroutine(DivekickMovement(jumpingB));
+    }
+
+    private bool IsOnGround(){
+        return transform.position.y <= -2.3;
+    }
+
+    IEnumerator DivekickMovement(GameObject downForwardBObject){
+        Rigidbody2D body = controller.GetComponent<Rigidbody2D>();
+        PolygonCollider2D collider = controller.GetComponent<PolygonCollider2D>();
+        collider.enabled = false;
+        body.bodyType = RigidbodyType2D.Static;
+        for (int i = 0; i < 16; i++){
+            //startup
+            yield return null;
+        }
+        body.bodyType = RigidbodyType2D.Dynamic;
+        
+        body.velocity = new(9.0f * body.transform.localScale.x, -15f);
+        
+        yield return new WaitUntil(() => IsOnGround());
+        
+        body.bodyType = RigidbodyType2D.Dynamic;
+        collider.enabled = true;
+        for (int i = 0; i <5; i++){
+            yield return null;
+        }
+        
+        Destroy(downForwardBObject);
+
     }
 
     public override void DownForwardB()
@@ -65,6 +95,7 @@ public class RookConstants : CharacterConstants
         GameObject downForwardB = Instantiate(downForwardBPrefab,initVector,Quaternion.identity);
         downForwardB.transform.SetParent(transform.parent);
         downForwardB.transform.localScale = new Vector3(1,1,1);
+        
     }
 
     public override void NeutralS()
