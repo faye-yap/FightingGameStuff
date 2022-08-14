@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public CameraController cameraController;
     public PlayerController p1Controller;
     public PlayerController p2Controller;
     public OptionConstants optionConstants;
@@ -58,8 +59,9 @@ public class GameManager : MonoBehaviour
     public WinManager p1Wins;
     public WinManager p2Wins;
     public GameObject gameFinishedPrefab;
-    public float timescale;
 
+    private float initCameraSize;
+    private Vector3 initCameraPos;
     
 
     
@@ -82,6 +84,9 @@ public class GameManager : MonoBehaviour
         p2MeterNumber = p2MeterNumberUI.GetComponent<TextMeshProUGUI>();
         p1Controller = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
         p2Controller = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>();
+        initCameraSize = cameraController.GetComponent<Camera>().orthographicSize;
+        initCameraPos = cameraController.transform.position;
+
         StartCoroutine(PreRoundTimer());
     }
 
@@ -101,7 +106,7 @@ public class GameManager : MonoBehaviour
 
             
         }
-        timescale = Time.timeScale;
+        
     }
 
     // Update is called once per frame
@@ -173,22 +178,38 @@ public class GameManager : MonoBehaviour
 
 
 
-        if(p1CurrentHP <= 0) {
+        if(p1CurrentHP < p2CurrentHP) {
             p2Wins.UpdateScore(p2NumWins);
             p2NumWins += 1;
             
-        }else if (p2CurrentHP <= 0) {
+        }else if (p2CurrentHP < p1CurrentHP) {
             p1Wins.UpdateScore(p1NumWins);
             p1NumWins += 1;
         }
 
         //reset everything
+
+        cameraController.transform.position = initCameraPos;
+        cameraController.GetComponent<Camera>().orthographicSize = initCameraSize;
         p1CurrentHP = p1MaxHP;
         p2CurrentHP = p2MaxHP;
         p1Controller.StopMovement();
         p2Controller.StopMovement();
+        p1Controller.playerAnimator.SetTrigger("Idle");
+        p2Controller.playerAnimator.SetTrigger("Idle");
+        p1Controller.isIdle = true;
+        p2Controller.isIdle = true;
+        for (int i = 3; i < p1Controller.transform.childCount; i++){
+            Destroy(p1Controller.transform.GetChild(i).gameObject);
+        }
+        for (int i = 3; i < p2Controller.transform.childCount; i++){
+            Destroy(p2Controller.transform.GetChild(i).gameObject);
+        }
+
         p1.transform.position = p1StartPos;
+        //p1.transform.GetChild(1).position = new Vector3(0,0,0);
         p2.transform.position = p2StartPos;
+        //p2.transform.GetChild(1).position = new Vector3(0,0,0);
         p1HPUI.localScale = new Vector3(1,1,1);
         p2HPUI.localScale = new Vector3(1,1,1);
         meter["Player1"] = 0;

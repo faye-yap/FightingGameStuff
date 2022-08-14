@@ -96,29 +96,37 @@ public class PawnConstants : CharacterConstants
         SpriteRenderer pawnSprite = pawnTransform.GetComponent<SpriteRenderer>();
         //Debug.Log(pawnSprite);
         for (int frame = 0; frame < 45; frame++){
-            if(frame >= 15 && frame < 22){
-                Color c =  pawnSprite.color;
-                c.a -= 0.125f;
-                pawnSprite.color = c;
-            } else if (frame >= 22 && frame < 26){
+            if (frame >= 22 && frame < 26){
                 playerTransform.Translate( new Vector3(facingDirection * 1.5f,0,0));
                 noteTransform.SetPositionAndRotation(notePos,Quaternion.identity);
                 if(playerTransform.localScale.x * facingDirection < 0){
                     noteTransform.localScale = new Vector3(-1,1,1);
                 }
-                    
-                
-            } else if (frame >= 26){
-                Color c =  pawnSprite.color;
-                c.a += 0.125f;
-                pawnSprite.color = c;
+
+                //comment this out for hex :3
+                if(Mathf.Abs(playerTransform.position.x) > 12.6f){
+                    float newX;
+                    if(playerTransform.position.x > 0){
+                        newX = 12.6f;
+                    } else newX = -12.6f;
+                    playerTransform.position  = new Vector3(newX,playerTransform.position.y,playerTransform.position.z);
+                }
             }
             yield return null;
         }
     }
     public override void ForwardS()
     {   
-        Vector3 initVector = new Vector3(transform.position.x + transform.parent.localScale.x * forwardSPrefab.transform.position.x,transform.position.y + forwardSPrefab.transform.position.y,transform.position.z + forwardSPrefab.transform.position.z);
+        float validateX = transform.position.x + transform.parent.localScale.x * forwardSPrefab.transform.position.x;
+        
+        if(Mathf.Abs(validateX) > (12.6 - 3.75)){
+            
+            if(validateX > 0){
+                validateX = 12.6f - 3.75f;
+            } else validateX = -12.6f - 3.75f;
+           
+        } 
+        Vector3 initVector = new Vector3(validateX,transform.position.y + forwardSPrefab.transform.position.y,transform.position.z + forwardSPrefab.transform.position.z);
         GameObject forwardS = Instantiate(forwardSPrefab,initVector,Quaternion.identity);
         forwardS.transform.SetParent(transform.parent);
         forwardS.transform.localScale = new Vector3(transform.localScale.x/Mathf.Abs(transform.localScale.x),1,1);

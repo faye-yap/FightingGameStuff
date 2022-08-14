@@ -19,11 +19,13 @@ public class MoveBase : MonoBehaviour
         collidersInParent = GetComponents<Collider2D>().Length;
         collider2Ds.RemoveRange(0,collidersInParent);
         
+        
     }
     void Start(){
         this.gameObject.tag = this.transform.parent.name;
-        this.transform.GetChild(0).tag = this.gameObject.tag;
+        if (transform.childCount > 0) this.transform.GetChild(0).tag = this.gameObject.tag;
         playerController = GetComponentInParent<PlayerController>();
+        //Debug.Log(playerController);
         moveAnimator = GetComponentInParent<Animator>();
         string opponentTag = this.transform.parent.GetComponent<PlayerController>().opponentTag;
         opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
@@ -34,7 +36,7 @@ public class MoveBase : MonoBehaviour
     
 
     void DestroySelf(){
-        //Debug.Log("Destroy Self");
+        
         playerController.isIdle = true;
         playerController.canDashJumpCancel = true;
         playerController.playerAnimator.SetTrigger("Idle");

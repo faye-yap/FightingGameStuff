@@ -1420,6 +1420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a9f4b6bea147049af7142896ce4fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraController: {fileID: 519420033}
   p1Controller: {fileID: 0}
   p2Controller: {fileID: 0}
   optionConstants: {fileID: 11400000, guid: b4e0b1788ec03594f8d3607f1d766a49, type: 2}
@@ -1448,7 +1449,6 @@ MonoBehaviour:
   p1Wins: {fileID: 2114026233}
   p2Wins: {fileID: 45250728}
   gameFinishedPrefab: {fileID: 8849713096746866709, guid: 4a2fa319ed2fa4c4c8af2fd48ff4c81d, type: 3}
-  timescale: 0
 --- !u!1 &503349859
 GameObject:
   m_ObjectHideFlags: 0
@@ -3262,7 +3262,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1419140569
