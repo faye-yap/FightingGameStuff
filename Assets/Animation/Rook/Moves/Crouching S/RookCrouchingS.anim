@@ -1526,7 +1526,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.3
+  - time: 0.31666666
     functionName: ActivateColliders
     data: 
     objectReferenceParameter: {fileID: 0}

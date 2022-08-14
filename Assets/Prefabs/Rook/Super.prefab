@@ -140,7 +140,7 @@ Animator:
   m_GameObject: {fileID: 2714901490874840970}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 985bd7ec95c2e9d4c850f5e910abb7df, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3908758e9bb9f6c4ea323881f8247318, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -604,6 +604,7 @@ GameObject:
   - component: {fileID: 859917250100710848}
   - component: {fileID: 4391490418105347088}
   - component: {fileID: 2998524438647167681}
+  - component: {fileID: 4455507428150914375}
   m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
@@ -688,7 +689,7 @@ PolygonCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1043,3 +1044,29 @@ PolygonCollider2D:
       - {x: 1.405, y: 0.29}
       - {x: 1.355, y: 0.26999998}
       - {x: 1.355, y: 0.28}
+--- !u!61 &4455507428150914375
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7615728630707487226}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.2126372, y: 0.5468756}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.77, y: 5.98}
+    newSize: {x: 5.77, y: 5.98}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.82027, y: 3.0791824}
+  m_EdgeRadius: 0
