@@ -27,6 +27,10 @@ MonoBehaviour:
   bishopStageSpeed: 0.6
   rookStageSpeed: 1
   knightStageSpeed: 0.4
+  pawnStageName: Solmi Living Room
+  bishopStageName: Lumos Basilica
+  rookStageName: Zebex Tornado Tech
+  knightStageName: Raiheimr's Durandal
   pawnStageAudio: {fileID: 8300000, guid: 7ee47c716b3ac5f4cac071b205de570f, type: 3}
   bishopStageAudio: {fileID: 8300000, guid: abe708287e9b6d049be21e13a2d8a877, type: 3}
   rookStageAudio: {fileID: 8300000, guid: bdbb4f5fe4ec6374d80b590e6151edde, type: 3}

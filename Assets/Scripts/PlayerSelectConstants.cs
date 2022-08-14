@@ -25,6 +25,11 @@ public class PlayerSelectConstants : ScriptableObject
 	public float rookStageSpeed;
 	public float knightStageSpeed;
 
+	public string pawnStageName;
+	public string bishopStageName;
+	public string rookStageName;
+	public string knightStageName;
+
 	public AudioClip pawnStageAudio;
 	public AudioClip bishopStageAudio;
 	public AudioClip rookStageAudio;
