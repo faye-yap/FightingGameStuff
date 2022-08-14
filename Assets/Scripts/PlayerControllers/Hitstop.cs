@@ -25,12 +25,19 @@ public class Hitstop : MonoBehaviour
             yield return null;
         }
         Time.timeScale = 1;
+
     }
     void ReenableMovement(){
         playerController.isIdle = true;
         playerAnimator.SetTrigger("Idle");
         gameManager.ResetComboCounter(playerController.opponentTag);
         //Debug.Log("a");
+    }
+
+    void ReenableMovementCrouching(){
+        playerController.isIdle = true;
+        playerAnimator.SetTrigger("Crouching");
+        gameManager.ResetComboCounter(playerController.opponentTag);
     }
 
     
