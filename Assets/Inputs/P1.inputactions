@@ -6,15 +6,6 @@
             "id": "83bbbe93-5ec5-4c3b-9e1e-c60be926afed",
             "actions": [
                 {
-                    "name": "AirJump",
-                    "type": "Button",
-                    "id": "29f56ba4-291b-49e0-9f65-629e5ba56e4e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Move",
                     "type": "Value",
                     "id": "bcc59581-b7ef-4135-af57-920b00e205cf",
@@ -329,39 +320,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7faffa68-12e5-427d-8bb5-cc29728bff7d",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AirJump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a7d57156-d8f9-4de8-8203-b89e80dead1f",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AirJump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8fdea34a-1e4d-4d21-99b2-3d515c2b02dd",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AirJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
