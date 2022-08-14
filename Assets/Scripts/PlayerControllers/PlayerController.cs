@@ -80,32 +80,34 @@ public class PlayerController : MonoBehaviour
         switch(playerNumber){
                 case PlayerSelectConstants.CharacterSelection.Pawn:
                     selectedChar = Instantiate(pawnCharacter, this.transform.position,Quaternion.identity);
-                    selectedChar.transform.parent = gameObject.transform;
+                    selectedChar.transform.SetParent(transform);
                     characterConstants = Instantiate(pawnConstants, transform.position,Quaternion.identity);
                     
                     break;
                 
                 case PlayerSelectConstants.CharacterSelection.Bishop:
                     selectedChar = Instantiate(bishopCharacter, this.transform.position,Quaternion.identity);
-                    selectedChar.transform.parent = gameObject.transform;
+                    selectedChar.transform.SetParent(transform);
                     characterConstants = Instantiate(bishopConstants, transform.position,Quaternion.identity);
                     break;
 
                 case PlayerSelectConstants.CharacterSelection.Rook:
                     selectedChar = Instantiate(rookCharacter, this.transform.position,Quaternion.identity);
-                    selectedChar.transform.parent = gameObject.transform;
+                    selectedChar.transform.SetParent(transform);
                     characterConstants = Instantiate(rookConstants, transform.position,Quaternion.identity);
                     break;
 
                 case PlayerSelectConstants.CharacterSelection.Knight:
                     selectedChar = Instantiate(knightCharacter, this.transform.position,Quaternion.identity);
-                    selectedChar.transform.parent = gameObject.transform;
+                    selectedChar.transform.SetParent(transform);
                     characterConstants = Instantiate(knightConstants, transform.position,Quaternion.identity);
                     break;
             }
         selectedChar.transform.localScale = new Vector3(1,1,1);
         characterConstants.transform.SetParent(transform);
-    }
+        
+       
+        }
     
     IEnumerator GetOpponent(string player){
         yield return null;
@@ -199,6 +201,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
+      
 
     }
 

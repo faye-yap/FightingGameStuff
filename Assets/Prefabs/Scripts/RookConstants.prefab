@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1000
-  moveSpeed: 0
+  moveSpeed: 5
   dashSpeed: 0
   airdashSpeed: 0
-  jumpSpeed: 0
+  jumpSpeed: 10
   backdashDuration: 0
   backdashSpeed: 0
   airDashDuration: 0
