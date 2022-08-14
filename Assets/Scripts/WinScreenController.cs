@@ -27,7 +27,6 @@ public class WinScreenController : MonoBehaviour
         p1Dialog.GetComponentInChildren<TextMeshProUGUI>().text = charTextDict[playerSelectConstants.p1Character];
         p2Dialog.GetComponentInChildren<TextMeshProUGUI>().text = charTextDict[playerSelectConstants.p2Character];
         if (playerSelectConstants.winner){
-            
             p2Dialog.SetActive(true);
             p1Dialog.SetActive(false);
             p1Dialog.GetComponentInChildren<TextMeshProUGUI>().text = p1Dialog.GetComponentInChildren<TextMeshProUGUI>().text.Substring(0,1) + "...";
