@@ -1554,7 +1554,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.68333334
+  - time: 0.7
     functionName: DestroySelf
     data: 
     objectReferenceParameter: {fileID: 0}
