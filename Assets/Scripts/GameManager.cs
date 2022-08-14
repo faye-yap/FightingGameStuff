@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
     public WinManager p1Wins;
     public WinManager p2Wins;
     public GameObject gameFinishedPrefab;
+    public float timescale;
 
     
 
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
 
             
         }
+        timescale = Time.timeScale;
     }
 
     // Update is called once per frame

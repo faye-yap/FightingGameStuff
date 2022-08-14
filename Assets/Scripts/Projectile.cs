@@ -5,6 +5,12 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    
+
+    private void Start(){
+        transform.GetChild(0).tag = transform.tag;
+;    }
     private void OnBecameInvisible() {
         Destroy(gameObject);
     }

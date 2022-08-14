@@ -66,6 +66,7 @@ public class MoveBase : MonoBehaviour
     
     
     private void ThrowDamage(){
+        Debug.Log(opponentController);
         opponentController.TakeDamageFromThrow();
       
     }
