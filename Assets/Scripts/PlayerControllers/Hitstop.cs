@@ -17,14 +17,15 @@ public class Hitstop : MonoBehaviour
     // Start is called before the first frame update
     void StopTime(){
         Time.timeScale = 0;
+        StartCoroutine(RestartTime());
     }
 
-    void StartTime(){
-        
+    IEnumerator RestartTime() {
+        for (int i = 0; i< 10 ;i++){
+            yield return null;
+        }
         Time.timeScale = 1;
-        playerAnimator.updateMode = AnimatorUpdateMode.Normal;
     }
-
     void ReenableMovement(){
         playerController.isIdle = true;
         playerAnimator.SetTrigger("Idle");
