@@ -89,7 +89,10 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(PreRoundTimer());
     }
-
+    IEnumerator WaitUntilDone(){
+        yield return new WaitForSecondsRealtime(1);
+        EndRound();
+    }
     void Update(){
         // use timescale to determine if game is paused
         if(pauseMenuController.GameIsPaused){
@@ -98,7 +101,8 @@ public class GameManager : MonoBehaviour
         frameNumber += 1;
         if (frameNumber % 60 == 0){
             if(timeRemaining == 0){
-                EndRound();
+
+                StartCoroutine(WaitUntilDone());
             }
             timeRemaining -= 1;
             //Debug.Log(timerText);
@@ -125,7 +129,7 @@ public class GameManager : MonoBehaviour
             p2HPUI.localScale = new Vector3(newScale,1,1);
         }
 
-        if(p1CurrentHP <= 0 || p2CurrentHP <= 0) EndRound();
+        if(p1CurrentHP <= 0 || p2CurrentHP <= 0) StartCoroutine(WaitUntilDone());
         
     }
 
