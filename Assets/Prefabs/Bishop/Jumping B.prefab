@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a5e1610e3291e4eb623b129c179adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2714901490874840970, guid: 68b8fc955234bad4e914bab23f1f1436, type: 3}
+  projectilePrefab: {fileID: 2714901490874840970, guid: 0ec27b378f131f8499697b13eab6301e, type: 3}
   initialVelocityMultiplier: 0.025
 --- !u!1 &7615728630707487226
 GameObject:
