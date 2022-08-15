@@ -5,8 +5,8 @@ public class PlayerSelectConstants : ScriptableObject
 {
 	public enum CharacterSelection { Pawn, Bishop, Rook, Knight };
 
-	public CharacterSelection p1Character = CharacterSelection.Knight;
-	public CharacterSelection p2Character = CharacterSelection.Knight;
+	public CharacterSelection p1Character = CharacterSelection.Rook;
+	public CharacterSelection p2Character = CharacterSelection.Bishop;
 
 	public RuntimeAnimatorController pawnSprite;
 	public RuntimeAnimatorController bishopSprite;
