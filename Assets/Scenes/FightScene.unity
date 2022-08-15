@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numWins: 0
-  replaceImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  replaceImage: {fileID: 21300000, guid: c101d97dbc90796429b393e8179693fb, type: 3}
   gameManager: {fileID: 495361151}
   scorePrefab: {fileID: 5125590309415623517, guid: 6837a0af8fe3a1442b3f458c7dca9576, type: 3}
 --- !u!1 &46519116
@@ -4624,7 +4624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numWins: 0
-  replaceImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  replaceImage: {fileID: 21300000, guid: c101d97dbc90796429b393e8179693fb, type: 3}
   gameManager: {fileID: 495361151}
   scorePrefab: {fileID: 5125590309415623517, guid: 6837a0af8fe3a1442b3f458c7dca9576, type: 3}
 --- !u!1 &2123830959
