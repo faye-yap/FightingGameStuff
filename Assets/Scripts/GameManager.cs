@@ -237,8 +237,8 @@ public class GameManager : MonoBehaviour
         timerText.text = PlayerPrefs.GetInt("TimeLimit", 99).ToString();
         if(p1NumWins == firstTo || p2NumWins == firstTo){
             playerSelectConstants.winner = (p2NumWins == firstTo);
-            GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
-            gameFinishedUI.transform.SetParent(timer.transform,false);
+            //GameObject gameFinishedUI = Instantiate(gameFinishedPrefab,gameFinishedPrefab.transform.position,gameFinishedPrefab.transform.rotation);
+            //gameFinishedUI.transform.SetParent(timer.transform,false);
             StartCoroutine(EndMatch());
             return;
         }
@@ -263,7 +263,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator EndMatch(){
         Time.timeScale = 0f;
         pauseMenuController.GameIsPaused = true;
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(0);
         Time.timeScale = 1f;
         pauseMenuController.GameIsPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -277,12 +277,12 @@ public class GameManager : MonoBehaviour
         if(player == "Player1"){
             p1ComboCounter.text = comboCounter[player].ToString() + " Hit";
             if(comboCounter[player] > 1){
-                p1ComboCounter.alpha = 1;
+                //p1ComboCounter.alpha = 1;
             }
         } else if (player == "Player2"){
             p2ComboCounter.text = comboCounter[player].ToString() + " Hit";
             if(comboCounter[player] > 1){
-                p2ComboCounter.alpha = 1;
+                //p2ComboCounter.alpha = 1;
             }
         }
 
