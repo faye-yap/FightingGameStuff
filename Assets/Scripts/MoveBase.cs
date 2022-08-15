@@ -34,14 +34,16 @@ public class MoveBase : MonoBehaviour
         opponentController = GameObject.FindGameObjectWithTag(opponentTag).GetComponent<PlayerController>();
         opponentController.hasBeenHit = false;
         moveAudio = transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>();   
-        audioOnHit = transform.GetChild(transform.childCount - 1).GetChild(0).GetComponent<AudioSource>();
-        audioOnBlock = transform.GetChild(transform.childCount - 1).GetChild(1).GetComponent<AudioSource>();
+        if (transform.GetChild(transform.childCount - 1).childCount == 2){
+            audioOnHit = transform.GetChild(transform.childCount - 1).GetChild(0).GetComponent<AudioSource>();
+            audioOnBlock = transform.GetChild(transform.childCount - 1).GetChild(1).GetComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
     
     public void PlayMoveAudio(){
-        if(moveAudio.clip!=null) {
+        if(moveAudio!=null) {
             moveAudio.enabled = true;
             moveAudio.Play();
 
@@ -49,7 +51,7 @@ public class MoveBase : MonoBehaviour
     }
 
     public void PlayAudioOnHit(){
-        if(audioOnHit.clip!=null) {
+        if(audioOnHit!=null) {
             audioOnHit.enabled = true;
             audioOnHit.Play();
 
@@ -57,7 +59,7 @@ public class MoveBase : MonoBehaviour
     }
 
     public void PlayAudioOnBlock(){
-       if(audioOnBlock.clip!=null) {
+       if(audioOnBlock!=null) {
             audioOnBlock.enabled = true;
             audioOnBlock.Play();
 

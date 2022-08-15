@@ -105,6 +105,9 @@ MonoBehaviour:
   collider2Ds:
   - {fileID: 0}
   collidersInParent: 0
+  audioOnHit: {fileID: 0}
+  audioOnBlock: {fileID: 0}
+  moveAudio: {fileID: 0}
 --- !u!61 &4497350186965892382
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -269,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a5e1610e3291e4eb623b129c179adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2714901490874840970, guid: 4dafe5aa1c6590f4ea18b66e77043c5f, type: 3}
+  projectilePrefab: {fileID: 2714901490874840970, guid: adabeb2816d79364ab50d27b051ec679, type: 3}
   initialVelocityMultiplier: 1.5
 --- !u!1 &7615728630707487226
 GameObject:
