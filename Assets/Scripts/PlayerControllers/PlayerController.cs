@@ -498,6 +498,7 @@ public class PlayerController : MonoBehaviour
             thisPlayerBody.AddForce(new Vector2(-characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed),ForceMode2D.Impulse);
             onGroundState = false;
             isThrowInvuln = true;
+            playerAnimator.SetTrigger("Jump");
 
             
         }
@@ -515,6 +516,7 @@ public class PlayerController : MonoBehaviour
             thisPlayerBody.AddForce(new Vector2(0, characterConstants.jumpSpeed), ForceMode2D.Impulse);            
             onGroundState = false;
             isThrowInvuln = true;
+            playerAnimator.SetTrigger("Jump");
             
         }
         isStandBlocking  = false;
@@ -525,7 +527,8 @@ public class PlayerController : MonoBehaviour
         if (onGroundState && canDashJumpCancel){
             thisPlayerBody.AddForce(new Vector2(characterConstants.moveSpeed * 2/3, characterConstants.jumpSpeed), ForceMode2D.Impulse);            
             onGroundState = false;     
-            isThrowInvuln = true;       
+            isThrowInvuln = true;    
+            playerAnimator.SetTrigger("Jump");   
         }
         if (gameObject.transform.localScale.x < 0){
             isStandBlocking = true;
