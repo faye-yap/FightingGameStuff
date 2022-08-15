@@ -6,6 +6,22 @@ public class RookConstants : CharacterConstants
 {
     PlayerController controller;
 
+    new public Dictionary<string,int>  damageValues = new Dictionary<string, int>(){
+        {"Neutral A", 50},
+        {"Crouching A", 50},
+        {"Jumping A", 50},
+        {"Neutral B", 50},
+        {"Crouching B", 50},
+        {"Jumping B", 100},
+        {"Down Forward B", 100},
+        {"Neutral S", 50},
+        {"Crouching S", 50},
+        {"Forward S", 50},
+        {"Throw",100},
+        {"Super",200}
+    };
+
+
     void Start(){
         controller = GetComponentInParent<PlayerController>();
     }
