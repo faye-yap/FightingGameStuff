@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
                         if(movement.y >= 0)playerAnimator.Play("Standing Block");
                         else playerAnimator.Play("Crouching Block");
                         isIdle = false;
-                        moveBase.PlayAudioOnBlock();
+                        if(moveBase.audioOnBlock != null)  moveBase.PlayAudioOnBlock();
                         GainMeter(2);
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -5.0f,0);
@@ -263,7 +263,7 @@ public class PlayerController : MonoBehaviour
                         isIdle = false;
                         playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
-                        moveBase.PlayAudioOnHit();
+                        if(moveBase.audioOnHit != null) moveBase.PlayAudioOnHit();
                         GainMeter(5);
                     }
                     //Debug.Log("A");
@@ -293,7 +293,7 @@ public class PlayerController : MonoBehaviour
                         if(movement.y >= 0)playerAnimator.Play("Standing Block");
                         else playerAnimator.Play("Crouching Block");
                         isIdle = false;
-                        moveBase.PlayAudioOnBlock();
+                        if(moveBase.audioOnBlock != null)  moveBase.PlayAudioOnBlock();
                         GainMeter(3);
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -6.0f,0);
@@ -304,7 +304,7 @@ public class PlayerController : MonoBehaviour
                         isIdle = false;
                         playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
-                        moveBase.PlayAudioOnHit();
+                        if(moveBase.audioOnHit != null) moveBase.PlayAudioOnHit();
                         GainMeter(5);
 
                     }
@@ -328,7 +328,7 @@ public class PlayerController : MonoBehaviour
                         if(movement.y >= 0)playerAnimator.Play("Standing Block");
                         else playerAnimator.Play("Crouching Block");
                         isIdle = false;
-                        moveBase.PlayAudioOnBlock();
+                        if(moveBase.audioOnBlock != null)  moveBase.PlayAudioOnBlock();
                         GainMeter(5);
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -7.0f,0);
@@ -340,7 +340,7 @@ public class PlayerController : MonoBehaviour
                         if (!isProjectile) playerAnimator.Play("KnockedDown");
                         else playerAnimator.Play("GotHit");
                         gameManager.UpdateComboCounter(opponentTag);
-                        moveBase.PlayAudioOnHit();
+                        if(moveBase.audioOnHit != null) moveBase.PlayAudioOnHit();
                         GainMeter(10);
                     }
                     //TODO: account for super
@@ -361,7 +361,7 @@ public class PlayerController : MonoBehaviour
                         if(movement.y >= 0)playerAnimator.Play("Standing Block");
                         else playerAnimator.Play("Crouching Block");
                         isIdle = false;
-                        moveBase.PlayAudioOnBlock();
+                        if(moveBase.audioOnBlock != null)  moveBase.PlayAudioOnBlock();
                         GainMeter(5);
                     } else {
                         if(onGroundState) thisPlayerBody.velocity = new Vector2(gameObject.transform.localScale.x * 1.25f * -8.0f,0);
@@ -372,7 +372,7 @@ public class PlayerController : MonoBehaviour
                         isIdle = false;
                         playerAnimator.Play("KnockedDown");
                         gameManager.UpdateComboCounter(opponentTag);
-                        moveBase.PlayAudioOnHit();
+                        if(moveBase.audioOnHit != null) moveBase.PlayAudioOnHit();
                         GainMeter(3);
                     }
 
@@ -388,7 +388,7 @@ public class PlayerController : MonoBehaviour
                 //get thrown
                 //opponent playercontroller play throw hit animation
                 c.gameObject.GetComponentInParent<MoveBase>().ThrowHit();
-                moveBase.PlayAudioOnHit();
+                if(moveBase.audioOnHit != null) moveBase.PlayAudioOnHit();
                 GainMeter(10);
                 
             }

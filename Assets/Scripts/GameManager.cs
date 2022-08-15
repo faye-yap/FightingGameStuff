@@ -199,6 +199,8 @@ public class GameManager : MonoBehaviour
         p2Controller.playerAnimator.SetTrigger("Idle");
         p1Controller.isIdle = true;
         p2Controller.isIdle = true;
+        p1Controller.onGroundState = true;
+        p2Controller.onGroundState = true;
         for (int i = 3; i < p1Controller.transform.childCount; i++){
             Destroy(p1Controller.transform.GetChild(i).gameObject);
         }

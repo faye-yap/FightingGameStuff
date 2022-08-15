@@ -44,6 +44,7 @@
      <Compile Include="Assets\Scripts\WinManager.cs" />
      <Compile Include="Assets\Scripts\PlayerControllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\TeleType.cs" />
+     <Compile Include="Assets\Scripts\ControlSchemeSceneController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Constants\CharacterConstants.cs" />
      <Compile Include="Assets\Scripts\PlayerSelectController.cs" />
@@ -65,7 +66,6 @@
      <Compile Include="Assets\Scripts\Constants\RookConstants.cs" />
      <Compile Include="Assets\Scripts\Constants\PawnConstants.cs" />
      <Compile Include="Assets\Scripts\FirstToOptionsController.cs" />
-     <Compile Include="Assets\Scripts\ControlSchemeSceneController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
