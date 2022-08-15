@@ -67,10 +67,11 @@ public class MoveBase : MonoBehaviour
     }
 
     void DestroySelf(){
-        
+        opponentController.isIdle = true;
         playerController.isIdle = true;
         playerController.canDashJumpCancel = true;
         playerController.playerAnimator.SetTrigger("Idle");
+        opponentController.hasBeenHit = false;
         Destroy(this.gameObject);
     }
 
@@ -96,6 +97,7 @@ public class MoveBase : MonoBehaviour
  
 
     public void ThrowHit(){
+        opponentController.playerAnimator.Play("KnockedDown");
         playerController.playerAnimator.Play("ThrowHit");
         moveAnimator.Play("ThrowHit");
         opponentController.isIdle = false;

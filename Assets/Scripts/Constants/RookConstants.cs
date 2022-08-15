@@ -134,9 +134,32 @@ public class RookConstants : CharacterConstants
 
     public override void Super()
     {
+        StartCoroutine(DisableSpriteWhileSuper());
         Vector3 initVector = new Vector3(transform.parent.position.x +  superPrefab.transform.position.x,transform.position.y + superPrefab.transform.position.y,transform.position.z + superPrefab.transform.position.z);
         GameObject super = Instantiate(superPrefab,initVector,Quaternion.identity);
         super.transform.SetParent(transform.parent);
         super.transform.localScale = new Vector3(1,1,1);
+        StartCoroutine(SuperMovement());
     }
+
+    IEnumerator SuperMovement(){
+        for (int i = 0; i < 35; i++){
+            controller.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (controller.transform.localScale.x * 15,0);
+            yield return null;
+        }
+        controller.StopMovement();
+    }
+
+    IEnumerator DisableSpriteWhileSuper(){
+        SpriteRenderer spriteRenderer = controller.transform.GetChild(1).GetComponent<SpriteRenderer>();
+        Debug.Log(controller.transform.GetChild(1).name);
+        spriteRenderer.enabled = false;
+
+        for (int i = 0; i< 90; i++){
+            yield return null;
+        }
+        spriteRenderer.enabled = true;
+        
+    }
+
 }
