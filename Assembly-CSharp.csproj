@@ -57,7 +57,6 @@
      <Compile Include="Assets\Scripts\MainMenuCharacterController.cs" />
      <Compile Include="Assets\Scripts\PlayerControllers\Hitstop.cs" />
      <Compile Include="Assets\Scripts\OptionsController.cs" />
-     <Compile Include="Assets\Scripts\OptionConstants.cs" />
      <Compile Include="Assets\Scripts\WinScreenController.cs" />
      <Compile Include="Assets\Scripts\FirstToController.cs" />
      <Compile Include="Assets\Scripts\InitController.cs" />
