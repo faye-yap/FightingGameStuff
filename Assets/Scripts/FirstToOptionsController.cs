@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;// Required when using Event data.
 
 public class FirstToOptionsController : MonoBehaviour, ISelectHandler
 {
-    public OptionConstants optionConstants;
     private string text;
     void Start()
     {
@@ -16,6 +15,6 @@ public class FirstToOptionsController : MonoBehaviour, ISelectHandler
 
     public void OnSelect(BaseEventData eventData)
     {
-        optionConstants.OnFirstToChanged(int.Parse(text));
+        PlayerPrefs.SetInt("FirstTo", int.Parse(text));
     }
 }

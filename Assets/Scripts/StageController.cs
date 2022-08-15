@@ -5,7 +5,6 @@ using UnityEngine;
 public class StageController : MonoBehaviour
 {
     public PlayerSelectConstants playerSelectConstants;
-    public OptionConstants optionConstants;
     private PlayerSelectConstants.CharacterSelection stage;
     private Animator animator;
     private AnimatorOverrideController animatorOverrideController;
@@ -27,7 +26,7 @@ public class StageController : MonoBehaviour
         animator.runtimeAnimatorController = animatorOverrideController;
         animatorOverrideController["blahaj_living_room"] = stageAnimationDict[stage].Item1;
         audioSource.clip = stageAnimationDict[stage].Item2;
-        audioSource.volume = optionConstants.MusicVolume;
+        audioSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
         audioSource.Play();
         animator.speed = stageAnimationDict[stage].Item3;
     }

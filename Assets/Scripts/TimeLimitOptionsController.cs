@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;// Required when using Event data.
 
 public class TimeLimitOptionsController : MonoBehaviour, ISelectHandler
 {
-    public OptionConstants optionConstants;
     private string text;
     void Start()
     {
@@ -16,6 +15,6 @@ public class TimeLimitOptionsController : MonoBehaviour, ISelectHandler
 
     public void OnSelect(BaseEventData eventData)
     {
-        optionConstants.OnTimeLimitChanged(int.Parse(text));
+        PlayerPrefs.SetInt("TimeLimit", int.Parse(text));
     }
 }

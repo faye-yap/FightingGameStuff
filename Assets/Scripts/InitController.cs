@@ -5,15 +5,24 @@ using UnityEngine;
 public class InitController : MonoBehaviour
 {
     public static bool isInit = false;
-    public OptionConstants optionConstants;
     // Start is called before the first frame update
     void Start()
     {
         if (!isInit)
         {
             isInit = true;
-            Debug.Log("Set Global Volume to " + optionConstants.GlobalVolume);
-            AudioListener.volume = optionConstants.GlobalVolume;
+            PlayerPrefs.SetFloat("GlobalVolume", PlayerPrefs.GetFloat("GlobalVolume", 1.0f));
+            Debug.Log("Set Global Volume to " + PlayerPrefs.GetFloat("GlobalVolume", 1.0f));
+            AudioListener.volume = PlayerPrefs.GetFloat("GlobalVolume", 1.0f);
+
+            PlayerPrefs.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume", 1.0f));
+            Debug.Log("Set Music Volume to " + PlayerPrefs.GetFloat("MusicVolume", 1.0f));
+
+            PlayerPrefs.SetInt("TimeLimit", PlayerPrefs.GetInt("TimeLimit", 99));
+            Debug.Log("Set TimeLimit to " + PlayerPrefs.GetInt("TimeLimit", 99));
+
+            PlayerPrefs.SetInt("FirstTo", PlayerPrefs.GetInt("FirstTo", 2));
+            Debug.Log("Set FirstTo to " + PlayerPrefs.GetInt("FirstTo", 2));
         }
     }
 }

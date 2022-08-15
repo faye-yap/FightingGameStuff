@@ -7,18 +7,17 @@ using TMPro;
 
 public class TimeLimitController : MonoBehaviour, ISelectHandler
 {
-    public OptionConstants optionConstants;
     public List<Button> timeLimitButtons;
 
     public void OnSelect(BaseEventData eventData)
     {
         foreach (var button in timeLimitButtons){
-            if (optionConstants.TimeLimit == int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text)){
+            if (PlayerPrefs.GetInt("TimeLimit") == int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text)){
                 StartCoroutine(selectTimeLimit(button));
                 return;
             }
         }
-        selectTimeLimit(timeLimitButtons[1]);
+        StartCoroutine(selectTimeLimit(timeLimitButtons[1]));
     }
 
     private IEnumerator selectTimeLimit(Button button){
