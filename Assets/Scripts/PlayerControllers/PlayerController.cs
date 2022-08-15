@@ -390,6 +390,7 @@ public class PlayerController : MonoBehaviour
                 c.gameObject.GetComponentInParent<MoveBase>().ThrowHit();
                 if(moveBase.audioOnHit != null) moveBase.PlayAudioOnHit();
                 GainMeter(10);
+                isThrowInvuln = true;
                 
             }
         }   

@@ -72,6 +72,7 @@ public class MoveBase : MonoBehaviour
         playerController.canDashJumpCancel = true;
         playerController.playerAnimator.SetTrigger("Idle");
         opponentController.hasBeenHit = false;
+        if (opponentController.onGroundState) opponentController.isThrowInvuln = false;
         Destroy(this.gameObject);
     }
 
