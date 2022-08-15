@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2714901490874840970, guid: 0ec27b378f131f8499697b13eab6301e, type: 3}
-  initialVelocityMultiplier: 0.025
+  initialVelocityMultiplier: 0.75
 --- !u!1 &7615728630707487226
 GameObject:
   m_ObjectHideFlags: 0
