@@ -7,13 +7,12 @@ using TMPro;
 
 public class FirstToController : MonoBehaviour, ISelectHandler
 {
-    public OptionConstants optionConstants;
     public List<Button> firstToButtons;
 
     public void OnSelect(BaseEventData eventData)
     {
         foreach (var button in firstToButtons){
-            if (optionConstants.FirstTo == int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text)){
+            if (PlayerPrefs.GetInt("FirstTo") == int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text)){
                 StartCoroutine(selectFirstTo(button));
                 return;
             }
