@@ -66,6 +66,15 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0
         outWeight: 0
+      - serializedVersion: 3
+        time: 0.48333332
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -190,6 +199,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.48333332
+        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -521,6 +539,14 @@ AnimationClip:
       value: {fileID: 21300000, guid: a2886b8bf07be4c4eb773c868073380a, type: 3}
     - time: 0.36666667
       value: {fileID: 21300000, guid: e4d99df1427b41843b35ad94d50562c5, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: 4d906029a958c5a4b8e824fe5add4af8, type: 3}
+    - time: 0.45
+      value: {fileID: 21300000, guid: 97a93e81a1b214d41a45a95e7d5755df, type: 3}
+    - time: 0.48333332
+      value: {fileID: 21300000, guid: fc92b851e04358e4084fe6b957789623, type: 3}
+    - time: 0.51666665
+      value: {fileID: 21300000, guid: 5c49d3840c91ac545b332a73ef3080c5, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -635,12 +661,16 @@ AnimationClip:
     - {fileID: 21300000, guid: caf7f3f84f7b83046a36f878c99984b2, type: 3}
     - {fileID: 21300000, guid: a2886b8bf07be4c4eb773c868073380a, type: 3}
     - {fileID: 21300000, guid: e4d99df1427b41843b35ad94d50562c5, type: 3}
+    - {fileID: 21300000, guid: 4d906029a958c5a4b8e824fe5add4af8, type: 3}
+    - {fileID: 21300000, guid: 97a93e81a1b214d41a45a95e7d5755df, type: 3}
+    - {fileID: 21300000, guid: fc92b851e04358e4084fe6b957789623, type: 3}
+    - {fileID: 21300000, guid: 5c49d3840c91ac545b332a73ef3080c5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.38333336
+    m_StopTime: 0.53333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -699,6 +729,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.083333336
         value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.48333332
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -829,6 +868,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.48333332
+        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -1147,8 +1195,22 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.15
+  - time: 0.2
     functionName: ActivateColliders
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.4
+    functionName: DeactivateColliders
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.53333336
+    functionName: DestroySelf
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
